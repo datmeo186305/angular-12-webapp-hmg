@@ -1,0 +1,39 @@
+<div class="container-fluid pl-auth-layout">
+  <div class="container-fluid pl-content-auth">
+    <div class="container pl-padding-bottom-default">
+      <div class="payday-loan-container">
+        <!-- Sign up success -->
+        <div class="pl-auth-form">
+          <pl-auth-success
+            [title]="'payday_loan.auth.register_successfully' | translate"
+            [bodyText]="signUpSuccessBodyText"
+            [showBtn]="false"
+          >
+            <div action>
+              <div class="text-center pl-space-between-content">
+                <button
+                  id="sign-up-success-btn"
+                  type="submit"
+                  class="insurance-btn btn-primary btn-sign-up-success"
+                  (click)="btnClick()"
+                >
+                  <span>{{ "payday_loan.auth.login_now" | translate }}</span>
+                  <span
+                    id="sign-up-success-countdown-timer"
+                    class="pl-countdown-time"
+                    >( {{ countdownTime }}s )</span
+                  >
+                </button>
+              </div>
+            </div>
+          </pl-auth-success>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img
+    src="assets/img/payday-loan/bg-illustration.png"
+    class="pl-bottom-auth-container pl-bottom-auth-bg"
+    alt=""
+  />
+</div>

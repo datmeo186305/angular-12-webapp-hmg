@@ -1,0 +1,67 @@
+@import "../variables";
+
+$scaleSize: 0.1;
+$zoomOutStart: 0.7;
+$zoomOutEnd: 0.46;
+
+body {
+  background: $white;
+}
+
+#pl-main {
+  overflow: hidden;
+}
+
+#payday-loan-layout-container {
+  font-family: $sfPro;
+  height: 100%;
+}
+
+.payday-loan-container {
+  max-width: 480px;
+  margin-right: auto;
+  margin-left: auto;
+  align-self: center;
+  width: 100%;
+}
+
+@keyframes zoomIn8 {
+  from {
+    opacity: 0;
+    transform: scale3d($scaleSize, $scaleSize, $scaleSize);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#payday-loan-layout-container .zoomIn {
+  animation-name: zoomIn8;
+}
+
+@keyframes zoomOut8 {
+  from {
+    opacity: 1;
+    transform: scale3d($zoomOutStart, $zoomOutStart, $zoomOutStart);
+  }
+  to {
+    opacity: 0;
+    transform: scale3d($zoomOutEnd, $zoomOutEnd, $zoomOutEnd);
+  }
+}
+
+#payday-loan-layout-container .zoomOut {
+  animation-name: zoomOut8;
+}
+
+@media (max-width: 768px) {
+  #payday-loan-layout-container {
+    .container {
+      padding: 0;
+    }
+
+    .payday-loan-container {
+      padding: 0 16px;
+    }
+  }
+}

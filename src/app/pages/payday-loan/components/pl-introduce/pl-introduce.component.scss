@@ -1,0 +1,49 @@
+@import "src/styles/variables";
+#introduce-container {
+  position: relative;
+  color: $monex-color-01;
+  img {
+    width: 100%;
+    height: auto;
+  }
+  .introduce-content {
+    position: absolute;
+    height: 100%;
+    max-width: 50%;
+    top: 0;
+    left: 24px;
+    padding: 16px 0 0;
+    h3 {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 14px;
+      text-transform: uppercase;
+      color: #007aff;
+      margin-bottom: 6px;
+    }
+    h1 {
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 40px;
+    }
+    p {
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 14px;
+      position: absolute;
+      left: 0;
+      bottom: 18px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  #introduce-container {
+    .introduce-content {
+      h1 {
+        font-size: 24px;
+        line-height: 30px;
+      }
+    }
+  }
+}

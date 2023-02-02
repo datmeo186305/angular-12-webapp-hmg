@@ -1,0 +1,149 @@
+<div class="payment-method-container">
+  <h2 class="payment-method-title">
+    {{ 'payment.choose_payment_method.bank_transfer' | translate }}
+  </h2>
+
+  <p class="transfer-payment-text">
+    {{ 'payment.choose_payment_method.guide_bank_transfer' | translate }}
+  </p>
+
+  <div id="amount-to-be-paid-content">
+    <!-- amountToBePaid -->
+    <div class="payment-content-container">
+      <div class="payment-content-left">
+        <label class="payment-content-label"
+        >{{ 'payment.choose_payment_method.amount_to_be_paid' | translate }}
+<!--          <span-->
+<!--            class="sprite-group-1-info"-->
+<!--            [matTooltip]="'payment.choose_payment_method.amount_to_be_paid_desc' | translate"-->
+<!--            matTooltipPosition="right">-->
+<!--          </span>-->
+        </label>
+        <p class="payment-content-value">
+          {{ amountToBePaid | formatPrice: null}}
+        </p>
+      </div>
+      <div class="payment-content-right">
+        <!--        <button-->
+        <!--          type="button"-->
+        <!--          class="insurance-btn btn-primary"-->
+        <!--          (click)="copyToClipboardNumber(vaInfo?.amountToBePaid)"-->
+        <!--        >{{ 'payment.choose_payment_method.copy' | translate }}-->
+        <!--        </button>-->
+      </div>
+    </div>
+
+    <!-- receiverBackCode -->
+    <div class="payment-content-container">
+      <div class="payment-content-left">
+        <label class="payment-content-label">
+          {{ 'payment.choose_payment_method.bank_code_receiver' | translate }}
+        </label>
+        <p class="payment-content-value">
+          {{ vaInfo?.bankCode }}
+        </p>
+      </div>
+      <div class="payment-content-right"></div>
+    </div>
+
+    <!-- receiverAccountNumber -->
+    <div class="payment-content-container">
+      <div class="payment-content-left">
+        <label class="payment-content-label">
+          {{ 'payment.choose_payment_method.account_number_receiver' | translate }}
+        </label>
+        <p class="payment-content-value">
+          {{ vaInfo?.accountNumber }}
+        </p>
+      </div>
+      <div class="payment-content-right">
+        <!--        <button-->
+        <!--          type="button"-->
+        <!--          class="insurance-btn btn-primary"-->
+        <!--          (click)="copyToClipboard(vaInfo?.accountNumber)"-->
+        <!--        >-->
+        <!--          {{ 'payment.choose_payment_method.copy' | translate }}-->
+        <!--        </button>-->
+      </div>
+    </div>
+
+    <!-- receiverName -->
+    <div class="payment-content-container">
+      <div class="payment-content-left">
+        <label class="payment-content-label"
+        >
+          {{ 'payment.choose_payment_method.name_receiver' | translate }}
+          <span
+            class="sprite-group-1-info"
+            [matTooltip]="'payment.choose_payment_method.name_receiver_desc' | translate"
+            matTooltipPosition="right">
+          </span>
+        </label>
+        <p class="payment-content-value">
+          {{ vaInfo?.accountName }}
+        </p>
+      </div>
+      <div class="payment-content-right"></div>
+    </div>
+
+    <!-- receiverContent -->
+    <div class="payment-content-container">
+      <div class="payment-content-left">
+        <label class="payment-content-label"
+        >
+          {{ 'payment.choose_payment_method.transfer_content' | translate }}
+        </label>
+        <p class="payment-content-value">
+          {{ productInfoContent }}
+        </p>
+      </div>
+      <div class="payment-content-right"></div>
+    </div>
+
+    <!-- Transfer content -->
+    <!--    <div class="payment-content-container border-bottom-0">-->
+    <!--      <div class="payment-content-left">-->
+    <!--        <label class="payment-content-label payment-required">-->
+    <!--          {{ 'payment.choose_payment_method.transfer_content' | translate }}-->
+    <!--        </label>-->
+    <!--        <p class="payment-content-value">-->
+    <!--          {{ productInfo?.message }}-->
+    <!--        </p>-->
+    <!--      </div>-->
+    <!--      <div class="payment-content-right">-->
+    <!--        <button-->
+    <!--          type="button"-->
+    <!--          class="insurance-btn btn-primary"-->
+    <!--          (click)="copyToClipboard(productInfo?.message)"-->
+    <!--        >-->
+    <!--          {{ 'payment.choose_payment_method.copy' | translate }}-->
+    <!--        </button>-->
+    <!--      </div>-->
+    <!--    </div>-->
+
+    <!--    <div id="payment-required">-->
+    <!--      <p-->
+    <!--        [innerHTML]="-->
+    <!--            'payment.choose_payment_method.required_name_desc' | translate :{-->
+    <!--              name: userInfo?.fullName-->
+    <!--            }-->
+    <!--          ">-->
+    <!--      </p>-->
+    <!--    </div>-->
+  </div>
+</div>
+
+<div class="btn-actions text-center">
+  <button
+    type="button"
+    id="transfer-btn-submit"
+    class="insurance-btn btn-primary"
+    [disabled]="disabledBtn"
+    (click)="initPaymentOrder()"
+  >
+    {{ 'payment.choose_payment_method.payment' | translate }}
+    <span id="transfer-payment-countdown-timer" class="pl-countdown-time" *ngIf="disabledBtn">( {{ countdownTime }}
+      s )</span>
+  </button>
+</div>
+

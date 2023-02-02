@@ -1,0 +1,161 @@
+<div class="container">
+  <div class="insurance-container">
+    <div class="text-center logo">
+      <img src="assets/img/logo/payday-loan-dark.svg" alt="logo-Ung-luong-0%-lai">
+    </div>
+    <form [formGroup]="signInForm" class="form-container" autocomplete="off">
+      <div class="row">
+        <div class="col-md-12">
+          <mat-form-field
+            autofilled="false"
+            #mobileNumber
+            appearance="outline"
+            floatLabel="never"
+            class="w-100"
+          >
+            <mat-label>{{
+              "payday_loan.auth.phone_number_login" | translate
+            }}</mat-label>
+            <div
+              class="username-icon"
+              matPrefix
+              [ngClass]="
+                signInForm.controls.mobileNumber.value != '' ||
+                isUsernameInputFocus
+                  ? 'is-focused-icon'
+                  : ''
+              "
+            ></div>
+            <input
+              name="username" autocomplete='new-password'
+              required
+              appPhoneNumberOnly
+              phone-number-validate
+              type="text"
+              matInput
+              formControlName="mobileNumber"
+              [placeholder]="'payday_loan.auth.phone_number_login' | translate"
+              (focus)="isUsernameInputFocus = true"
+              (blur)="isUsernameInputFocus = false"
+              [ngClass]="isUsernameInputFocus ? 'is-focused-input' : ''"
+            />
+            <button
+              #clearPassword
+              type="button"
+              tabindex="-1"
+              *ngIf="signInForm.controls.mobileNumber.value"
+              matSuffix
+              mat-icon-button
+              class="support-icon"
+              aria-label="Clear"
+              (click)="signInForm.controls.mobileNumber.setValue('')"
+              disableRipple="true"
+            >
+              <div class="clear-icon"></div>
+            </button>
+            <show-errors
+              [control]="signInForm.controls['mobileNumber']"
+              [controlLabel]="'Số điện thoại'"
+              [hasIconPrefix]="true"
+            >
+            </show-errors>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-12" id="password-field">
+          <mat-form-field
+            appearance="outline"
+            floatLabel="never"
+            class="w-100"
+            autofilled="false"
+          >
+            <mat-label>{{ "payday_loan.auth.password" | translate }}</mat-label>
+            <div
+              class="password-pre-icon"
+              matPrefix
+              [ngClass]="
+                signInForm.controls.password.value != '' || isPasswordInputFocus
+                  ? 'is-focused-icon'
+                  : ''
+              "
+            ></div>
+            <input
+              name="password" autocomplete='new-password'
+              aria-autocomplete="none"
+              [type]="isPassVisible ? 'text' : 'password'"
+              matInput
+              strong-password-validate
+              formControlName="password"
+              [placeholder]="'payday_loan.auth.password' | translate"
+              required
+              (focus)="isPasswordInputFocus = true"
+              (blur)="isPasswordInputFocus = false"
+              [ngClass]="isPasswordInputFocus ? 'is-focused-input' : ''"
+            />
+            <button
+              type="button"
+              *ngIf="signInForm.controls.password.value"
+              matSuffix
+              mat-icon-button
+              aria-label="Clear"
+              (click)="signInForm.controls.password.setValue('')"
+              disableRipple="true"
+            >
+              <div class="clear-icon"></div>
+            </button>
+            <button
+              type="button"
+              matSuffix
+              mat-icon-button
+              class="support-icon"
+              (click)="isPassVisible = !isPassVisible"
+            >
+              <div
+                class="password-suffix-icon"
+                [ngClass]="[
+                  signInForm.controls.password.value != '' ||
+                  isPasswordInputFocus
+                    ? 'is-focused-icon'
+                    : '',
+                  isPassVisible ? 'password-show-icon' : 'password-hide-icon'
+                ]"
+              ></div>
+            </button>
+            <show-errors
+              [control]="signInForm.controls['password']"
+              [controlLabel]="'payday_loan.auth.password' | translate"
+              [hasIconPrefix]="true"
+            >
+            </show-errors>
+          </mat-form-field>
+          <div class="forgot-password-text">
+            <a
+              class="link-inline-green"
+              [routerLink]="['/auth/forgot-password']"
+              >{{ "payday_loan.auth.forgot_password_text" | translate }}</a
+            >
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="action-container">
+            <button
+              (click)="onSubmit()"
+              mat-flat-button
+              color="primary"
+              class="ui-button login-btn"
+            >
+              {{ "payday_loan.auth.login" | translate }}
+            </button>
+            <p>
+              {{ "payday_loan.auth.have_not_account" | translate }}
+              <a class="link-inline-green" [routerLink]="['/auth/sign-up']">{{
+                "payday_loan.auth.register_now" | translate
+              }}</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

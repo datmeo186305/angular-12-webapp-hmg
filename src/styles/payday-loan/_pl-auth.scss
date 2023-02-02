@@ -1,0 +1,233 @@
+@import "../variables";
+.pl-auth-layout {
+  min-height: calc(100vh - 46px);
+  background: #f0f7ff;
+  padding-top: 48px;
+  position: relative;
+  height: 100%;
+}
+
+.pl-auth-form {
+  background: $white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.03);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.pl-title-sign-in {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 38px;
+    color: $monex-color-01;
+    flex: none;
+  }
+  img {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.pl-footer-sign-in {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  /* Grey / 08 */
+  color: $grey-08;
+}
+
+.pl-link-in-line {
+  margin-left: 4px;
+  color: $monex-color-00;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.pl-title-sign-up {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 38px;
+    color: $monex-color-01;
+    flex: none;
+  }
+  img {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.pl-footer-sign-up {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  /* Grey / 08 */
+  color: $grey-08;
+}
+
+.pl-link-in-line {
+  margin-left: 4px;
+  color: $monex-color-00;
+  &:hover {
+    text-decoration: none;
+  }
+}
+.pl-title-forgot-password {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 38px;
+    color: $monex-color-01;
+    flex: none;
+  }
+  img {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.pl-link-in-line {
+  margin-left: 4px;
+  color: $monex-color-00;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.pl-link-to-store-sign-in {
+  margin-top: 24px;
+}
+
+.pl-link-to-store-sign-up {
+  margin-top: 40px;
+}
+
+.btn-pl-auth-submit {
+  max-width: 200px;
+}
+
+.pl-guide-to-type-password {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  color: $grey-08;
+}
+
+.pl-confirm-policy {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  margin-left: 8px;
+  line-height: 17px;
+
+  /* Grey / 08 */
+
+  color: $grey-08;
+}
+
+.pl-sign-up-success-container {
+  .pl-check-mark-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+  }
+  .pl-sign-up-success-title {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+
+    /* Grey / 08 */
+
+    color: $grey-08;
+  }
+
+  .btn-sign-up-success {
+    max-width: 200px;
+  }
+
+  .pl-sign-up-success-body {
+    .pl-sign-up-success-body-text {
+      max-width: 320px;
+      font-family: $sfPro;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 17px;
+      text-align: center;
+
+      /* Grey / 08 */
+
+      color: $grey-08;
+      margin: 0 auto;
+    }
+  }
+}
+
+.pl-bottom-auth-container {
+  width: 100%;
+  height: auto;
+  z-index: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.pl-content-auth {
+  position: relative;
+  z-index: 2;
+}
+
+.link-to-pl-forgot-password {
+  margin-top: 16px;
+  text-align: right;
+  a {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: right;
+    /* Monex Color / 00 */
+    color: $monex-color-00;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

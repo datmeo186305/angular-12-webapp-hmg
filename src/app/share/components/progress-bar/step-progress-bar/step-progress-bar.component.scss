@@ -1,0 +1,115 @@
+@import "src/styles/variables";
+
+.step-progress-number-container {
+  padding: 8px 52px 0;
+  font-family: $sfPro;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin-bottom: 0;
+  }
+
+  li:nth-child(even) {
+    width: 100%;
+    align-self: center;
+    padding: 0 8px;
+  }
+
+  li:nth-child(odd) {
+    place-items: center;
+  }
+
+  .step-number {
+    border-radius: 50%;
+    background: #f5f5ff;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    transition: background 0.5s ease;
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 24px;
+    text-align: center;
+    color: $white;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .progressbar-dash {
+    background: rgba(255, 255, 255, 0.2);
+    height: 1px;
+    width: 100%;
+    align-self: center;
+    z-index: 1;
+    transition: background-color 0.5s ease-in-out;
+  }
+
+  .roadmap-checkpoint-current {
+    .step-number {
+      background: $system-color-blue;
+      color: $white;
+      transition: color 0.5s ease-in-out, background-color 0.5s ease-in-out;
+    }
+  }
+
+  .roadmap-checkpoint-passed {
+    .step-number {
+      background: $system-color-blue;
+      transition: color 0.5s ease-in-out, background-color 0.5s ease-in-out;
+      color: $white;
+    }
+
+    .progressbar-dash {
+      background: $system-color-blue;
+      transition: background-color 0.5s ease-in-out;
+    }
+  }
+}
+
+.step-progress-title-container {
+  padding: 0 12px;
+
+  ul {
+    padding: 4px 0;
+    display: flex;
+    margin: 0 !important;
+    justify-content: space-between;
+    height: auto;
+    align-items: center;
+    min-height: 16px;
+  }
+
+  li {
+    width: 104px;
+  }
+
+  .step-title {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    width: 104px;
+    align-items: center;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    transition: color 0.5s ease-in-out;
+  }
+
+  .roadmap-checkpoint-current {
+    .step-title {
+      color: $white;
+      transition: color 0.5s ease-in-out;
+    }
+  }
+
+  .roadmap-checkpoint-passed {
+    .step-title {
+      color: $white;
+      transition: color 0.5s ease-in-out;
+    }
+  }
+}

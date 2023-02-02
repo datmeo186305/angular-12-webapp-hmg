@@ -1,0 +1,17 @@
+<div id="sign-contract-term-success-container" class="container-fluid">
+  <div class="container-fluid ">
+    <div class="container pl-padding-bottom-default">
+      <div class="payday-loan-container">
+        <!-- sign contract terms success -->
+        <div>
+          <electronic-signing-success
+            [title]="'payday_loan.contract_terms_of_service.signed_contract_terms_success' | translate"
+            [btnText]="'common.continue' | translate"
+            (btnClick)="redirectToLoanDetermination()"
+          >
+          </electronic-signing-success>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

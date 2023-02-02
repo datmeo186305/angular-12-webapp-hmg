@@ -1,0 +1,38 @@
+@import "../../../../styles/variables";
+.main {
+  height: 100vh;
+  box-sizing: border-box;
+  background: $grey-06;
+  font-family: $sfPro, "Helvetica Neue", sans-serif;
+}
+.login-container {
+  box-sizing: border-box;
+  width: 320px;
+  height: 352px;
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 16px;
+}
+
+.logo {
+  height: 32px;
+  margin-top: 16px;
+}
+
+h3 {
+  margin: 0;
+  text-align: center;
+  color: $monex-color-01;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.login-action {
+  button {
+    margin-bottom: 8px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+<div
+  class="prompt-content"
+  [ngClass]="{ 'hidden-prompt-content': !loadingContent.showContent }"
+>
+  <div class="text-center">
+    <img
+      src="assets/img/payday-loan/gif/monex_loading.gif"
+      alt=""
+      class="loading-resource"
+    />
+  </div>
+
+  <h2
+    class="pl-prompt-title"
+    *ngIf="loadingContent && loadingContent?.showContent"
+  >
+    {{ loadingContent?.title }}
+  </h2>
+
+  <div
+    *ngIf="loadingContent && loadingContent?.showContent"
+    class="pl-prompt-body"
+  >
+    <p [innerHTML]="loadingContent?.content"></p>
+  </div>
+</div>

@@ -1,0 +1,2438 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8004
+  description: Generated server url
+paths:
+  /v1/ratings/{id}:
+    put:
+      tags:
+      - rating-controller
+      operationId: updateRating
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRatingRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseRating'
+  /v1/infos/{customerId}:
+    get:
+      tags:
+      - info-controller
+      operationId: getInfoByCustomerId
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: category
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseCustomerInfoResponse'
+    put:
+      tags:
+      - info-controller
+      operationId: updateInfo
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateInfoRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+  /v1/districts/{id}:
+    get:
+      tags:
+      - district-controller
+      operationId: getDistrictById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseDistrict'
+    put:
+      tags:
+      - district-controller
+      operationId: updateDistrict
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDistrictRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseDistrict'
+    delete:
+      tags:
+      - district-controller
+      operationId: deleteDistrict
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseDistrict'
+  /v1/companies/{id}:
+    get:
+      tags:
+      - company-controller
+      operationId: getCompanyById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseCompanyInfo'
+      security:
+      - bearerAuth: []
+    put:
+      tags:
+      - company-controller
+      operationId: updateCompany
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UpdateCompanyRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseCompanyInfo'
+  /v1/communes/{id}:
+    get:
+      tags:
+      - commune-controller
+      operationId: getCommuneById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseCommune'
+    put:
+      tags:
+      - commune-controller
+      operationId: updateCommune
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCommuneRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseCommune'
+    delete:
+      tags:
+      - commune-controller
+      operationId: deleteCommune
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseCommune'
+  /v1/cities/{id}:
+    get:
+      tags:
+      - city-controller
+      operationId: getCityById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseCity'
+    put:
+      tags:
+      - city-controller
+      operationId: updateCity
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCityRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseCity'
+    delete:
+      tags:
+      - city-controller
+      operationId: deleteCity
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseCity'
+  /v1/banks/{id}:
+    put:
+      tags:
+      - bank-controller
+      operationId: updateBank
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UpdateBankRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseBank'
+    delete:
+      tags:
+      - bank-controller
+      operationId: deleteBank
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseBank'
+  /v2/infos/validateConfirmInformationRequest:
+    post:
+      tags:
+      - info-v-2-controller
+      operationId: validateConfirmInformationRequestV2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmInformationV2Request'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+  /v2/infos/confirmInformation:
+    post:
+      tags:
+      - info-v-2-controller
+      operationId: confirmInformationV2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmInformationV2Request'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+  /v2/infos/additionalInformation:
+    post:
+      tags:
+      - info-v-2-controller
+      operationId: additionalInformationV2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdditionalInformationV2Request'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+  /v1/tngs/{customerId}/checkCustomerInformationSalaryReceiptDate:
+    post:
+      tags:
+      - tng-controller
+      operationId: checkCustomerInformationSalaryReceiptDate
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseCheckIsPaydayByCustomerIdResponse'
+  /v1/tngs/providesInformationSalaryReceiptDate:
+    post:
+      tags:
+      - tng-controller
+      operationId: providesInformationSalaryReceiptDate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InformationSalaryReceiptDateRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+  /v1/tngs/providesInformationSalaryReceiptDateByOfficeCode:
+    post:
+      tags:
+      - tng-controller
+      operationId: providesInformationSalaryReceiptDateByOfficeCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InformationSalaryReceiptDateByOfficeCodeRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+  /v1/tngs/providesInformationOfEmployees:
+    post:
+      tags:
+      - tng-controller
+      operationId: providesInformationOfEmployees
+      parameters:
+      - name: organizationName
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /v1/tngs/checkIsEmployeeAtTng:
+    post:
+      tags:
+      - tng-controller
+      operationId: IsEmployeesWorkingAtTNG
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TNGRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseTNGResponse'
+  /v1/ratings:
+    get:
+      tags:
+      - rating-controller
+      operationId: getAllRatings
+      parameters:
+      - name: applicationType
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: isRated
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseListRating'
+    post:
+      tags:
+      - rating-controller
+      operationId: createRating
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRatingRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseRating'
+  /v1/newsletters:
+    post:
+      tags:
+      - newsletter-controller
+      operationId: saveInfo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewsLetterRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseNewsletterInfo'
+  /v1/kalapas/idCard/plus/appendOldCustomerAddress:
+    post:
+      tags:
+      - kalapa-controller
+      operationId: extractInfoOldCustomer
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/kalapas/idCard/plus:
+    post:
+      tags:
+      - kalapa-controller
+      operationId: extractInfo
+      parameters:
+      - name: verify
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/KalapaRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseKalapaResponse'
+  /v1/infos/{customerId}/returnConfirmInformation:
+    post:
+      tags:
+      - info-controller
+      operationId: returnConfirmInformation
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/infos/validateConfirmInformationRequest:
+    post:
+      tags:
+      - info-controller
+      operationId: validateConfirmInformationRequest
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmInformationRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+  /v1/infos/uploadSalaryDocument:
+    post:
+      tags:
+      - info-controller
+      operationId: uploadSalaryInformationToAzure
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SalaryInformationRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/infos/updateStatusVerified:
+    post:
+      tags:
+      - info-controller
+      operationId: updateStatusVerified
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/infos/updateFinance:
+    post:
+      tags:
+      - info-controller
+      operationId: updateFinance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateFinanceDataRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+  /v1/infos/requestGetTngData:
+    post:
+      tags:
+      - info-controller
+      operationId: requestGetTngData
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetTngDataRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/infos/customerSignDone:
+    post:
+      tags:
+      - info-controller
+      operationId: customerSignDone
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerSignDoneRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+  /v1/infos/confirmInformation:
+    post:
+      tags:
+      - info-controller
+      operationId: confirmInformation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmInformationRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+  /v1/infos/chooseCompany:
+    post:
+      tags:
+      - info-controller
+      operationId: chooseCompany
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChooseCompanyRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+  /v1/infos/additionalInformation:
+    post:
+      tags:
+      - info-controller
+      operationId: additionalInformation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdditionalInformationRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+  /v1/infos/addEmployeeData:
+    post:
+      tags:
+      - info-controller
+      operationId: addEmployeeData
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdditionalEmployeeDataRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/districts:
+    post:
+      tags:
+      - district-controller
+      operationId: createDistrict
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDistrictRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseDistrict'
+  /v1/companies:
+    get:
+      tags:
+      - company-controller
+      operationId: getListCompanies
+      parameters:
+      - name: groupName
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseListCompanyInfo'
+      security:
+      - bearerAuth: []
+    post:
+      tags:
+      - company-controller
+      operationId: createCompany
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CompanyRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseCompanyInfo'
+      security:
+      - bearerAuth: []
+  /v1/communes:
+    post:
+      tags:
+      - commune-controller
+      operationId: createCommune
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCommuneRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseCommune'
+  /v1/cities:
+    get:
+      tags:
+      - city-controller
+      operationId: getAllCity
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseListCity'
+    post:
+      tags:
+      - city-controller
+      operationId: createCity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCityRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseCity'
+  /v1/banks:
+    get:
+      tags:
+      - bank-controller
+      operationId: getAllBank
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseListBank'
+    post:
+      tags:
+      - bank-controller
+      operationId: createBank
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateBankRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseBank'
+  /v1/admin/kalapas/{customerId}/idCard/plus:
+    post:
+      tags:
+      - kalapa-v-2-controller
+      operationId: extractInfo_1
+      parameters:
+      - name: verify
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: skipValidate
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/KalapaRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseKalapaResponse'
+  /v1/ratings/latest:
+    get:
+      tags:
+      - rating-controller
+      operationId: getLastRating
+      parameters:
+      - name: applicationType
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: isRated
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseRating'
+  /v1/infos:
+    get:
+      tags:
+      - info-controller
+      operationId: getInfo
+      parameters:
+      - name: category
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseCustomerInfoResponse'
+  /v1/infos/appendCompanyInfoToCustomerInfo:
+    get:
+      tags:
+      - info-controller
+      operationId: appendCompanyInfoToCustomerInfo
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+  /v1/districts/{districtId}/communes:
+    get:
+      tags:
+      - district-controller
+      operationId: getCommunesByDistrictId
+      parameters:
+      - name: districtId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseListCommune'
+  /v1/districts/import:
+    get:
+      tags:
+      - district-controller
+      operationId: importDistrictInfo
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/communes/merge:
+    get:
+      tags:
+      - commune-controller
+      operationId: mergeAllCommunes
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/communes/import:
+    get:
+      tags:
+      - commune-controller
+      operationId: importCommuneInfo
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/cities/{cityId}/districts:
+    get:
+      tags:
+      - city-controller
+      operationId: getDistrictsByCityId
+      parameters:
+      - name: cityId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseListDistrict'
+  /v1/cities/import:
+    get:
+      tags:
+      - city-controller
+      operationId: importCity
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/banks/{bankCode}:
+    get:
+      tags:
+      - bank-controller
+      operationId: getBankByCode
+      parameters:
+      - name: bankCode
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseBank'
+  /v1/banks/importBanks:
+    get:
+      tags:
+      - bank-controller
+      operationId: importBanks
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/approvalLetters/{customerId}:
+    get:
+      tags:
+      - approval-letter-controller
+      operationId: getListApprovalLetterByCustomerId
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseListApprovalLetter'
+      security:
+      - bearerAuth: []
+  /v1/approvalLetters/{customerId}/latest:
+    get:
+      tags:
+      - approval-letter-controller
+      operationId: getApprovalLetterByCustomerIdFromAdmin
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseApprovalLetter'
+  /v1/approvalLetters/latest:
+    get:
+      tags:
+      - approval-letter-controller
+      operationId: getApprovalLetterByCustomerId
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseApprovalLetter'
+      security:
+      - bearerAuth: []
+  /v1/companies/{companyId}:
+    delete:
+      tags:
+      - company-controller
+      operationId: deleteCompany
+      parameters:
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseCompanyInfo'
+components:
+  schemas:
+    UpdateRatingRequest:
+      type: object
+      properties:
+        rate:
+          type: string
+          enum:
+          - NOT_SATISFIED
+          - SEMI_SATISFIED
+          - NORMAL
+          - SATISFIED
+          - VERY_SATISFIED
+        customerOpinion:
+          type: string
+    ApiResponseRating:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/Rating'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    Rating:
+      type: object
+      properties:
+        id:
+          type: string
+        applicationId:
+          type: string
+        applicationType:
+          type: string
+        rate:
+          type: string
+        customerOpinion:
+          type: string
+        isRated:
+          type: boolean
+        customerId:
+          type: string
+    UpdateInfoRequest:
+      type: object
+      properties:
+        info:
+          type: object
+          additionalProperties:
+            type: object
+    ApiResponseObject:
+      type: object
+      properties:
+        result:
+          type: object
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    UpdateDistrictRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        slug:
+          type: string
+        type:
+          type: string
+        nameWithType:
+          type: string
+        code:
+          type: string
+        path:
+          type: string
+        pathWithType:
+          type: string
+        cityId:
+          type: string
+    ApiResponseDistrict:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/District'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    District:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+        type:
+          type: string
+        nameWithType:
+          type: string
+        path:
+          type: string
+        pathWithType:
+          type: string
+        code:
+          type: string
+        cityId:
+          type: string
+    UpdateCompanyRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        groupName:
+          type: string
+        code:
+          type: string
+        order:
+          type: integer
+          format: int32
+        avatar:
+          type: string
+          format: binary
+        createdBy:
+          type: string
+        businessCode:
+          type: string
+        mobile:
+          type: string
+        owner:
+          type: string
+        address:
+          type: string
+        payday:
+          type: integer
+          format: int32
+        isActive:
+          type: boolean
+    ApiResponseCompanyInfo:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/CompanyInfo'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    CompanyInfo:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        groupName:
+          type: string
+        code:
+          type: string
+        businessCode:
+          type: string
+        mobile:
+          type: string
+        owner:
+          type: string
+        address:
+          type: string
+        payday:
+          type: integer
+          format: int32
+        avatar:
+          type: string
+        order:
+          type: integer
+          format: int32
+        createdBy:
+          type: string
+        updatedBy:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        isActive:
+          type: boolean
+    UpdateCommuneRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        slug:
+          type: string
+        type:
+          type: string
+        nameWithType:
+          type: string
+        code:
+          type: string
+        path:
+          type: string
+        pathWithType:
+          type: string
+        districtId:
+          type: string
+    ApiResponseCommune:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/Commune'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    Commune:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+        type:
+          type: string
+        nameWithType:
+          type: string
+        path:
+          type: string
+        pathWithType:
+          type: string
+        code:
+          type: string
+        districtId:
+          type: string
+    UpdateCityRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        slug:
+          type: string
+        type:
+          type: string
+        nameWithType:
+          type: string
+        code:
+          type: string
+    ApiResponseCity:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/City'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    City:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+        type:
+          type: string
+        nameWithType:
+          type: string
+        code:
+          type: string
+    UpdateBankRequest:
+      type: object
+      properties:
+        bankName:
+          type: string
+        bankCode:
+          type: string
+        avatar:
+          type: string
+          format: binary
+    ApiResponseBank:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/Bank'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    Bank:
+      type: object
+      properties:
+        id:
+          type: string
+        bankName:
+          type: string
+        bankCode:
+          type: string
+        avatar:
+          type: string
+        createdBy:
+          type: string
+        updatedBy:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+    ConfirmInformationV2Request:
+      required:
+      - addressOneLine1
+      - addressTwoLine1
+      - dateOfBirth
+      - firstName
+      - gender
+      - idIssuePlace
+      - identityNumberOne
+      type: object
+      properties:
+        firstName:
+          type: string
+        dateOfBirth:
+          type: string
+        gender:
+          type: string
+        identityNumberOne:
+          type: string
+        addressTwoLine1:
+          type: string
+        idIssuePlace:
+          type: string
+        addressOneLine1:
+          type: string
+        coreUserId:
+          type: string
+        identityNumberSix:
+          type: string
+        emailAddress:
+          type: string
+    AdditionalInformationV2Request:
+      required:
+      - annualIncome
+      - borrowerDetailTextVariable1
+      - borrowerEmploymentHistoryTextVariable1
+      - educationType
+      - maritalStatus
+      type: object
+      properties:
+        maritalStatus:
+          type: string
+        educationType:
+          type: string
+        borrowerDetailTextVariable1:
+          type: string
+        borrowerEmploymentHistoryTextVariable1:
+          type: string
+        annualIncome:
+          maximum: 500000000
+          minimum: 1000000
+          type: number
+          format: float
+        employeeType:
+          type: string
+          enum:
+          - OFFICE
+          - FACTORY
+        jobPosition:
+          type: string
+        contractType:
+          type: string
+        workAddress:
+          type: string
+        jobType:
+          type: string
+        contractExpiration:
+          type: string
+        bankName:
+          type: string
+        bankCode:
+          type: string
+        accountNumber:
+          type: string
+    ApiResponseCheckIsPaydayByCustomerIdResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/CheckIsPaydayByCustomerIdResponse'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    CheckIsPaydayByCustomerIdResponse:
+      type: object
+      properties:
+        isPayday:
+          type: string
+        personalData:
+          $ref: '#/components/schemas/PersonalData'
+    PersonalData:
+      type: object
+      properties:
+        firstName:
+          type: string
+        gender:
+          type: string
+        dateOfBirth:
+          type: string
+        identityNumberSix:
+          type: string
+        emailAddress:
+          type: string
+        mobileNumber:
+          type: string
+        addressTwoLine1:
+          type: string
+        addressOneLine1:
+          type: string
+        apartmentNumber:
+          type: string
+        city:
+          type: string
+        district:
+          type: string
+        commune:
+          type: string
+        borrowerDetailTextVariable1:
+          type: string
+        maritalStatus:
+          type: string
+        educationType:
+          type: string
+        coreUserId:
+          type: string
+        note:
+          type: string
+        signLetterDoneAt:
+          type: string
+        idDocumentType:
+          type: string
+        identityNumberOne:
+          type: string
+        idIssuePlace:
+          type: string
+        idIssueDate:
+          type: string
+        idFeatures:
+          type: string
+        idExpiredDate:
+          type: string
+        idOrigin:
+          type: string
+        companyId:
+          type: string
+        companyName:
+          type: string
+        companyGroupName:
+          type: string
+        officeCode:
+          type: string
+        organizationName:
+          type: string
+        officeName:
+          type: string
+        annualIncome:
+          type: number
+          format: float
+        workingDay:
+          type: number
+          format: float
+        borrowerEmploymentHistoryTextVariable1:
+          type: string
+        employeeType:
+          type: string
+          enum:
+          - OFFICE
+          - FACTORY
+        stepOne:
+          type: string
+        stepTwoIndividual:
+          type: string
+        stepThreeEmployment:
+          type: string
+        paydayLoanStatus:
+          type: string
+        errorGetTngInfo:
+          type: boolean
+        isSignedApprovalLetter:
+          type: boolean
+        isVerified:
+          type: boolean
+        collateralDocument:
+          type: string
+        salaryDocument1:
+          type: string
+        salaryDocument2:
+          type: string
+        salaryDocument3:
+          type: string
+        approvalLetterId:
+          type: string
+        frontId:
+          type: string
+        backId:
+          type: string
+        selfie:
+          type: string
+        frontIdTwo:
+          type: string
+        backIdTwo:
+          type: string
+        userStatus:
+          type: string
+          enum:
+          - ACTIVE
+          - LOCKED
+        unLockTime:
+          type: string
+          format: date-time
+        isDelete:
+          type: boolean
+    InformationSalaryReceiptDateRequest:
+      required:
+      - employee_code
+      type: object
+      properties:
+        employee_code:
+          type: string
+    InformationSalaryReceiptDateByOfficeCodeRequest:
+      required:
+      - officeCode
+      type: object
+      properties:
+        officeCode:
+          type: string
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: object
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    TNGRequest:
+      required:
+      - employeeCode
+      type: object
+      properties:
+        employeeCode:
+          type: string
+    ApiResponseTNGResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/TNGResponse'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    TNGResponse:
+      type: object
+      properties:
+        isEmployee:
+          type: string
+    CreateRatingRequest:
+      required:
+      - applicationId
+      - applicationType
+      - customerId
+      type: object
+      properties:
+        customerId:
+          type: string
+        applicationId:
+          type: string
+        applicationType:
+          type: string
+    NewsLetterRequest:
+      required:
+      - email
+      type: object
+      properties:
+        info:
+          type: object
+          additionalProperties:
+            type: string
+        email:
+          type: string
+    ApiResponseNewsletterInfo:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/NewsletterInfo'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    NewsletterInfo:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        info:
+          type: object
+          additionalProperties:
+            type: string
+        created_at:
+          type: string
+    ApiResponseString:
+      type: object
+      properties:
+        result:
+          type: string
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    KalapaRequest:
+      required:
+      - image
+      - image_back
+      - image_selfie
+      type: object
+      properties:
+        image:
+          type: string
+          format: binary
+        image_selfie:
+          type: string
+          format: binary
+        image_back:
+          type: string
+          format: binary
+    ApiResponseKalapaResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/KalapaResponse'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    FraudCheck:
+      type: object
+      properties:
+        facesMatched:
+          type: integer
+          format: int32
+        floatingMark:
+          type: boolean
+        screenPhoto:
+          type: boolean
+        blacklist:
+          type: boolean
+        abnormalText:
+          type: boolean
+        abnormalFace:
+          type: boolean
+        cornerCut:
+          type: boolean
+    IdCardInfo:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        address:
+          type: string
+        dob:
+          type: string
+        home:
+          type: string
+        expiredDate:
+          type: string
+        documentType:
+          type: string
+        dateOfIssue:
+          type: string
+        features:
+          type: string
+        gender:
+          type: string
+        placeOfIssue:
+          type: string
+    KalapaResponse:
+      type: object
+      properties:
+        createdAt:
+          type: string
+        taxName:
+          type: string
+        verified:
+          type: boolean
+        idCardInfo:
+          $ref: '#/components/schemas/IdCardInfo'
+        selfieCheck:
+          $ref: '#/components/schemas/SelfieCheck'
+        fraudCheck:
+          $ref: '#/components/schemas/FraudCheck'
+    SelfieCheck:
+      type: object
+      properties:
+        matched:
+          type: boolean
+        matchingScore:
+          type: integer
+          format: int32
+    ConfirmInformationRequest:
+      required:
+      - addressOneLine1
+      - addressTwoLine1
+      - dateOfBirth
+      - emailAddress
+      - firstName
+      - gender
+      - idIssuePlace
+      - identityNumberOne
+      - identityNumberSix
+      - organizationName
+      type: object
+      properties:
+        firstName:
+          type: string
+        dateOfBirth:
+          type: string
+        gender:
+          type: string
+        identityNumberSix:
+          type: string
+        identityNumberOne:
+          type: string
+        addressTwoLine1:
+          type: string
+        emailAddress:
+          type: string
+        organizationName:
+          type: string
+        idIssuePlace:
+          type: string
+        coreUserId:
+          type: string
+        addressOneLine1:
+          type: string
+    SalaryInformationRequest:
+      required:
+      - salaryInformationOne
+      - salaryInformationThree
+      - salaryInformationTwo
+      type: object
+      properties:
+        salaryInformationOne:
+          type: string
+          format: binary
+        salaryInformationTwo:
+          type: string
+          format: binary
+        salaryInformationThree:
+          type: string
+          format: binary
+    UpdateFinanceDataRequest:
+      required:
+      - contractExpiration
+      - creditCardDuration
+      - educationType
+      - employmentDuration
+      - hasCreditCard
+      - livingArrangement
+      - numberOfDependent
+      - ownershipOfTransport
+      type: object
+      properties:
+        contractExpiration:
+          type: string
+        hasCreditCard:
+          type: string
+        creditCardDuration:
+          type: string
+        employmentDuration:
+          type: string
+        numberOfDependent:
+          type: string
+        livingArrangement:
+          type: string
+        ownershipOfTransport:
+          type: string
+        educationType:
+          type: string
+    GetTngDataRequest:
+      required:
+      - documentPath
+      type: object
+      properties:
+        documentPath:
+          type: string
+    CustomerSignDoneRequest:
+      required:
+      - documentPath
+      - idDocument
+      - idRequest
+      type: object
+      properties:
+        documentPath:
+          type: string
+        idRequest:
+          type: integer
+          format: int32
+        idDocument:
+          type: integer
+          format: int32
+    ChooseCompanyRequest:
+      required:
+      - companyId
+      type: object
+      properties:
+        companyId:
+          type: string
+    AdditionalInformationRequest:
+      required:
+      - borrowerDetailTextVariable1
+      - borrowerEmploymentHistoryTextVariable1
+      - educationType
+      - maritalStatus
+      type: object
+      properties:
+        maritalStatus:
+          type: string
+        educationType:
+          type: string
+        borrowerDetailTextVariable1:
+          type: string
+        borrowerEmploymentHistoryTextVariable1:
+          type: string
+        jobPosition:
+          type: string
+        contractType:
+          type: string
+        workAddress:
+          type: string
+        jobType:
+          type: string
+        contractExpiration:
+          type: string
+    AdditionalEmployeeDataRequest:
+      type: object
+      properties:
+        organizationName:
+          type: string
+        employeeType:
+          type: string
+          enum:
+          - OFFICE
+          - FACTORY
+    CreateDistrictRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        slug:
+          type: string
+        type:
+          type: string
+        nameWithType:
+          type: string
+        code:
+          type: string
+        path:
+          type: string
+        pathWithType:
+          type: string
+        cityId:
+          type: string
+    CompanyRequest:
+      required:
+      - groupName
+      - name
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        groupName:
+          type: string
+        avatar:
+          type: string
+          format: binary
+        businessCode:
+          type: string
+        mobile:
+          type: string
+        owner:
+          type: string
+        address:
+          type: string
+        payday:
+          type: integer
+          format: int32
+        order:
+          type: integer
+          format: int32
+        createdBy:
+          type: string
+        updatedBy:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        code:
+          type: string
+        isActive:
+          type: boolean
+    CreateCommuneRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        slug:
+          type: string
+        type:
+          type: string
+        nameWithType:
+          type: string
+        code:
+          type: string
+        path:
+          type: string
+        pathWithType:
+          type: string
+        districtId:
+          type: string
+    CreateCityRequest:
+      required:
+      - code
+      - name
+      - nameWithType
+      - slug
+      - type
+      type: object
+      properties:
+        name:
+          type: string
+        slug:
+          type: string
+        type:
+          type: string
+        nameWithType:
+          type: string
+        code:
+          type: string
+    CreateBankRequest:
+      required:
+      - bankCode
+      - bankName
+      type: object
+      properties:
+        bankName:
+          type: string
+        bankCode:
+          type: string
+        avatar:
+          type: string
+          format: binary
+    ApiResponseListRating:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/Rating'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    ApiResponseCustomerInfoResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/CustomerInfoResponse'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    CustomerInfoResponse:
+      type: object
+      properties:
+        personalData:
+          $ref: '#/components/schemas/PersonalData'
+        financialData:
+          $ref: '#/components/schemas/FinancialData'
+        kalapaData:
+          $ref: '#/components/schemas/KalapaResponse'
+        tngData:
+          $ref: '#/components/schemas/TNGInformationResponse'
+        employeeData:
+          $ref: '#/components/schemas/EmployeeData'
+    EmployeeData:
+      type: object
+      properties:
+        name:
+          type: string
+        mobile:
+          type: string
+        identityNumber:
+          type: string
+        startWorkingDay:
+          type: string
+        contractType:
+          type: string
+        job:
+          type: string
+        address:
+          type: string
+        numberOfWorkDays:
+          type: string
+        bankName:
+          type: string
+        bankCode:
+          type: string
+        accountNumber:
+          type: string
+        salaryDocument1:
+          type: string
+        salaryDocument2:
+          type: string
+        salaryDocument3:
+          type: string
+        jobPosition:
+          type: string
+        workAddress:
+          type: string
+        jobType:
+          type: string
+        contractExpiration:
+          type: string
+        hasCreditCard:
+          type: string
+        creditCardDuration:
+          type: string
+        employmentDuration:
+          type: string
+        numberOfDependent:
+          type: string
+        livingArrangement:
+          type: string
+        ownershipOfTransport:
+          type: string
+    FinancialData:
+      type: object
+      properties:
+        bankName:
+          type: string
+        bankCode:
+          type: string
+        accountNumber:
+          type: string
+        companyType:
+          type: string
+        secondaryJobType:
+          type: string
+        salaryPaymentForm:
+          type: string
+        previousWorkTime:
+          type: string
+    TNGInformationResponse:
+      type: object
+      properties:
+        createdAt:
+          type: string
+        hoDem:
+          type: string
+        ten:
+          type: string
+        maDonVi:
+          type: string
+        tenDonVi:
+          type: string
+        theATM:
+          type: string
+        maNganHang:
+          type: string
+        tenNganHang:
+          type: string
+        thuNhap:
+          type: string
+        soCong:
+          type: string
+        maNS:
+          type: string
+    ApiResponseListCommune:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/Commune'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    ApiResponseListCompanyInfo:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompanyInfo'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    ApiResponseListCity:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/City'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    ApiResponseListDistrict:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/District'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    ApiResponseListBank:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/Bank'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    ApiResponseListApprovalLetter:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApprovalLetter'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    ApprovalLetter:
+      type: object
+      properties:
+        id:
+          type: string
+        provider:
+          type: string
+        idRequest:
+          type: integer
+          format: int32
+        idDocument:
+          type: integer
+          format: int32
+        customerId:
+          type: string
+        path:
+          type: string
+        customerSignDone:
+          type: boolean
+        created_at:
+          type: string
+        updatedAt:
+          type: string
+        updatedBy:
+          type: string
+    ApiResponseApprovalLetter:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/ApprovalLetter'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

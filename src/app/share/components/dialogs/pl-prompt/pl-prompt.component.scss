@@ -1,0 +1,191 @@
+@import "../../../../../styles/variables";
+
+::ng-deep .custom-dialog-container {
+  overflow: hidden;
+
+  .mat-dialog-container {
+    padding: 0;
+    border-radius: 12px;
+    overflow: inherit;
+    box-shadow: none;
+  }
+
+  .mat-dialog-content {
+    padding: 0;
+    margin: 0;
+    min-width: 300px;
+  }
+}
+
+.mat-dialog-actions {
+  padding: 0;
+  margin-bottom: 0 !important;
+
+  .mat-button-base + .mat-button-base,
+  .mat-mdc-button-base + .mat-mdc-button-base {
+    margin-left: 0;
+  }
+}
+
+.pl-prompt-title {
+  margin-top: 8px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  padding: 0 16px;
+  color: $grey-10;
+  font-family: $sfPro;
+}
+
+.pl-prompt-image {
+  width: 56px;
+  height: 56px;
+}
+
+.pl-prompt-body {
+  margin-top: 8px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  padding: 0 16px;
+  color: $grey-08;
+  font-family: $sfPro;
+}
+
+.prompt-content {
+  padding: 8px 0 0;
+  overflow: hidden;
+  background-color: $white !important;
+  border-radius: 16px;
+  font-family: $sfPro;
+  max-width: 340px;
+}
+
+.pl-prompt-actions {
+  margin-top: 16px;
+  display: flex;
+  background-color: $grey-01 !important;
+  gap: 1px;
+  width: 100%;
+  font-family: $sfPro;
+}
+
+.pl-prompt-btn {
+  width: 100%;
+  font-family: $sfPro;
+}
+
+.prompt-dialog {
+  margin: 1.75rem auto;
+  top: inherit !important;
+}
+
+#payday-loan-loading .prompt-dialog {
+  margin: 0 auto !important;
+}
+
+.top-prompt-close-btn {
+  position: absolute;
+  top: 0;
+  right: 30px;
+  border: none;
+  background: none;
+
+  .dismiss-prompt-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.pl-prompt-btn {
+  min-height: 48px;
+  background: $white;
+  box-shadow: inset 0px 1px 0px $grey-01;
+
+  &[type="button"]:not(:disabled),
+  &[type="reset"]:not(:disabled),
+  &[type="submit"]:not(:disabled),
+  &button:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+.pl-prompt-btn.btn-primary:not(:disabled):not(.disabled).active:focus,
+.pl-prompt-btn.btn-primary:not(:disabled):not(.disabled):active:focus,
+.show > .pl-prompt-btn.btn-primary.dropdown-toggle:focus,
+.pl-prompt-btn.btn-primary:focus,
+.pl-prompt-btn.btn-secondary:focus {
+  box-shadow: inset 0px 1px 0px $grey-01;
+  outline: none;
+}
+
+.pl-prompt-btn.btn-primary {
+  letter-spacing: 0.1px;
+  color: $monex-color-00;
+  border: none !important;
+  cursor: pointer;
+
+  &:hover,
+  &:active,
+  &:focus {
+    border: none !important;
+    color: $system-color-green;
+    background: $white;
+  }
+
+  &.btn-disabled {
+    background: $grey-11;
+    color: $grey-12;
+    border: none !important;
+  }
+
+  &.btn-disabled:hover {
+    cursor: auto;
+  }
+}
+
+.pl-prompt-btn.btn-secondary {
+  border: none !important;
+  cursor: pointer;
+  color: $grey-10;
+
+  &:hover,
+  &:active,
+  &:focus {
+    border: none !important;
+    background: $white;
+    color: $grey-06;
+  }
+
+  &.btn-disabled {
+    background: $grey-11;
+    color: $grey-12;
+    border: none !important;
+  }
+
+  &.btn-disabled:hover {
+    cursor: auto;
+  }
+
+  &:not(:disabled):not(.disabled):active:focus {
+    box-shadow: inset 0px 1px 0px $grey-01;
+  }
+}
+
+.notification-info-img {
+  .pl-prompt-image {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pl-prompt-btn {
+    max-width: 100%;
+  }
+}

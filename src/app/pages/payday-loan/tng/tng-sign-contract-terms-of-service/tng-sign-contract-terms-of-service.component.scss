@@ -1,0 +1,231 @@
+@import "../../../../../styles/variables";
+@import "../../../../../styles/insurance/insurance-button";
+.pl-sign-contract-terms-top-navbar {
+  background: $white;
+  box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.05);
+
+  .pl-sign-contract-terms-top-navbar-container {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+  }
+}
+.sent-contract-box-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  .pl-btn {
+    max-width: 143.5px;
+  }
+}
+.pl-btn.pl-btn-sign-contract-terms {
+  max-width: 200px;
+  height: 40px;
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: $white;
+  flex: none;
+}
+.pl-btn.pl-btn-vue-pdf {
+  max-width: 100px;
+  height: 40px;
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: $white;
+  background-color: $system-color-indigo;
+  flex: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: #8f8dfa;
+  }
+}
+.sign-contract-terms-title {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  color: $grey-08;
+  width: 100%;
+  margin-bottom: 0;
+}
+.sign-contract-terms-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+.sign-contract-terms-pdf-document {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  position: relative;
+  //min-height: calc(100vh - 120px);
+}
+
+.pl-pdf-document-container {
+  background: #999999;
+}
+.pl-vue-pdf-actions-container {
+  display: flex;
+  align-content: space-between;
+  padding-bottom: 10px;
+  .pl-vue-pdf-pagination {
+    flex: none;
+    margin: 0;
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    color: $white;
+    align-self: center;
+  }
+  .pl-vue-pdf-actions {
+    width: 100%;
+    text-align: right;
+
+    & button {
+      margin-left: 8px;
+    }
+  }
+}
+.pl-btn-sign-contract-terms-mobile-box {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: $white;
+  height: 64px;
+  box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.05);
+  display: flex;
+  place-content: center;
+  z-index: 2;
+
+  .pl-btn-sign-contract-terms-mobile {
+    margin: auto 0;
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+  }
+}
+#payday-loan-success .pl-modal-success-btn.pl-sign-contract-terms-success {
+  display: flex;
+  align-self: center;
+  gap: 8px;
+  .pl-btn {
+    max-width: 143.5px;
+  }
+}
+
+.sent-otp-text {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+
+  /* Grey / 08 */
+
+  color: $grey-08;
+}
+
+.mat-dialog-container {
+  padding: 0;
+}
+
+::ng-deep .custom-dialog-container {
+  overflow: hidden;
+
+  .mat-dialog-container {
+    padding: 0;
+    border-radius: 12px;
+    overflow: auto;
+
+    .mat-dialog-content {
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #payday-loan-layout-container .container.sign-contract-terms-pdf-document {
+    //min-height: calc(100vh - 64px);
+    padding: 40px 16px 80px;
+  }
+}
+
+.relative {
+  position: relative !important;
+}
+
+#fail-frame {
+  max-width: 120px;
+  margin: 0 auto;
+  max-height: 120px;
+  padding: 20px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ffcc00 0%, #fff5cc 100%);
+  svg {
+    max-width: 80px;
+    max-height: 80px;
+    width: 100%;
+  }
+}
+
+#get-tng-info-failed {
+  margin-top: 32px;
+  background: $white;
+}
+
+.get-tng-info-failed-actions {
+  margin-top: 32px;
+  .pl-btn {
+    max-width: 330px;
+  }
+}
+
+#electronic-signing-success-btn {
+  max-width: 240px;
+}
+
+.more-info-link {
+  &:hover {
+    color: inherit;
+  }
+}
+
+.get-tng-info-failed-title {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0 auto;
+  padding-top: 16px;
+  /* identical to box height */
+  text-align: center;
+  /* Grey / 08 */
+  color: $grey-08;
+}
+
+@media (max-width: 768px) {
+  .get-tng-info-failed-actions {
+    .pl-btn {
+      max-width: 240px;
+    }
+  }
+}

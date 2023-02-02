@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  webapp-hmg:
+    container_name: webapp-hmg
+    build: .
+    ports:
+      - 8080:8080
+#    command: 'tail -f /dev/null'
+    environment:
+      - ENV_TYPE=production

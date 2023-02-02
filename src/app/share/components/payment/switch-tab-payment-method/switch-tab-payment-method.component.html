@@ -1,0 +1,44 @@
+<div class="switch-tabs d-flex justify-content-between">
+  <a
+    class="payment-tab-content text-center align-items-center d-inline-flex justify-content-center"
+    [ngClass]="{ 'tab-content-active': activeTab === activeTabs.CARD }"
+    href="javascript:void(0)"
+    (click)="switchTab(activeTabs.CARD)"
+  >
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="method-icon"
+    >
+      <path
+        d="M18.3232 9.16225L18.3236 13.5632C18.3236 14.7819 17.3722 15.7785 16.1715 15.8507L16.0319 15.8548H3.96707C2.74829 15.8548 1.75173 14.9034 1.67958 13.7028L1.6754 13.5632L1.6748 9.16225H18.3232ZM15.2102 12.0833H13.1269L13.0422 12.089C12.7371 12.1304 12.5019 12.3919 12.5019 12.7083C12.5019 13.0248 12.7371 13.2863 13.0422 13.3277L13.1269 13.3333H15.2102L15.2951 13.3277C15.6002 13.2863 15.8352 13.0248 15.8352 12.7083C15.8352 12.3919 15.6002 12.1304 15.2951 12.089L15.2102 12.0833ZM16.0319 4.18393C17.2507 4.18393 18.2472 5.13535 18.3194 6.336L18.3236 6.4756L18.3232 7.91226H1.6748L1.6754 6.4756C1.6754 5.25682 2.62682 4.26025 3.82746 4.18811L3.96707 4.18393H16.0319Z"
+        [attr.fill]="activeTab === activeTabs.CARD ? '#2AAC7E' : '#C7C7CC'"
+      />
+    </svg>
+    <p>{{ 'payment.choose_payment_method.card_payment' | translate }}</p>
+  </a>
+  <a
+    class="payment-tab-content text-center align-items-center d-inline-flex justify-content-center"
+    [ngClass]="{ 'tab-content-active': activeTab === activeTabs.TRANSFER }"
+    href="javascript:void(0)"
+    (click)="switchTab(activeTabs.TRANSFER)"
+  >
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="method-icon"
+    >
+      <path
+        d="M16.6033 8.65251C16.7325 8.34085 16.6608 7.98251 16.4225 7.74418L12.845 4.16668C12.5196 3.84129 11.992 3.84129 11.6666 4.16668C11.3412 4.49207 11.3412 5.01962 11.6666 5.34501L13.8216 7.50001H4.16662C3.70638 7.50001 3.33329 7.87311 3.33329 8.33335C3.33329 8.79358 3.70638 9.16668 4.16662 9.16668H15.8333C16.17 9.16668 16.475 8.96335 16.6033 8.65251ZM3.39662 11.3475C3.26745 11.6592 3.33912 12.0175 3.57745 12.2558L7.15495 15.8333C7.48034 16.1587 8.0079 16.1587 8.33329 15.8333C8.65868 15.508 8.65867 14.9804 8.33329 14.655L6.17829 12.5H15.8333C16.2935 12.5 16.6666 12.1269 16.6666 11.6667C16.6666 11.2064 16.2935 10.8333 15.8333 10.8333H4.16662C3.82995 10.8333 3.52495 11.0358 3.39662 11.3475Z"
+        [attr.fill]="activeTab === activeTabs.TRANSFER ? '#2AAC7E' : '#C7C7CC'"
+      />
+    </svg>
+    <p>{{ 'payment.choose_payment_method.transfer' | translate }}</p>
+  </a>
+</div>

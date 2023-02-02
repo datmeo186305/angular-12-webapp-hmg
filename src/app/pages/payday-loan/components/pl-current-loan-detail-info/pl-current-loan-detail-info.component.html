@@ -1,0 +1,382 @@
+<div class="current-loan-info pl-space-between-box">
+  <div id="current-loan-sign-btn-container">
+    <div class="current-loan-headline">
+      <h2 class="pl-headline current-loan-info-title">
+        {{ "payday_loan.current_loan.current_loan_info" | translate }}
+      </h2>
+    </div>
+    <div
+      class="current-loan-contract-email"
+      *ngIf="showMessageGuideCompleteContract"
+    >
+      <pl-inline-message
+        *ngIf="showMessageGuideSignContract"
+        [messageType]="'SUCCESS'"
+      >
+        <p
+          [innerHTML]="
+            'payday_loan.current_loan.awaiting_borrow_sign_contract' | translate
+          "
+        ></p>
+      </pl-inline-message>
+
+      <pl-inline-message
+        *ngIf="showMessageWaitingEpaySignature"
+        [messageType]="'INFORMATION'"
+      >
+        <p
+          [innerHTML]="
+            'payday_loan.current_loan.awaiting_epay_sign_contract' | translate
+          "
+        ></p>
+      </pl-inline-message>
+
+      <pl-inline-message
+        [messageType]="'WARNING'"
+        *ngIf="showMessageWaitingApproval"
+      >
+        <p
+          [innerHTML]="
+            'payday_loan.current_loan.please_wait_approval' | translate
+          "
+        ></p>
+      </pl-inline-message>
+    </div>
+    <div
+      class="current-loan-contract-email"
+      *ngIf="showMessagePaymentProcessing"
+    >
+      <pl-inline-message [messageType]="'WARNING'">
+        <p
+          [innerHTML]="
+            'payday_loan.current_loan.payment_processing' | translate
+          "
+        ></p>
+      </pl-inline-message>
+    </div>
+  </div>
+  <div id="current-loan-amount-container">
+    <ul class="pl-list">
+      <!--  total_amount   -->
+      <li class="pl-list-item">
+        <p class="pl-list-item-label">
+          {{ "payday_loan.current_loan.total_amount" | translate }}
+        </p>
+        <p class="pl-list-item-content">
+          {{ currentLoan?.expectedAmount | formatPrice: null }}
+        </p>
+      </li>
+
+      <!-- loan_code -->
+      <li class="pl-list-item">
+        <p class="pl-list-item-label">
+          {{ "payday_loan.current_loan.loan_code" | translate }}
+        </p>
+        <p class="pl-list-item-content">
+          {{ currentLoan?.loanCode }}
+        </p>
+      </li>
+
+      <!--   service_fee   -->
+      <li class="pl-list-item">
+        <p
+          class="pl-list-item-label pl-service-fee-label"
+          *ngIf="
+            currentLoan?.status ===
+              ('INITIALIZED' ||
+                'DOCUMENT_AWAITING' ||
+                'DOCUMENTATION_COMPLETE' ||
+                'FUNDED' ||
+                'AWAITING_APPROVAL' ||
+                'AUCTION' ||
+                'CONTRACT_AWAITING' ||
+                'CONTRACT_ACCEPTED' ||
+                'AWAITING_DISBURSEMENT');
+            else disbursed
+          "
+        >
+          {{ "payday_loan.current_loan.service_fee" | translate }}
+          <span
+            class="sprite-group-3-info"
+            [matTooltip]="
+              'payday_loan.current_loan.service_fee_description' | translate
+            "
+            matTooltipPosition="right"
+          ></span>
+        </p>
+        <ng-template #disbursed>
+          <p class="pl-list-item-label pl-service-fee-label">
+            {{ "payday_loan.current_loan.total_fee" | translate }}
+            <span
+              class="sprite-group-3-info"
+              [matTooltip]="
+                'payday_loan.current_loan.total_fee_description' | translate
+              "
+              matTooltipPosition="right"
+            ></span>
+          </p>
+        </ng-template>
+        <p class="pl-list-item-content">
+          {{ currentLoan?.totalServiceFees | formatPrice: null }}
+        </p>
+      </li>
+
+      <!--   term_type   -->
+      <li
+        class="pl-list-item"
+        *ngIf="userInfo?.personalData?.companyGroupName === 'VAC'"
+      >
+        <p class="pl-list-item-label">
+          {{ "payday_loan.current_loan.term_type" | translate }}
+        </p>
+        <p
+          class="pl-list-item-content"
+          *ngIf="
+            this.currentLoan.termType === 'ONE_MONTH' ||
+              !this.currentLoan.termType;
+            else threeMonthTerm
+          "
+        >
+          {{ "payday_loan.current_loan.one_month" | translate }}
+        </p>
+        <ng-template #threeMonthTerm>
+          <p class="pl-list-item-content">
+            {{ "payday_loan.current_loan.three_months" | translate }}
+          </p>
+        </ng-template>
+      </li>
+
+      <!--   settlement_date   -->
+      <li
+        class="pl-list-item"
+        *ngIf="
+          this.currentLoan.termType === 'ONE_MONTH' ||
+          !this.currentLoan.termType
+        "
+      >
+        <p class="pl-list-item-label">
+          {{ "payday_loan.current_loan.settlement_date" | translate }}
+        </p>
+        <p class="pl-list-item-content">
+          {{
+            getSettlementDate(currentLoan.createdAt, currentLoan.expectedTenure)
+          }}
+        </p>
+      </li>
+
+      <!--  punish_start_time    -->
+      <li
+        class="pl-list-item"
+        *ngIf="
+          currentLoan?.status === 'IN_REPAYMENT' &&
+          userInfo?.personalData?.companyGroupName === ('TNG' || 'HMG')
+        "
+      >
+        <p class="pl-list-item-label">
+          {{ "payday_loan.current_loan.punish_start_time" | translate }}
+        </p>
+        <p class="pl-list-item-content">
+          {{
+            getPunishStartDay(currentLoan.createdAt, currentLoan.expectedTenure)
+          }}
+        </p>
+      </li>
+
+      <!--  loan_status    -->
+      <li class="pl-list-item">
+        <p class="pl-list-item-label">
+          {{ "payday_loan.current_loan.loan_status" | translate }}
+        </p>
+
+        <div class="pl-list-item-content">
+          <pl-status-label [statusType]="loanStatusContent.labelStatus">
+            {{ loanStatusContent.label }}
+          </pl-status-label>
+        </div>
+      </li>
+
+      <!--   term_settlement_date VAC   -->
+      <li
+        class="pl-list-item-route"
+        *ngIf="this.currentLoan.termType === 'THREE_MONTH'"
+      >
+        <div class="loan-route-container">
+          <p class="loan-route-describe">
+            {{ "payday_loan.choose_amount.payment_route" | translate }}
+          </p>
+          <div class="d-flex flex-row">
+            <div class="d-flex flex-column checkpoint-route">
+              <img
+                *ngIf="repaymentRouteStatus.first != 'done'"
+                src="assets/img/icon/group-3/svg/checkpoint.svg"
+                alt="checkpoint"
+              />
+              <img
+                *ngIf="repaymentRouteStatus.first === 'done'"
+                src="assets/img/icon/group-3/svg/checkpoint-done.svg"
+                alt="checkpoint"
+              />
+              <img
+                *ngIf="repaymentRouteStatus.second != 'done'"
+                src="assets/img/icon/group-3/svg/checkpoint.svg"
+                alt="checkpoint"
+              />
+              <img
+                *ngIf="repaymentRouteStatus.second === 'done'"
+                src="assets/img/icon/group-3/svg/checkpoint-done.svg"
+                alt="checkpoint"
+              />
+              <img
+                *ngIf="repaymentRouteStatus.third != 'done'"
+                src="assets/img/icon/group-3/svg/checkpoint.svg"
+                alt="checkpoint"
+              />
+              <img
+                *ngIf="repaymentRouteStatus.third === 'done'"
+                src="assets/img/icon/group-3/svg/checkpoint-done.svg"
+                alt="checkpoint"
+              />
+            </div>
+
+            <div class="d-flex flex-column w-100">
+              <div
+                class="detail-route"
+                [ngClass]="{
+                  'not-yet': repaymentRouteStatus.first === 'notYet'
+                }"
+              >
+                <div class="repayment-status">
+                  <p
+                    [ngClass]="{
+                      done: repaymentRouteStatus.first === 'done',
+                      pending: repaymentRouteStatus.first === 'pending'
+                    }"
+                  >
+                    {{ paymentDayRoute.first }}
+                  </p>
+                </div>
+                <p class="amount-detail-value">
+                  {{ paymentRouteAmount | formatPrice: null }}
+                </p>
+              </div>
+              <mat-divider> </mat-divider>
+              <div
+                class="detail-route"
+                [ngClass]="{
+                  'not-yet': repaymentRouteStatus.second === 'notYet'
+                }"
+              >
+                <div class="repayment-status">
+                  <p
+                    [ngClass]="{
+                      done: repaymentRouteStatus.second === 'done',
+                      pending: repaymentRouteStatus.second === 'pending'
+                    }"
+                  >
+                    {{ paymentDayRoute.second }}
+                  </p>
+                </div>
+                <p class="amount-detail-value">
+                  {{ paymentRouteAmount | formatPrice: null }}
+                </p>
+              </div>
+              <mat-divider> </mat-divider>
+              <div
+                class="detail-route"
+                [ngClass]="{
+                  'not-yet': repaymentRouteStatus.third === 'notYet'
+                }"
+              >
+                <div class="repayment-status">
+                  <p
+                    [ngClass]="{
+                      done: repaymentRouteStatus.third === 'done',
+                      pending: repaymentRouteStatus.third === 'pending'
+                    }"
+                  >
+                    {{ paymentDayRoute.third }}
+                  </p>
+                </div>
+                <p class="amount-detail-value">
+                  {{ lastPaymentRouteAmount | formatPrice: null }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div
+    class="text-center"
+    id="sign-contract-btn-submit"
+    *ngIf="
+      currentLoan?.status === 'FUNDED' || currentLoan?.status === 'CONTRACT_AWAITING'
+    "
+  >
+    <button
+      class="insurance-btn btn-primary"
+      id="pl-current-loan-view-contract-btn"
+      (click)="viewContractTrigger()"
+      type="button"
+    >
+      {{ "payday_loan.current_loan.view_contract" | translate }}
+    </button>
+  </div>
+
+  <div
+    class="text-center"
+    id="awaiting-document-btn"
+    *ngIf="
+      currentLoan?.status === 'DOCUMENT_AWAITING' &&
+      companyInfo.groupName === 'TNG'
+    "
+  >
+    <button
+      class="insurance-btn btn-primary"
+      id="pl-current-loan-additional-document-btn"
+      (click)="redirectAdditionalInformation()"
+      type="button"
+    >
+      {{ "payday_loan.current_loan.additional_document" | translate }}
+    </button>
+  </div>
+
+  <div
+    class="text-center"
+    id="finalization-btn"
+    *ngIf="currentLoan?.status === 'IN_REPAYMENT'"
+  >
+    <div *ngIf="currentLoan.termType === 'THREE_MONTH'">
+      <button
+        type="button"
+        id="pl-current-loan-current-term-payment-btn"
+        class="insurance-btn btn-primary"
+        [disabled]="disabledBtnFinalization"
+        (click)="paymentTrigger()"
+      >
+        {{ "payday_loan.current_loan.current_term_payment" | translate }}
+      </button>
+      <button
+        type="button"
+        id="pl-current-loan-finalization-btn-3-terms"
+        class="insurance-btn btn-primary pl-btn-finalization"
+        [disabled]="disabledBtnFinalization"
+        (click)="finalizationTrigger()"
+      >
+        {{ "payday_loan.current_loan.finalization" | translate }}
+      </button>
+    </div>
+    <button
+      *ngIf="currentLoan.termType != 'THREE_MONTH'"
+      type="button"
+      id="pl-current-loan-finalization-btn"
+      class="insurance-btn btn-primary pl-btn-finalization"
+      [disabled]="disabledBtnFinalization"
+      (click)="finalizationTrigger()"
+    >
+      {{ "payday_loan.current_loan.finalization" | translate }}
+    </button>
+  </div>
+</div>

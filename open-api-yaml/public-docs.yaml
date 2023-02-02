@@ -1,0 +1,127 @@
+---
+openapi: 3.0.3
+info:
+  title: public-svc API
+  version: 1.0.0-SNAPSHOT
+paths:
+  /v1/saveInfo/customer:
+    post:
+      tags:
+      - Save Info Controller
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerInfoRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseCustomerInfoForm'
+  /v1/saveInfo/partner:
+    post:
+      tags:
+      - Save Info Controller
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartnerInfoCreateRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponsePartnerInfoForm'
+components:
+  schemas:
+    ApiResponseCustomerInfoForm:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/CustomerInfoForm'
+        errorCode:
+          type: string
+        message:
+          type: string
+        responseCode:
+          format: int32
+          type: integer
+    ApiResponsePartnerInfoForm:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/PartnerInfoForm'
+        errorCode:
+          type: string
+        message:
+          type: string
+        responseCode:
+          format: int32
+          type: integer
+    CustomerInfoForm:
+      type: object
+      properties:
+        email:
+          type: string
+    CustomerInfoRequest:
+      required:
+      - email
+      type: object
+      properties:
+        email:
+          pattern: \S
+          type: string
+          nullable: false
+    PartnerInfoCreateRequest:
+      required:
+      - fullName
+      - companyName
+      - email
+      - mobile
+      - companySphere
+      - employeeScale
+      type: object
+      properties:
+        fullName:
+          pattern: \S
+          type: string
+          nullable: false
+        companyName:
+          pattern: \S
+          type: string
+          nullable: false
+        email:
+          pattern: \S
+          type: string
+          nullable: false
+        mobile:
+          pattern: \S
+          type: string
+          nullable: false
+        companySphere:
+          pattern: \S
+          type: string
+          nullable: false
+        employeeScale:
+          pattern: \S
+          type: string
+          nullable: false
+    PartnerInfoForm:
+      type: object
+      properties:
+        fullName:
+          type: string
+        companyName:
+          type: string
+        email:
+          type: string
+        mobile:
+          type: string
+        companySphere:
+          type: string
+        employeeScale:
+          type: string

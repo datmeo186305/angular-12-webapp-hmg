@@ -1,0 +1,150 @@
+@import "src/styles/variables";
+@import "../../../../../styles/insurance/insurance-button";
+.transfer-payment-text {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: $grey-08;
+  margin-top: 16px;
+}
+
+#amount-to-be-paid-content {
+  margin-top: 12px;
+}
+
+.payment-method-container {
+  margin-top: 16px;
+  border: 1px solid $monex-color-00;
+  box-sizing: border-box;
+  border-radius: 12px;
+  padding: 12px;
+
+  .payment-method-title {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.1px;
+    color: $monex-color-01;
+  }
+}
+
+.payment-content-container {
+  border-bottom: 0.5px solid $grey-01;
+  padding: 8px 0;
+  display: flex;
+
+  &:first-child {
+    border-top: 0.5px solid $grey-01;
+  }
+
+  .payment-content-label {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    color: $grey-08;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-left: 4px;
+      width: 12px;
+      height: 12px;
+    }
+  }
+  .payment-content-value {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.1px;
+    color: $grey-10;
+  }
+  .payment-content-hint {
+    margin-top: 8px;
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 14px;
+    color: $grey-06;
+  }
+}
+
+.payment-content-label.payment-required:after {
+  content: "*";
+  font-size: 16px;
+  color: $system-color-red;
+  line-height: 1em;
+  vertical-align: top;
+  width: 8px;
+  height: 8px;
+  margin-left: 4px;
+  margin-top: -2px;
+}
+
+#payment-required {
+  p {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    color: $grey-10;
+    &:before {
+      margin-right: 4px;
+      content: "*";
+      font-size: 16px;
+      color: $system-color-red;
+    }
+  }
+}
+
+.payment-content-left {
+  flex: none;
+}
+.payment-content-right {
+  width: 100%;
+  text-align: right;
+  margin: auto 0;
+  .insurance-btn {
+    font-family: $sfPro;
+    height: 32px;
+    max-width: 80px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+    color: $white;
+  }
+}
+
+.btn-actions {
+  margin-top: 12px;
+
+  .insurance-btn {
+    max-width: 273px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-method-img-box {
+    .card-method-img {
+      max-width: 80px;
+    }
+  }
+
+  .btn-actions {
+    .insurance-btn {
+      max-width: 200px;
+    }
+  }
+}

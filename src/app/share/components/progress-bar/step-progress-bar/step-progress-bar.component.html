@@ -1,0 +1,37 @@
+<div class="step-progress-bar-container">
+  <div class="step-progress-number-container">
+    <ul>
+      <ng-template ngFor let-stepTitle [ngForOf]="stepTitles" let-index="index" let-count="count">
+        <li
+          [ngClass]="{'roadmap-checkpoint-passed': initCurrentStep >= index + 1 }"
+        >
+          <div class="step-number">
+            {{ index + 1 }}
+          </div>
+        </li>
+        <li
+          *ngIf="index !== count - 1"
+          [ngClass]="{
+              'roadmap-checkpoint-passed': initCurrentStep > index + 1
+            }"
+        >
+          <div class="progressbar-dash"></div>
+        </li>
+      </ng-template>
+    </ul>
+  </div>
+  <div class="step-progress-title-container">
+    <ul>
+      <li
+        [ngClass]="{
+            'roadmap-checkpoint-passed': initCurrentStep >= i + 1
+          }"
+        *ngFor="let stepTitle of stepTitles; index as i"
+      >
+        <div class="step-title">
+          {{ stepTitle }}
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

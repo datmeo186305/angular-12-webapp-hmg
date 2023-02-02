@@ -1,0 +1,36 @@
+@import "src/styles/variables";
+
+.pl-inline-message {
+  padding: 12px;
+  border-radius: 4px;
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  color: $monex-color-01;
+  display: flex;
+  align-items: center;
+
+  .pl-inline-message-icon-box {
+    margin-right: 8px;
+    display: inline-flex;
+  }
+
+  .pl-inline-message-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.pl-inline-message-warning {
+  background: $dim-color-orange;
+}
+
+.pl-inline-message-info {
+  background: $dim-color-blue;
+}
+
+.pl-inline-message-success {
+  background: $dim-color-green;
+}

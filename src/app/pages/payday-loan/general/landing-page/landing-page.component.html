@@ -1,0 +1,349 @@
+<header class="container-fluid">
+  <div #banner id="banner">
+    <div class="landing-container">
+      <div class="text-cta col-lg-7 col-sm-12 col-12">
+        <h2 class="cta-title">
+          Ứng lương 0% lãi<br />Đồng hành cùng Doanh nghiệp<br />kiến tạo giá
+          trị bền vững
+        </h2>
+
+        <div class="cta-description body-2">
+          Giải pháp ứng lương tự động hóa hoàn toàn cho doanh nghiệp và người
+          lao động
+        </div>
+
+        <button
+          mat-raised-button
+          class="ui-button cta-btn"
+          type="button"
+          color="primary"
+          (click)="redirectToLogin()"
+        >
+          Bắt đầu ngay
+        </button>
+      </div>
+
+      <div class="brands footnote-2">
+        Một sản phẩm của<img
+          height="16px"
+          width="auto"
+          src="assets/img/logo/tan-truong-thanh.png"
+          alt="Tân Trường Thanh"
+        />và<img
+          height="16px"
+          width="auto"
+          src="assets/img/logo/mini-logo-monex.png"
+          alt="Monex"
+        />
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <section #usp id="usp">
+    <div class="landing-container text-center">
+      <div class="main-title mx-auto">
+        Giải pháp Ứng lương tự động hóa hoàn toàn cho doanh nghiệp và người lao
+        động
+      </div>
+      <div class="content">
+        <ul>
+          <li *ngFor="let usp of uspList">
+            <img [src]="usp.img" [alt]="usp.text" />
+            <p class="title-1" [innerHtml]="usp.text"></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section #step id="step">
+    <div class="landing-container text-center">
+      <div class="main-title mx-auto">Quy trình 6 bước đơn giản</div>
+      <div class="content">
+        <ul>
+          <li *ngFor="let step of steps; let i = index">
+            <div>{{ i + 1 }}</div>
+            <p>{{ step }}</p>
+          </li>
+        </ul>
+      </div>
+      <button
+        mat-raised-button
+        class="ui-button"
+        type="button"
+        color="primary"
+        (click)="redirectToLogin()"
+      >
+        Ứng lương ngay
+      </button>
+    </div>
+  </section>
+
+  <section #values id="values">
+    <div class="landing-container">
+      <div class="company-part">
+        <div class="illustration">
+          <img
+            src="assets/img/payday-loan/values-company.png"
+            alt="Đồng hành cùng Doanh nghiệp"
+          />
+        </div>
+        <div class="content">
+          <div class="main-title">
+            Đồng hành cùng Doanh nghiệp<br />bội tăng giá trị
+          </div>
+
+          <ul>
+            <li>
+              Giải pháp số với chi phí 0 đồng giúp tài chính doanh nghiệp thêm
+              bền vững
+            </li>
+            <li>
+              Phúc lợi thiết thực tạo sự gắn kết và động lực để người lao động
+              tăng năng suất
+            </li>
+            <li>
+              Cấu trúc sản phẩm phù hợp với doanh nghiệp ở đa dạng quy mô và
+              lĩnh vực
+            </li>
+          </ul>
+
+          <button
+            mat-raised-button
+            class="ui-button title-3"
+            type="button"
+            color="primary"
+            id="implementBtn"
+            (click)="scroll(form)"
+            (touchstart)="scroll(form)"
+          >
+            Triển khai thử sản phẩm
+          </button>
+        </div>
+      </div>
+      <div class="worker-part">
+        <div class="illustration">
+          <img
+            src="assets/img/payday-loan/values-worker.png"
+            alt="Đồng hành cùng Người lao động"
+          />
+        </div>
+        <div class="content">
+          <div class="main-title display-web">
+            Đồng hành cùng Người lao động<br />hướng tới an toàn tài chính
+          </div>
+          <div class="main-title display-mobile">
+            Đồng hành cùng Người lao động,<br />hướng tới an toàn tài chính
+          </div>
+
+          <ul>
+            <li>Giải pháp hỗ trợ ứng lương minh bạch, tự động, thân thiện</li>
+            <li>
+              Trải nghiệm tối ưu với lãi suất 0%, mức ứng lên tới 100% lương
+            </li>
+            <li>Giải ngân nhanh chóng, tổng đài trợ giúp giải đáp kịp thời</li>
+          </ul>
+
+          <a
+            href="https://youtu.be/UGkMQIm7dAY"
+            target="_blank"
+            rel="noopener"
+          >
+            <button
+              mat-raised-button
+              class="ui-button title-3"
+              type="button"
+              color="primary"
+              id="implementBtn"
+            >
+              Xem hướng dẫn<img
+                src="assets/img/icon/group-3/svg/play-video.svg"
+                alt="play"
+                style="margin-left: 8px"
+              />
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section #partner id="partner">
+    <div class="landing-container">
+      <h3 class="main-title mx-auto">Đối tác của chúng tôi</h3>
+      <div class="partner-1">
+        <div class="sub-title">
+          Đối tác Doanh nghiệp đã triển khai Ứng lương 0% lãi
+        </div>
+        <div class="content">
+          <ul>
+            <li *ngFor="let partner of partners1">
+              <img [src]="partner.img" [alt]="partner.text" />
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="partner-2">
+        <div class="sub-title">Đối tác Chiến lược</div>
+        <div class="content">
+          <ul>
+            <li *ngFor="let partner of partners2">
+              <img [src]="partner.img" [alt]="partner.text" />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section #testimonial id="testimonial">
+    <div class="landing-container">
+      <div class="main-title mx-auto">Khách hàng nói về Ứng lương 0% lãi</div>
+      <div class="introduce-video">
+        <iframe
+          src="https://www.youtube.com/embed/Nm9wf23-ay8"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section #contact id="contact" #form>
+    <div class="landing-container contact-container">
+      <div class="slogan">
+        <img
+          src="assets/img/logo/payday-loan-available.png"
+          alt="Ứng Lương 0% Lãi"
+        />
+        <div class="main-title">
+          Triển khai Ứng lương 0% lãi.<br />Bội tăng giá trị Doanh nghiệp
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <input
+            #input
+            matInput
+            formControlName="companyName"
+            autocomplete="false"
+            placeholder="Tên doanh nghiệp"
+            required
+            maxlength="256"
+          />
+
+          <!-- <mat-form-field
+            #fieldSelect
+            appearance="legacy"
+            floatLabel="never"
+            class="w-100"
+          >
+            <mat-label>Lĩnh vực hoạt động</mat-label>
+            <mat-select
+              formControlName="companyField"
+              (valueChange)="onValueChange(fieldSelectEle)"
+            >
+              <mat-option
+                *ngFor="let option of companyFieldOptions"
+                [value]="option.value"
+              >
+                {{ option.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+
+          <mat-form-field
+            #fieldSelect
+            appearance="legacy"
+            floatLabel="never"
+            class="w-100 optional"
+          >
+            <mat-label>Lĩnh vực hoạt động</mat-label>
+            <input type=text matInput class="optional-option" placeholder="Lĩnh vực hoạt động" formControlName="companyField"
+              [matAutocomplete]="auto">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+              <mat-option
+                *ngFor="let option of companyFieldOptions"
+                [value]="option.value"
+              >
+                 {{ option.viewValue }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+          <mat-form-field
+            #sizeSelect
+            appearance="legacy"
+            floatLabel="never"
+            class="w-100"
+          >
+            <mat-label>Quy mô nhân sự</mat-label>
+            <mat-select
+              panelClass="staff-size"
+              formControlName="staffSize"
+              (valueChange)="onValueChange(sizeSelectEle)"
+            >
+              <mat-option
+                *ngFor="let option of staffSizeOptions"
+                [value]="option.value"
+              >
+                {{ option.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <input
+            #input
+            matInput
+            formControlName="fullname"
+            autocomplete="false"
+            placeholder="Tên người liên hệ"
+            type="text"
+            required
+            maxlength="256"
+          />
+
+          <input
+            #input
+            #mobile
+            matInput
+            formControlName="mobileNumber"
+            autocomplete="false"
+            placeholder="Số điện thoại"
+            maxlength="10"
+            minlength="10"
+            required
+            phone-number-validate
+          />
+
+          <input
+            #input
+            #email
+            matInput
+            formControlName="email"
+            autocomplete="false"
+            placeholder="Email"
+            type="email"
+            required
+            maxlength="256"
+          />
+
+          <div class="submit-btn">
+            <button
+              mat-raised-button
+              class="ui-button"
+              type="submit"
+              color="primary"
+            >
+              Nhận tư vấn
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>

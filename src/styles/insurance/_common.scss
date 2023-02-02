@@ -1,0 +1,141 @@
+@import "../variables";
+@import "src/styles/insurance/insurance-button";
+
+router-outlet ~ * {
+  position: absolute;
+  height: auto;
+  width: 100%;
+  min-height: calc(100% - 94px);
+}
+
+router-outlet.landing-page ~ * {
+  position: relative;
+  min-height: unset;
+}
+
+.container-fluid {
+  height: auto;
+  padding: 0;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.insurance-container {
+  max-width: 480px;
+  margin-right: auto;
+  margin-left: auto;
+  align-self: center;
+  width: 100%;
+}
+
+#main-layout-content {
+  font-family: $sfPro;
+  //height: 100%;
+  .ng-trigger {
+    //height: 100%;
+  }
+}
+
+.link-inline-green {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.1px;
+  color: $monex-color-00;
+}
+
+.insurance-name-inline {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: $system-color-red;
+}
+
+@media (min-width: 1200px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 1140px;
+    margin: auto;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sfPro, "Helvetica Neue", sans-serif;
+}
+
+.ui-button,
+.ui-stroked-button,
+.optional-button {
+  height: 48px;
+  font-family: sfPro, "Helvetica Neue", sans-serif;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  border-radius: 40px !important;
+}
+
+.optional-button {
+  color: $grey-06;
+  background-color: white !important;
+}
+
+// .mat-flat-button.mat-primary.mat-button-disabled, .mat-flat-button.mat-accent.mat-button-disabled, .mat-flat-button.mat-warn.mat-button-disabled, .mat-flat-button.mat-button-disabled.mat-button-disabled, .mat-raised-button.mat-primary.mat-button-disabled, .mat-raised-button.mat-accent.mat-button-disabled, .mat-raised-button.mat-warn.mat-button-disabled, .mat-raised-button.mat-button-disabled.mat-button-disabled, .mat-fab.mat-primary.mat-button-disabled, .mat-fab.mat-accent.mat-button-disabled, .mat-fab.mat-warn.mat-button-disabled, .mat-fab.mat-button-disabled.mat-button-disabled, .mat-mini-fab.mat-primary.mat-button-disabled, .mat-mini-fab.mat-accent.mat-button-disabled, .mat-mini-fab.mat-warn.mat-button-disabled, .mat-mini-fab.mat-button-disabled.mat-button-disabled {
+//   color: rgba(0,0,0,.26) !important;
+//   background-color: rgba(0,0,0,.12) !important;
+// }
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.rq-highlight {
+  color: $system-color-red;
+}
+
+.ng2-pdf-viewer-container {
+  //overflow-x: inherit !important;
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+pdf-viewer {
+  display: block;
+  height: 100vh;
+  position: relative;
+
+  //z-index: 0;
+}
+
+@media (max-width: 768px) {
+  #insurance-layout-container {
+    .container {
+      padding: 0;
+    }
+
+    .insurance-container {
+      padding: 0 16px;
+    }
+  }
+}

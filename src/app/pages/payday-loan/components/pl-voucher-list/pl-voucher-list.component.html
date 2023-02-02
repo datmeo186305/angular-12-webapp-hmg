@@ -1,0 +1,36 @@
+<div class="voucher-dialog">
+    <h3 id="voucher-dialog-title"> {{"payday_loan.choose_amount.choose_voucher" | translate}}</h3>
+    <mat-accordion displayMode="flat">
+        <mat-expansion-panel (opened)="isExpanded=true" class="voucher-detail-container" *ngFor="let voucher of voucherListArray">
+            <mat-expansion-panel-header class="voucher-header">
+                <div class="d-flex flex-column">
+                    <mat-panel-title class="d-flex align-items-center justify-content-between voucher-title">
+                        <div class="d-flex align-items-center">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M21.75 11C22.1642 11 22.5 10.6642 22.5 10.25V6.5C22.5 5.67157 21.8284 5 21 5H3C2.17157 5 1.5 5.67157 1.5 6.5V10.25C1.5 10.6642 1.83579 11 2.25 11C3.07843 11 3.75 11.6716 3.75 12.5C3.75 13.3284 3.07843 14 2.25 14C1.83579 14 1.5 14.3358 1.5 14.75V18.5C1.5 19.3284 2.17157 20 3 20H21C21.8284 20 22.5 19.3284 22.5 18.5V14.75C22.5 14.3358 22.1642 14 21.75 14C20.9216 14 20.25 13.3284 20.25 12.5C20.25 11.6716 20.9216 11 21.75 11ZM21 15.4025V18.5H15.75V17C15.75 16.5858 15.4142 16.25 15 16.25C14.5858 16.25 14.25 16.5858 14.25 17V18.5H3V15.4025C4.32033 15.0574 5.24139 13.8647 5.24139 12.5C5.24139 11.1353 4.32033 9.94259 3 9.5975V6.5H14.25V8C14.25 8.41421 14.5858 8.75 15 8.75C15.4142 8.75 15.75 8.41421 15.75 8V6.5H21V9.5975C19.6797 9.94259 18.7586 11.1353 18.7586 12.5C18.7586 13.8647 19.6797 15.0574 21 15.4025ZM14.25 11C14.25 10.5858 14.5858 10.25 15 10.25C15.4142 10.25 15.75 10.5858 15.75 11V14C15.75 14.4142 15.4142 14.75 15 14.75C14.5858 14.75 14.25 14.4142 14.25 14V11Z"
+                                    fill="#2AAC7E" />
+                            </svg>
+                            <h2 class="voucher-code">{{voucher?.code}}</h2>
+                        </div>
+                        <button mat-button class="voucher-apply" (click)="voucherApply(voucher)">
+                            {{"payday_loan.choose_amount.apply" | translate}}
+                        </button>
+                    </mat-panel-title>
+                    <mat-panel-description class="voucher-discount">
+                        Ưu đãi {{voucher.percentage * 100}}% phí khoản ứng (Tối đa {{voucher.maxValue | formatPrice}})
+                        <!-- {{ 'payday_loan.choose_amount.voucher_content' | translate : {percentage: voucher.percentage*100, maxValue: voucher.maxValue | formatPrice} }} -->
+                    </mat-panel-description>
+                    <mat-divider class="voucher-divider"></mat-divider>
+                    <div class="voucher-condition">
+                        {{"payday_loan.choose_amount.apply_condition" | translate}}
+                    </div>
+                </div>
+            </mat-expansion-panel-header>
+            <div [innerHtml]="voucher.description" class="voucher-description" [hidden]="!isExpanded"></div>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <div *ngIf="voucherListArray.length === 0">
+        <h4 class="text-center">Không có mã khuyến mãi</h4>
+    </div>
+</div>

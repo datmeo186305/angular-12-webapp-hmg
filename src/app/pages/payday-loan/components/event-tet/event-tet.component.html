@@ -1,0 +1,125 @@
+<div
+  class="dialog-container-overview"
+  *ngIf="!isShowDetailEvent; else eventDetail"
+>
+  <button mat-button disableRipple="true" class="close-btn" mat-dialog-close>
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="24" height="24" rx="12" fill="black" fill-opacity="0.5" />
+      <path
+        d="M6.80646 6.92474L6.86192 6.86193C7.10225 6.62161 7.4804 6.60313 7.74193 6.80647L7.80474 6.86193L12 11.0567L16.1953 6.86193C16.4556 6.60159 16.8777 6.60159 17.1381 6.86193C17.3984 7.12229 17.3984 7.54439 17.1381 7.80475L12.9433 12L17.1381 16.1953C17.3784 16.4356 17.3969 16.8137 17.1935 17.0753L17.1381 17.1381C16.8977 17.3784 16.5196 17.3969 16.2581 17.1935L16.1953 17.1381L12 12.9433L7.80474 17.1381C7.54438 17.3984 7.12228 17.3984 6.86192 17.1381C6.60158 16.8777 6.60158 16.4556 6.86192 16.1953L11.0567 12L6.86192 7.80475C6.6216 7.56442 6.60312 7.18627 6.80646 6.92474L6.86192 6.86193L6.80646 6.92474Z"
+        fill="white"
+      />
+    </svg>
+  </button>
+  <div class="action-row">
+    <button
+      mat-flat-button
+      class="ui-button start-btn"
+      type="button"
+      color="primary"
+      (click)="redirectToLogin()"
+    >
+      Ứng lương ngay
+    </button>
+    <button
+      mat-flat-button
+      class="ui-button detail-btn"
+      type="button"
+      color="primary"
+      (click)="isShowDetailEvent = true"
+    >
+      Thể lệ chi tiết
+      <svg
+        width="17"
+        height="16"
+        viewBox="0 0 17 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M6.02859 2.86193C5.76825 3.12229 5.76825 3.54439 6.02859 3.80474L10.2239 8L6.02859 12.1953C5.76825 12.4556 5.76825 12.8777 6.02859 13.1381C6.28895 13.3984 6.71105 13.3984 6.97141 13.1381L11.6381 8.4714C11.8984 8.21107 11.8984 7.78894 11.6381 7.5286L6.97141 2.86193C6.71105 2.60159 6.28895 2.60159 6.02859 2.86193Z"
+          fill="white"
+        />
+      </svg>
+    </button>
+  </div>
+</div>
+
+<ng-template #eventDetail>
+  <div class="dialog-container-detail">
+    <button mat-button disableRipple="true" class="close-btn" mat-dialog-close>
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M3.50806 3.65591L3.57739 3.5774C3.8778 3.277 4.35049 3.2539 4.6774 3.50808L4.7559 3.5774L9.99998 8.82083L15.2441 3.5774C15.5695 3.25197 16.0971 3.25197 16.4226 3.5774C16.748 3.90285 16.748 4.43048 16.4226 4.75592L11.1791 10L16.4226 15.2441C16.723 15.5445 16.7461 16.0172 16.4919 16.3441L16.4226 16.4226C16.1221 16.723 15.6495 16.7461 15.3226 16.4919L15.2441 16.4226L9.99998 11.1792L4.7559 16.4226C4.43046 16.748 3.90283 16.748 3.57739 16.4226C3.25196 16.0972 3.25196 15.5695 3.57739 15.2441L8.82081 10L3.57739 4.75592C3.27699 4.45551 3.25388 3.98282 3.50806 3.65591L3.57739 3.5774L3.50806 3.65591Z"
+          fill="white"
+        />
+      </svg>
+    </button>
+    <div class="detail-title">
+      <h4>Thể lệ chi tiết</h4>
+    </div>
+    <div class="detail-content">
+      <ul>
+        Monex xin gửi tới Quý khách hàng chương trình ưu đãi HOT nhất đầu năm
+        với hơn 200 voucher giảm 50% phí dịch vụ. Chi tiết ưu đãi như sau:
+        <li>
+          Tặng e-voucher <b>VUITET25</b>
+          <span class="highlight-text">
+            giảm 50% phí dịch vụ (tối đa 25.000VNĐ)</span
+          >
+          cho tất cả các khách hàng đã hoàn thành từ 03 đến 10 khoản ứng lương
+          tại Monex
+        </li>
+        <li>
+          Tặng e-voucher <b>VUITET50</b>
+          <span class="highlight-text">
+            giảm 50% phí dịch vụ (tối đa 50.000VNĐ)</span
+          >
+          cho tất cả các khách hàng đã hoàn thành từ 11 khoản ứng lương trở lên
+          tại Monex
+        </li>
+      </ul>
+      <mat-divider></mat-divider>
+      <ul>
+        Quy định chương trình:
+        <li>
+          Mỗi khách hàng thỏa mãn điều kiện được nhận 01 mã ưu đãi duy nhất với
+          thời gian áp dụng là từ 15/01/2022 đến hết 15/03/2022.
+        </li>
+        <li>
+          Số lượng khoản ứng hợp lệ được tính từ ngày mở tài khoản đến hết ngày
+          15/03/2022.
+        </li>
+        <li>
+          Chương trình ưu đãi chỉ dành cho khách hàng đang làm việc tại các
+          doanh nghiệp đối tác của Monex.
+        </li>
+      </ul>
+    </div>
+    <div class="action-row">
+      <button
+        mat-flat-button
+        class="ui-button start-btn"
+        type="button"
+        color="primary"
+        (click)="redirectToLogin()"
+      >
+        Ứng lương ngay
+      </button>
+    </div>
+  </div>
+</ng-template>

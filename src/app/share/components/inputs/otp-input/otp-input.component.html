@@ -1,0 +1,20 @@
+<div id="otp-input-container">
+  <app-single-otp-input
+    *ngFor="let item of [].constructor(numInputs); index as i"
+    [focus]="activeInput === i"
+    [value]="otp[i]"
+    [separator]="separator"
+    [placeholder]="placeholder"
+    [inputType]="inputType"
+    [inputClasses]="inputClasses"
+    [isLastChild]="i === numInputs - 1"
+    [shouldAutoFocus]="shouldAutoFocus"
+    [displayStatusLine]="displayStatusLine"
+    [disabled]="disabled"
+    (onChange)="handleOnChange($event)"
+    (onKeydown)="handleOnKeyDown($event)"
+    (onPaste)="handleOnPaste($event)"
+    (onFocus)="handleOnFocus(i)"
+    (onBlur)="handleOnBlur()">
+  </app-single-otp-input>
+</div>

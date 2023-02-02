@@ -1,0 +1,66 @@
+<div class="rating-dialog">
+    <button mat-flat-button disableRipple=true class="close-btn" mat-dialog-close (click)="onCloseRating()">
+        <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M2.807 2.925l.055-.063a.667.667 0 01.88-.055l.063.055L8 7.057l4.195-4.195a.667.667 0 11.943.943L8.943 8l4.195 4.195c.24.24.259.619.056.88l-.056.063a.667.667 0 01-.88.056l-.063-.056L8 8.943l-4.195 4.195a.667.667 0 11-.943-.943L7.057 8 2.862 3.805a.667.667 0 01-.055-.88l.055-.063-.055.063z"
+                fill="#C7C7CC" />
+        </svg>
+    </button>
+    <div class="title">Bạn có hài lòng về dịch vụ của Monex?</div>
+    <div class="description">Đánh giá để Monex có thể phục vụ bạn tốt hơn nhé!</div>
+    <div class="d-flex flex-row justify-content-around emotion-row">
+        <div class="emotion-box" [ngClass]="{'choose': rate === 'NOT_SATISFIED'}" (click)="rateChoice('NOT_SATISFIED')">
+            <div class="css-sprite-weary-face emotion"></div>
+            <div class="emotion-description">Chưa hài lòng</div>
+        </div>
+        <div  class="emotion-box" [ngClass]="{'choose': rate === 'SEMI_SATISFIED'}"  (click)="rateChoice('SEMI_SATISFIED')">
+            <div class="css-sprite-disappointed-face emotion"></div>
+            <div class="emotion-description">Cần cải thiện</div>
+        </div>
+        <div class="emotion-box" [ngClass]="{'choose': rate === 'NORMAL'}"  (click)="rateChoice('NORMAL')">
+            <div class="css-sprite-neutral-face emotion"></div>
+            <div class="emotion-description">Không có ý kiến</div>
+        </div>
+        <div class="emotion-box" [ngClass]="{'choose': rate === 'SATISFIED'}" (click)="rateChoice('SATISFIED')">
+            <div class="css-sprite-smiling-face-with-smiling-eyes emotion"></div>
+            <div class="emotion-description">Tốt</div>
+        </div>
+        <div class="emotion-box" [ngClass]="{'choose': rate === 'VERY_SATISFIED'}" (click)="rateChoice('VERY_SATISFIED')">
+            <div class="css-sprite-smiling-face-with-heart-eyes emotion"></div>
+            <div class="emotion-description">Tuyệt vời</div>
+        </div>
+    </div>
+    <div *ngIf=" rate === 'SATISFIED' || rate === 'VERY_SATISFIED' ">
+      <p class="rating-question">Điều mà bạn thích ở Monex?</p>
+      <div class="d-flex flex-wrap rating-tag-box" >
+        <div class="rating-tag-item" *ngFor="let opinion of fastOpinionsSuccessArray, let i = index" (click)="fastOpinionsHightlightStatus[i]=!fastOpinionsHightlightStatus[i]"
+        [class.highlight]="fastOpinionsHightlightStatus[i]" >{{opinion}}</div>
+      </div>
+    </div>
+
+    <div *ngIf=" rate === 'NOT_SATISFIED' || rate === 'SEMI_SATISFIED' ">
+      <p class="rating-question">Monex cần cải thiện điều gì?</p>
+      <div class="d-flex flex-wrap rating-tag-box">
+        <div class="rating-tag-item" *ngFor="let opinion of fastOpinionsFailArray, let i = index" (click)="fastOpinionsHightlightStatus[i]=!fastOpinionsHightlightStatus[i]"
+          [class.highlight]="fastOpinionsHightlightStatus[i]" >{{opinion}}</div>
+      </div>
+    </div>
+    <form class="review-form">
+        <textarea matInput [(ngModel)]="customerOpinion" style="resize: none;" class="text-area" id="review" name="review" placeholder="Ý kiến góp ý khác của bạn..."></textarea>
+    </form>
+
+    <div class="text-center btn-container">
+        <button
+          mat-raised-button
+          type="submit"
+          class="ui-button rating-btn"
+          color="primary"
+          [disabled]="false"
+          mat-dialog-close
+          (click)="onSubmit()"
+          id="submit-rating-btn"
+        >
+          Gửi phản hồi
+        </button>
+      </div>
+</div>

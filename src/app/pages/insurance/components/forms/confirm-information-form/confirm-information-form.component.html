@@ -1,0 +1,171 @@
+<form id="insurance-confirm-information-form" class="form-container" [formGroup]="confirmInformationForm"
+      #insuranceConfirmInformationFormWrapper>
+  <div class="row responsive-form-content">
+    <div class="col-md-12 insurance-info-title">
+      <h2>{{ 'insurance.confirm_information.first_title_info' | translate }}</h2>
+    </div>
+
+    <div class="col-md-12">
+      <mat-form-field appearance="outline" floatLabel="never" class="w-100">
+        <mat-label>{{ 'insurance.confirm_information.vehicle_owner' | translate }}</mat-label>
+        <input name="vehicle_owner" matInput formControlName="vehicleOwnerName"
+               [placeholder]="'insurance.confirm_information.vehicle_owner' | translate" required/>
+
+        <show-errors [control]="confirmInformationForm.controls['vehicleOwnerName']"
+                     [controlLabel]="'insurance.confirm_information.vehicle_owner' | translate">
+        </show-errors>
+      </mat-form-field>
+
+    </div>
+
+    <div class="col-md-12">
+      <mat-form-field appearance="outline" floatLabel="never" class="w-100">
+        <mat-label>{{ 'insurance.confirm_information.vehicle_province' | translate }}</mat-label>
+        <mat-select required formControlName="vehicleProvince">
+          <mat-option *ngFor="let provinceOption of provinceOptions" [value]="provinceOption.id">
+            {{ provinceOption.name }}
+          </mat-option>
+        </mat-select>
+        <show-errors [control]="confirmInformationForm.controls['vehicleProvince']"
+                     [controlLabel]="'insurance.confirm_information.vehicle_province' | translate">
+        </show-errors>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-12">
+      <mat-form-field appearance="outline" floatLabel="never" class="w-100">
+        <mat-label>{{ 'insurance.confirm_information.vehicle_address' | translate }}</mat-label>
+        <input name="vehicle_address" matInput formControlName="vehicleAddress"
+               [placeholder]="'insurance.confirm_information.vehicle_address' | translate" required/>
+        <show-errors [control]="confirmInformationForm.controls['vehicleAddress']"
+                     [controlLabel]="'insurance.confirm_information.vehicle_address' | translate">
+        </show-errors>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-12">
+      <mat-form-field appearance="outline" floatLabel="never" class="w-100">
+        <mat-label>{{ 'insurance.confirm_information.vehicle_start_time' | translate }}</mat-label>
+        <input name="vehicle_start_time" matInput formControlName="vehicleStartTime"
+               [placeholder]="'insurance.confirm_information.vehicle_start_time' | translate" required/>
+        <show-errors [control]="confirmInformationForm.controls['vehicleStartTime']"
+                     [controlLabel]="'insurance.confirm_information.vehicle_start_time' | translate">
+        </show-errors>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-12">
+      <mat-form-field appearance="outline" floatLabel="never" class="w-100">
+        <mat-label>{{ 'insurance.confirm_information.vehicle_number' | translate }}</mat-label>
+        <input name="vehicle_number" matInput formControlName="vehicleNumber"
+               [placeholder]="'insurance.confirm_information.vehicle_number' | translate" required/>
+        <show-errors [control]="confirmInformationForm.controls['vehicleNumber']"
+                     [controlLabel]="'insurance.confirm_information.vehicle_number' | translate">
+        </show-errors>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-12">
+      <mat-form-field appearance="outline" floatLabel="never" class="w-100">
+        <mat-label>{{ 'insurance.confirm_information.machine_number' | translate }}</mat-label>
+        <input name="machine_number" matInput formControlName="machineNumber"
+               [placeholder]="'insurance.confirm_information.machine_number' | translate"/>
+        <show-errors [control]="confirmInformationForm.controls['machineNumber']"
+                     [controlLabel]="'insurance.confirm_information.machine_number' | translate">
+        </show-errors>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-12">
+      <mat-form-field appearance="outline" floatLabel="never" class="w-100">
+        <mat-label>{{ 'insurance.confirm_information.frame_number' | translate }}</mat-label>
+        <input name="frame_number" matInput formControlName="frameNumber"
+               [placeholder]="'insurance.confirm_information.frame_number' | translate"/>
+        <show-errors [control]="confirmInformationForm.controls['frameNumber']"
+                     [controlLabel]="'insurance.confirm_information.frame_number' | translate">
+        </show-errors>
+      </mat-form-field>
+    </div>
+
+
+    <div class="col-md-12 insurance-info-title">
+      <h2>{{ 'insurance.confirm_information.second_title_info' | translate }}</h2>
+    </div>
+
+
+    <div class="col-md-12">
+      <mat-form-field appearance="outline" floatLabel="never" class="w-100">
+        <mat-label>{{ 'insurance.confirm_information.receiver_name' | translate }}</mat-label>
+        <input name="receiver_name" matInput formControlName="receiverName"
+               [placeholder]="'insurance.confirm_information.receiver_name' | translate" required/>
+        <show-errors [control]="confirmInformationForm.controls['receiverName']"
+                     [controlLabel]="'insurance.confirm_information.receiver_name' | translate">
+        </show-errors>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-12">
+      <mat-form-field appearance="outline" floatLabel="never" class="w-100">
+        <mat-label>{{ 'insurance.confirm_information.receiver_province' | translate }}</mat-label>
+        <mat-select required formControlName="receiverProvince">
+          <mat-option *ngFor="let provinceOption of provinceOptions" [value]="provinceOption.id">
+            {{ provinceOption.name }}
+          </mat-option>
+        </mat-select>
+        <show-errors [control]="confirmInformationForm.controls['receiverProvince']"
+                     [controlLabel]="'insurance.confirm_information.receiver_province' | translate">
+        </show-errors>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-12">
+      <mat-form-field appearance="outline" floatLabel="never" class="w-100">
+        <mat-label>{{ 'insurance.confirm_information.receiver_address' | translate }}</mat-label>
+        <input name="receiver_address" matInput formControlName="receiverAddress"
+               [placeholder]="'insurance.confirm_information.receiver_address' | translate" required/>
+        <show-errors *ngIf="!confirmInformationForm.controls['receiverAddress'].valid"
+                     [control]="confirmInformationForm.controls['receiverAddress']"
+                     [controlLabel]="'insurance.confirm_information.receiver_address' | translate">
+        </show-errors>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-12">
+      <mat-form-field appearance="outline" floatLabel="never" class="w-100">
+        <mat-label>{{ 'insurance.confirm_information.receiver_email' | translate }}</mat-label>
+        <input name="receiver_email" matInput formControlName="receiverEmail"
+               [placeholder]="'insurance.confirm_information.receiver_email' | translate" required/>
+        <show-errors [control]="confirmInformationForm.controls['receiverEmail']"
+                     [controlLabel]="'insurance.confirm_information.receiver_email' | translate">
+        </show-errors>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-12">
+      <mat-form-field appearance="outline" floatLabel="never" class="w-100">
+        <mat-label>{{ 'insurance.confirm_information.receiver_phone_number' | translate }}</mat-label>
+        <input name="receiver_phone_number" matInput formControlName="receiverPhoneNumber"
+               [placeholder]="'insurance.confirm_information.receiver_phone_number' | translate" required/>
+        <show-errors [control]="confirmInformationForm.controls['receiverPhoneNumber']"
+                     [controlLabel]="'insurance.confirm_information.receiver_phone_number' | translate">
+        </show-errors>
+      </mat-form-field>
+    </div>
+
+  </div>
+
+  <div class="col-md-12 responsive-form-actions">
+    <div id="confirm-info-btn-container">
+      <mat-checkbox id="insurance-checkbox">
+        <p class="insurance-checkbox-text align-items-center"
+           [innerHTML]="'insurance.confirm_information.confirm_policy' | translate"></p>
+      </mat-checkbox>
+      <div class="text-center">
+        <button id="confirm-information-btn" (click)="onSubmit()" [disabled]="confirmInformationForm.invalid"
+                mat-raised-button color="primary"
+                class="w-100 insurance-btn btn-primary">{{ 'insurance.confirm_information.payment_btn_text' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

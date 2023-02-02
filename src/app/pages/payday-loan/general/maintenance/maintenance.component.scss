@@ -1,0 +1,43 @@
+@import "../../../../../styles/variables";
+@import "../../../../../styles/insurance/insurance";
+@import "../../../../../styles/insurance/insurance-form";
+
+.maintain-container {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  .image {
+    max-width: 120px;
+    max-height: 120px;
+    img {
+      width: 100%;
+    }
+  }
+  .title {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: $monex-color-01;
+    margin-top: 24px;
+    margin-bottom: 8px;
+  }
+  .description {
+    font-family: $sfPro;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+    color: $grey-08;
+  }
+}
+
+@media (max-width: 768px) {
+  .maintain-container {
+    padding: 30px;
+  }
+}

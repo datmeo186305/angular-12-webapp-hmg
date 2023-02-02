@@ -1,0 +1,99 @@
+@import "../../../../../styles/variables";
+
+.loading-resource {
+  width: 56px;
+  height: 56px;
+}
+
+::ng-deep .hidden-prompt-content {
+  overflow: hidden;
+
+  .loading-resource {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.mat-dialog-actions {
+  padding: 0;
+  margin-bottom: 0 !important;
+}
+
+.pl-prompt-title {
+  margin-top: 8px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  padding: 0 30px;
+  color: $grey-10;
+  font-family: $sfPro;
+}
+
+.pl-prompt-image {
+  width: 56px;
+  height: 56px;
+}
+
+.pl-prompt-body {
+  margin-top: 8px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  padding: 0 16px;
+  color: $grey-08;
+  font-family: $sfPro;
+}
+
+.prompt-content {
+  padding: 16px 8px;
+  overflow: hidden;
+  background-color: $white !important;
+  border-radius: 16px;
+  max-width: 290px;
+  font-family: $sfPro;
+}
+
+.hidden-prompt-content {
+  background-color: transparent !important;
+}
+
+.pl-prompt-actions {
+  margin-top: 16px;
+  display: flex;
+  background-color: $grey-01 !important;
+  gap: 1px;
+  width: 100%;
+  font-family: $sfPro;
+}
+
+.pl-prompt-btn {
+  width: 100%;
+  font-family: $sfPro;
+}
+
+.prompt-dialog {
+  margin: 1.75rem auto;
+  top: inherit !important;
+}
+
+#payday-loan-loading .prompt-dialog {
+  margin: 0 auto !important;
+}
+
+.top-prompt-close-btn {
+  position: absolute;
+  top: 0;
+  right: 30px;
+  border: none;
+  background: none;
+
+  .dismiss-prompt-btn {
+    width: 40px;
+    height: 40px;
+  }
+}

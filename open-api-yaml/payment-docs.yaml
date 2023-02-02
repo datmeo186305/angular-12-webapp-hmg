@@ -1,0 +1,709 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8004
+  description: Generated server url
+paths:
+  /v1/repayments:
+    put:
+      tags:
+      - repayment-controller
+      operationId: updateRepaymentTransaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRepaymentTransactionRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/gpayVirtualAccounts/{customerId}:
+    get:
+      tags:
+      - gpay-virtual-account-controller
+      operationId: getVirtualAccount
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseVirtualAccount'
+    put:
+      tags:
+      - gpay-virtual-account-controller
+      operationId: updateVirtualAccount
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateVARequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseGpayVAResponse'
+  /v1/repayments/gpay/webhook:
+    post:
+      tags:
+      - repayment-controller
+      operationId: gpayRepaymentWebhook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GpayRepaymentWebhook'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/repayments/gpay/paydayloan:
+    post:
+      tags:
+      - repayment-controller
+      operationId: gpayRepaymentPaydayLoan
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RepaymentRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseGpayNapasOrderRepaymentResponse'
+  /v1/repayments/gpay/insurance:
+    post:
+      tags:
+      - repayment-controller
+      operationId: gpayRepaymentInsuranceOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RepaymentRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseGpayNapasOrderRepaymentResponse'
+  /v1/repayments/gpay/deleteToken:
+    post:
+      tags:
+      - repayment-controller
+      operationId: gpayRepaymentCallback
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteTokenRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseGpayDeleteTokenResponse'
+  /v1/repayments/gpay/bnpl:
+    post:
+      tags:
+      - repayment-controller
+      operationId: gpayRepaymentBnplOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RepaymentRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseGpayNapasOrderRepaymentResponse'
+  /v1/gpayVirtualAccounts/paymentOrdersOldLoan:
+    post:
+      tags:
+      - gpay-virtual-account-controller
+      operationId: createPaymentOrderInRepaymentLoan
+      parameters:
+      - name: applicationType
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseRepaymentTransaction'
+  /v1/gpayVirtualAccounts/paymentOrders:
+    post:
+      tags:
+      - gpay-virtual-account-controller
+      operationId: createPaymentOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRepaymentOrderRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseRepaymentTransaction'
+  /v1/gpayVirtualAccounts/gpayWebhook:
+    post:
+      tags:
+      - gpay-virtual-account-controller
+      operationId: gpayWebhook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GpayChangeBalanceWebhook'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/gpayVirtualAccounts:
+    post:
+      tags:
+      - gpay-virtual-account-controller
+      operationId: createVirtualAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVARequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseVirtualAccount'
+  /v1/disburses/gpay:
+    post:
+      tags:
+      - disburse-controller
+      operationId: disburse
+      parameters:
+      - name: applicationType
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - PaydayLoan-TNG PDL_TNG
+          - PaydayLoan-HMG PDL_HMG
+          - PDL_VAC_OFFICE PDL_VAC_OFFICE
+          - PDL_VAC_FACTORY PDL_VAC_FACTORY
+          - INSURANCE INSURANCE
+          - BNPL BNPL
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CoreDisburseRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/gpayVirtualAccounts/repaymentTransaction:
+    get:
+      tags:
+      - gpay-virtual-account-controller
+      operationId: getRepaymentTransactionVirtualAccount
+      parameters:
+      - name: loanId
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseListRepaymentTransaction'
+  /v1/gpayVirtualAccounts/getTotalPaymentAmount:
+    get:
+      tags:
+      - gpay-virtual-account-controller
+      operationId: getTotalPaymentAmount
+      parameters:
+      - name: request
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/GetTotalPaymentAmountRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseGetTotalPaymentAmountResponse'
+  /v1/gpayVirtualAccounts/accessToken:
+    get:
+      tags:
+      - gpay-virtual-account-controller
+      operationId: createAccessToken
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/check-connection:
+    get:
+      tags:
+      - check-connect-controller
+      operationId: verifyAccount
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+components:
+  schemas:
+    UpdateRepaymentTransactionRequest:
+      required:
+      - amount
+      - applicationId
+      - applicationType
+      - provider
+      type: object
+      properties:
+        amount:
+          type: integer
+          format: int32
+        applicationId:
+          type: string
+        applicationType:
+          type: string
+        provider:
+          type: string
+    ApiResponseString:
+      type: object
+      properties:
+        result:
+          type: string
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    UpdateVARequest:
+      type: object
+      properties:
+        customerId:
+          type: string
+        numberOfTransfer:
+          type: integer
+          format: int32
+        maxAmount:
+          type: integer
+          format: int32
+        minAmount:
+          type: integer
+          format: int32
+        equalAmount:
+          type: integer
+          format: int32
+    ApiResponseGpayVAResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/GpayVAResponse'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    GpayVAResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        response:
+          $ref: '#/components/schemas/Response'
+    Meta:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        msg:
+          type: string
+        internal_msg:
+          type: string
+    Response:
+      type: object
+      properties:
+        account_number:
+          type: string
+        account_name:
+          type: string
+        status:
+          type: string
+        start_at:
+          type: string
+        expire_at:
+          type: string
+        balance:
+          type: integer
+          format: int32
+        account_type:
+          type: string
+        number_of_transfer:
+          type: integer
+          format: int32
+        max_amount:
+          type: integer
+          format: int32
+        min_amount:
+          type: integer
+          format: int32
+        equal_amount:
+          type: integer
+          format: int32
+        signature:
+          type: string
+    GpayRepaymentWebhook:
+      type: object
+      properties:
+        type:
+          type: string
+        data:
+          type: string
+        hmac:
+          type: string
+    RepaymentRequest:
+      required:
+      - applicationId
+      - applicationType
+      - customerId
+      type: object
+      properties:
+        customerId:
+          type: string
+        applicationId:
+          type: string
+        applicationType:
+          type: string
+        amount:
+          type: integer
+          format: int32
+        tokenId:
+          type: string
+        bankCode:
+          type: string
+        callBackType:
+          type: string
+    ApiResponseGpayNapasOrderRepaymentResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/GpayNapasOrderRepaymentResponse'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    GpayNapasOrderRepaymentResponse:
+      type: object
+      properties:
+        return_message:
+          type: string
+        return_code:
+          type: integer
+          format: int32
+        order_url:
+          type: string
+    DeleteTokenRequest:
+      type: object
+      properties:
+        customerId:
+          type: string
+        token_id:
+          type: string
+    ApiResponseGpayDeleteTokenResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/GpayDeleteTokenResponse'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    GpayDeleteTokenResponse:
+      type: object
+      properties:
+        return_code:
+          type: integer
+          format: int32
+        return_message:
+          type: string
+    ApiResponseRepaymentTransaction:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/RepaymentTransaction'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    RepaymentTransaction:
+      type: object
+      properties:
+        id:
+          type: string
+        applicationId:
+          type: string
+        customerId:
+          type: string
+        applicationType:
+          type: string
+        providerTransactionId:
+          type: string
+        amount:
+          type: integer
+          format: int32
+        paymentFee:
+          type: integer
+          format: int32
+        status:
+          type: string
+        provider:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        updatedBy:
+          type: string
+    CreateRepaymentOrderRequest:
+      required:
+      - applicationId
+      - applicationType
+      - customerId
+      type: object
+      properties:
+        customerId:
+          type: string
+        applicationId:
+          type: string
+        applicationType:
+          type: string
+    GpayChangeBalanceWebhook:
+      type: object
+      properties:
+        gpay_trans_id:
+          type: string
+        bank_trace_id:
+          type: string
+        bank_transaction_id:
+          type: string
+        account_number:
+          type: string
+        amount:
+          type: string
+        message:
+          type: string
+        action:
+          type: string
+    CreateVARequest:
+      required:
+      - accountName
+      - customerId
+      type: object
+      properties:
+        customerId:
+          type: string
+        accountName:
+          type: string
+    ApiResponseVirtualAccount:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/VirtualAccount'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    VirtualAccount:
+      type: object
+      properties:
+        id:
+          type: string
+        customerId:
+          type: string
+        accountNumber:
+          type: string
+        accountName:
+          type: string
+        bankCode:
+          type: string
+        startAt:
+          type: string
+        expireAt:
+          type: string
+        balance:
+          type: integer
+          format: int32
+        accountType:
+          type: string
+        numberOfTransfer:
+          type: integer
+          format: int32
+        maxAmount:
+          type: integer
+          format: int32
+        minAmount:
+          type: integer
+          format: int32
+        equalAmount:
+          type: integer
+          format: int32
+    CoreDisburseRequest:
+      type: object
+      properties:
+        epayCustomerId:
+          type: string
+        epayLoanId:
+          type: string
+        core_loan_uuid:
+          type: string
+        benefit_account_no:
+          type: string
+        benefit_bank_code:
+          type: string
+        benefit_account_name:
+          type: string
+        amount:
+          type: integer
+          format: int64
+        transaction_note:
+          type: string
+    ApiResponseListRepaymentTransaction:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/RepaymentTransaction'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    GetTotalPaymentAmountRequest:
+      required:
+      - customerId
+      - loanId
+      type: object
+      properties:
+        customerId:
+          type: string
+        loanId:
+          type: string
+    ApiResponseGetTotalPaymentAmountResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/GetTotalPaymentAmountResponse'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    GetTotalPaymentAmountResponse:
+      type: object
+      properties:
+        totalPaymentAmount:
+          type: integer
+          format: int32
+        transactionList:
+          type: array
+          items:
+            $ref: '#/components/schemas/RepaymentTransaction'
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

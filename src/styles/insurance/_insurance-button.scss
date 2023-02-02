@@ -1,0 +1,89 @@
+@import "../variables";
+
+.insurance-btn {
+  width: 100%;
+  max-width: 330px;
+  height: 48px;
+  border-radius: 38px;
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  box-shadow: none;
+
+  &[type="button"]:not(:disabled),
+  &[type="reset"]:not(:disabled),
+  &[type="submit"]:not(:disabled),
+  &button:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+.insurance-btn.btn-primary:not(:disabled):not(.disabled).active:focus,
+.insurance-btn.btn-primary:not(:disabled):not(.disabled):active:focus,
+.show > .insurance-btn.btn-primary.dropdown-toggle:focus,
+.insurance-btn.btn-primary:focus,
+.insurance-btn.btn-secondary:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.insurance-btn.btn-primary {
+  background: $monex-color-00;
+  border: none !important;
+  cursor: pointer;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    $monex-color-00;
+    border: none !important;
+  }
+
+  &:disabled {
+    background: $grey-01;
+    color: $grey-05;
+    border: none !important;
+  }
+
+  &:disabled:hover {
+    cursor: auto;
+  }
+}
+
+.insurance-btn.btn-secondary {
+  background: $grey-01;
+  border: none !important;
+  cursor: pointer;
+  color: $grey-10;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: $grey-02;
+    border: none !important;
+  }
+
+  &:disabled {
+    background: $grey-11;
+    color: $grey-12;
+    border: none !important;
+  }
+
+  &:disabled:hover {
+    cursor: auto;
+  }
+
+  &:not(:disabled):not(.disabled):active:focus {
+    box-shadow: none;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .insurance-btn {
+    max-width: 271px;
+  }
+}

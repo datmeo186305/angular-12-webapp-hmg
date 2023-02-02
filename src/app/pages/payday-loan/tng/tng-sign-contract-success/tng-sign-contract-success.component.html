@@ -1,0 +1,38 @@
+<div id="sign-contract-success-container" class="container-fluid">
+  <div class="container-fluid ">
+    <div class="container pl-padding-bottom-default">
+      <div class="payday-loan-container">
+        <!-- sign contract success -->
+        <div>
+          <electronic-signing-success
+            [title]="'payday_loan.contract_terms_of_service.signed_contract_success' | translate"
+            [btnText]="'common.continue' | translate"
+            (btnClick)="redirectToCurrentLoanPage()"
+          >
+            <div class="pl-electronic-signing-success-body" body>
+              <div class="text-center">
+                <div class="sprite-group-3-monex-logo electronic-signing-logo"></div>
+              </div>
+
+              <div class="contract-success-body">
+                <p
+                  [innerHtml]=" 'payday_loan.sign_contract.thanks'| translate :{ name: firstName || ''}"
+                  class="contract-success-text-default"></p>
+                <p class="contract-success-text-default">
+                  {{ "payday_loan.sign_contract.signed_contract_success_text"| translate }}
+                </p>
+                <br/>
+                <p class="contract-success-text-default">
+                  {{ "payday_loan.sign_contract.signed_contract_success_loan_id" | translate :{loanId: loanCode || ''}
+                  }}
+                </p>
+              </div>
+            </div>
+
+
+          </electronic-signing-success>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

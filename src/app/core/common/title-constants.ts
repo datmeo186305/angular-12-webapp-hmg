@@ -1,0 +1,28 @@
+export class TitleConstants {
+  public static TITLE_VALUE: any = {
+    LANDING_PAGE: 'Trang chủ',
+    SIGN_IN: 'Đăng nhập',
+    SIGN_UP: 'Đăng ký',
+    SIGN_UP_SUCCESS: 'Đăng ký thành công',
+    FORGET_PASSWORD: 'Quên mật khẩu',
+    RESET_PASSWORD_SUCCESS: 'Đổi mật khẩu thành công',
+    COMPANIES: 'Chọn công ty',
+    MAINTAIN: 'Bảo trì',
+    MAINTAIN_TNG: 'Thông báo tạm ngừng dịch vụ',
+    EKYC: 'Định danh điện tử',
+    CONFIRM_INFORMATION: 'Xác nhận thông tin',
+    SIGN_APPROVAL_LETTER: 'Ký thư chấp thuận',
+    SIGN_APPROVAL_LETTER_SUCCESS: 'Ký thư chấp thuận thành công',
+    ADDITIONAL_INFORMATION: 'Bổ sung thông tin',
+    LOAN_DETERMINATION: 'Chọn số tiền cần ứng',
+    CURRENT_LOAN: 'Khoản ứng hiện tại',
+    SIGN_CONTRACT: 'Chi tiết hợp đồng',
+    SIGN_CONTRACT_SUCCESS: 'Ký hợp đồng thành công',
+    LOAN_PAYMENT: 'Chi tiết khoản tất toán',
+    LOAN_STEP_PAYMENT: 'Chi tiết thanh toán',
+    CHOOSE_PAYMENT_METHOD: 'Chọn hình thức thanh toán',
+    PAYMENT_CALLBACK: 'Kết quả thanh toán',
+    ADDITIONAL_DOCUMENTS: 'Bổ sung tài liệu',
+    NOT_FOUND: '404 Not found',
+  };
+}

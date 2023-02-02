@@ -1,0 +1,82 @@
+<div id="pl-sign-contract-terms-container" class="container-fluid">
+  <div *ngIf="!isSentOtpOnsign; else isntSentOtpOnsign">
+    <div class="container-fluid pl-pdf-document-container">
+      <div class="container sign-contract-pdf-document">
+        <mat-drawer-container>
+          <mat-drawer-content>
+            <pdf-viewer
+              [src]="linkPdf"
+              [autoresize]="true"
+              [original-size]="false"
+              [show-all]="true"
+              [render-text]="true"
+              (after-load-complete)="afterload()"
+            ></pdf-viewer>
+          </mat-drawer-content>
+        </mat-drawer-container>
+      </div>
+    </div>
+    <div
+      class="container-fluid pl-btn-sign-contract-mobile-box"
+    >
+      <button
+        type="button"
+        id="pl-sign-contract-btn"
+        class="insurance-btn btn-primary pl-btn-sign-contract-mobile"
+        (click)="signContract()"
+        *ngIf="showSignContractBtn"
+      >
+        <div class="d-inline-flex align-items-center">
+          <span class="sprite-group-3-sign-contract-icon sign-contract-icon"></span>
+          <span>{{ 'payday_loan.sign_contract.button_text' | translate }}</span>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <ng-template #isntSentOtpOnsign>
+    <div class="container-fluid pl-space-between-content">
+      <div class="container pl-padding-bottom-default">
+        <div class="payday-loan-container">
+          <app-verify-otp-form (verifyOtp)="verifyOtp($event)"
+                               (resendOtp)="resendOtp()"
+                               [mobile]="mobile"
+                               [otpValue]="otp"
+                               [showSubmitButton]="false"
+                               [errorText]="errorText"
+                               [showMethods]="true"
+                               (chooseMethodOtp)="chooseMethodOtp($event)"
+                               [errorSendOtpText]="errorSendOtpText"
+                               [disabled]="disabledOTP"
+                               [currentOtpMethod]="method">
+            <p *ngIf="method === 'VOICE'" class="pl-space-between-content sent-otp-text" [innerHtml]="
+            'payday_loan.contract_terms_of_service.sent_otp_success'
+              | translate
+                : {
+                    key: 'số điện thoại',
+                    value: mobile
+                  }
+          " guide></p>
+          <p *ngIf="method === 'SMS'" class="pl-space-between-content sent-otp-text" [innerHtml]="
+            'payday_loan.contract_terms_of_service.sent_otp_success'
+              | translate
+                : {
+                    key: 'tài khoản ZALO ứng với số điện thoại',
+                    value: mobile
+                  }
+          " guide></p>
+            <p
+            *ngIf="method === 'EMAIL'"
+              class="pl-space-between-content sent-otp-text"
+              [innerHtml]="'payday_loan.sign_contract.sent_otp_success' | translate : {
+                    key: 'email',
+                    value: userInfo?.personalData?.emailAddress
+                  }" guide>
+            </p>
+          </app-verify-otp-form>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+</div>

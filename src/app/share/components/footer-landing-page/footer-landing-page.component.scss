@@ -1,0 +1,228 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/insurance/insurance";
+@import "../../../../styles/insurance/insurance-form";
+
+.main-title {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 38px;
+  color: #1a2c58;
+}
+
+.sub-title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #8e8e93;
+}
+
+.title-1 {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 32px;
+  color: #1a2c58;
+}
+
+.title-2 {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+}
+
+.title-3 {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #636366;
+}
+
+.title-4 {
+  font-family: $sfPro;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.1px;
+}
+
+.body-2 {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.footnote-2 {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.1px;
+  color: #636366;
+}
+
+.footnote-1 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: white;
+}
+
+.landing-container {
+  max-width: 1172px;
+  padding: 0 16px;
+  margin: auto;
+}
+
+.display-web {
+  display: block;
+}
+
+.display-mobile {
+  display: none;
+}
+
+#footer {
+  margin-top: 80px;
+  background: #1a2c58;
+  color: white;
+  padding: 16px 0 22px;
+  .info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .brand {
+      display: flex;
+      img {
+        height: 48px;
+        width: auto;
+      }
+    }
+    mat-divider {
+      height: 16px;
+      border-width: 1px;
+      border-color: rgba(255, 255, 255, 0.5);
+      margin: 0 1.7vw;
+    }
+    .slogan {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 18px;
+      letter-spacing: 0.1px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    .brands-footer {
+      display: flex;
+      align-content: center;
+      width: 333px;
+      color: rgba(255, 255, 255, 0.5);
+      img {
+        margin: 0 12px;
+      }
+    }
+  }
+
+  .horizontal-divider {
+    margin-top: 20px;
+    margin-bottom: 22px;
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .address-contact {
+    display: flex;
+    justify-content: space-between;
+    .address {
+      display: flex;
+      align-items: center;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .hotline {
+      height: 36px;
+      color: white;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 100px;
+      img {
+        margin-right: 4px;
+        margin-bottom: 1px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .main-title {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 26px;
+    text-align: center;
+    color: #1a2c58;
+  }
+
+  .display-web {
+    display: none;
+  }
+
+  .display-mobile {
+    display: block;
+  }
+
+  #footer {
+    padding: 24px 0;
+    .info {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      .info-1 {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 24px;
+      }
+      .slogan {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: 0.1px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+    }
+
+    .horizontal-divider {
+      margin: 24px 0;
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .address-contact {
+      flex-direction: column;
+      gap: 24px;
+      .hotline {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 359px) {
+  .landing-container {
+    padding: 0 12px;
+    margin: auto;
+  }
+
+  #footer {
+    padding: 24px 0;
+    .info {
+      .brands-footer {
+        flex-wrap: wrap;
+        gap: 4px;
+        width: auto;
+        img {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+<div class="payment-method-container">
+  <h2 class="payment-method-title">
+    {{ 'payment.choose_payment_method.card_payment' | translate }}
+  </h2>
+
+  <div id="card-method-img-container" class="d-flex justify-content-between">
+    <div
+      class="d-inline-flex justify-content-center text-center card-method-img-box"
+    >
+      <img [src]="'/assets/img/insurance/napas.png'" alt="napas" class="card-method-img"/>
+    </div>
+    <div class="d-inline-flex align-items-center">
+      <div id="stick-card"></div>
+    </div>
+    <div
+      class="d-inline-flex justify-content-center text-center card-method-img-box"
+    >
+      <img [src]="'/assets/img/insurance/gpay.png'" alt="gpay" class="card-method-img"/>
+    </div>
+  </div>
+
+  <p class="card-payment-text">
+    {{ 'payment.choose_payment_method.card_payment_napas' | translate }}
+  </p>
+
+  <div id="amount-to-be-paid-content">
+    <div class="payment-content-container">
+      <div class="payment-content-left">
+        <label class="payment-content-label">
+          {{ 'payment.choose_payment_method.amount_to_be_paid' | translate }}
+        </label>
+        <p class="payment-content-value">
+          {{ amountToBePaid | formatPrice: null}}
+        </p>
+
+        <p class="payment-content-hint">
+          {{ 'payment.choose_payment_method.hint_amount_to_be_paid' | translate }}
+        </p>
+      </div>
+      <div class="payment-content-right"></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="btn-actions text-center">
+  <button
+    type="submit"
+    id="finalization-btn-submit"
+    class="insurance-btn btn-primary"
+    [disabled]="disabledBtn"
+    (click)="finalization()"
+  >
+    {{ 'payment.choose_payment_method.payment' | translate }}
+    <span id="card-payment-countdown-timer" class="pl-countdown-time" *ngIf="disabledBtn">( {{ countdownTime }}
+      s )</span>
+  </button>
+</div>

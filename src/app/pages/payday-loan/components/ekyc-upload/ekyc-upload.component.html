@@ -1,0 +1,79 @@
+<form [formGroup]="ekycForm" class="pl-space-between-box" #ekycFormWrapper>
+  <div class="container-fluid">
+    <div class="container ekyc-upload-container pl-padding-bottom-default">
+      <div class="">
+        <div class="ekyc-upload-box">
+          <!--   Front    -->
+          <image-upload-area
+            id="frontIDCardKalapa"
+            name="frontIDCard"
+            [imageSrc]="frontID"
+            [initValue]="initValue?.frontID"
+            [placeholderImageSrc]="'sprite-group-3-placeholder-icon'"
+            [filledTitle]="
+              'payday_loan.ekyc.front_identity_card_img' | translate
+            "
+            [uploadTitle]="
+              'payday_loan.ekyc.upload_front_identity_card_img' | translate
+            "
+            [required]="true"
+            [isManualUploadFile]="true"
+            [rules]="'required|size:20000|mimes:image/*'"
+            [acceptFileType]="'image/*'"
+            (receiveResult)="resultFrontIdCard($event)"
+          >
+          </image-upload-area>
+
+          <!--   Back    -->
+          <image-upload-area
+            id="backIDCardKalapa"
+            name="backIDCard"
+            [imageSrc]="backID"
+            [initValue]="initValue?.backID"
+            [placeholderImageSrc]="'sprite-group-3-id-card-back'"
+            [filledTitle]="
+              'payday_loan.ekyc.back_identity_card_img' | translate
+            "
+            [uploadTitle]="
+              'payday_loan.ekyc.upload_back_identity_card_img' | translate
+            "
+            [required]="true"
+            [isManualUploadFile]="true"
+            [rules]="'required|size:20000|mimes:image/*'"
+            [acceptFileType]="'image/*'"
+            (receiveResult)="resultBackIdCard($event)"
+          >
+          </image-upload-area>
+
+          <!--   Selfie    -->
+          <image-upload-area
+            id="selfieKalapa"
+            name="selfie"
+            [imageSrc]="selfie"
+            [initValue]="initValue?.selfie"
+            [placeholderImageSrc]="'sprite-group-3-selfie'"
+            [filledTitle]="'payday_loan.ekyc.selfie_img' | translate"
+            [uploadTitle]="'payday_loan.ekyc.upload_selfie_img' | translate"
+            [required]="true"
+            [isManualUploadFile]="true"
+            [rules]="'required|size:20000|mimes:image/*'"
+            [acceptFileType]="'image/*'"
+            (receiveResult)="resultSelfie($event)"
+          >
+          </image-upload-area>
+        </div>
+        <div class="text-center pl-space-between-box">
+          <button
+            type="submit"
+            [disabled]="disabledBtn"
+            (click)="onSubmit()"
+            id="ekyc-btn-submit"
+            class="insurance-btn btn-primary ekyc-submit-btn"
+          >
+            {{ "common.continue" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

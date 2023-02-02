@@ -1,0 +1,98 @@
+<div class="area-upload-container">
+  <a
+    href="javascript:void(0)"
+    class="ekyc-upload-area filled-ekyc-upload-area"
+    *ngIf="image; else hasNotFile"
+  >
+    <img *ngIf="!file" [src]="image" alt="" class="uploaded-img"/>
+    <img *ngIf="
+          file &&
+            [
+              'image/gif',
+              'image/jpeg',
+              'image/png',
+              'image/jpg',
+              'jpg',
+              'gif',
+              'jpeg',
+              'png'
+            ].includes(file['type']); else isNotImg
+        "
+         [src]="image"
+         alt=""
+         class="uploaded-img"
+    />
+    <ng-template #isNotImg>
+      <div class="uploaded-img uploaded-file">
+        <div class="uploaded-file-box">
+          <div class="pl-upload-icon" [ngClass]="placeholderImageSrc"></div>
+          <div class="pl-filename">
+            <span class="pl-name">{{ fileName }}</span>
+            <span class="pl-extension">{{ "." + fileType }}</span>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+    <div class="filled-ekyc-action">
+      <p class="filled-ekyc-title">
+        <span>{{ filledTitle }}</span>
+        <span class="sprite-group-3-mandatory" *ngIf="required"></span>
+      </p>
+      <button
+        class="btn-change-img"
+        [disabled]="disabled"
+        (click)="changeImageSrc()"
+      >
+        <div class="sprite-group-3-arrow-counterclockwise-white-24 change-img-icon"></div>
+        <span>{{"common.change" | translate }}</span>
+      </button>
+    </div>
+  </a>
+  <ng-template #hasNotFile>
+    <button
+      class="ekyc-upload-area"
+      [disabled]="disabled"
+      (click)="uploadImg()"
+    >
+      <div class="ekyc-place-content">
+        <div class="ekyc-body">
+          <div class="text-center ekyc-upload-img" *ngIf="placeholderImageSrc">
+            <div class="box-ekyc-img">
+              <div class="pl-upload-icon" [ngClass]="placeholderImageSrc"></div>
+              <div class="sprite-group-3-add pl-add-icon"></div>
+            </div>
+          </div>
+          <div class="text-center ekyc-upload-title" *ngIf="uploadTitle">
+            <p>
+              <span>{{ uploadTitle }}</span>
+              <span class="sprite-group-3-mandatory" *ngIf="required"></span>
+            </p>
+          </div>
+          <div class="text-center ekyc-upload-hint" *ngIf="uploadHint">
+            <p>
+              <span>{{ uploadHint }}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </button>
+  </ng-template>
+
+  <input name="reset_manual_upload_input" type="reset" [id]="'reset-manual-upload-input-'+ id" hidden/>
+  <input
+    name="manual_upload_input"
+    type="file"
+    [id]="'manual-upload-input-' + id"
+    #[{{id}}]
+    [disabled]="disabled"
+    (change)="onFileChange($event);"
+    [accept]="acceptFileType"
+    [name]="name"
+    hidden
+  />
+
+  <!--  <div class="pl-invalid-feedback" v-if="errors[0]">-->
+  <!--    {{ errors[0] }}-->
+  <!--  </div>-->
+</div>

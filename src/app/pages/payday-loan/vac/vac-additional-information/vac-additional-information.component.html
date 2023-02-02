@@ -1,0 +1,530 @@
+<div class="container">
+  <div class="insurance-container">
+    <section>
+      <div class="main-content">
+        <form [formGroup]="additionalInfoForm" class="form-container">
+          <div class="row responsive-form-content">
+            <!-- Thông tin cá nhân -->
+            <div class="col-md-12">
+              <h2>
+                {{
+                  "payday_loan.additional_information.profile_info" | translate
+                }}
+              </h2>
+            </div>
+
+            <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{
+                  "payday_loan.additional_information.marital_status"
+                    | translate
+                }}</mat-label>
+                <mat-select
+                  formControlName="maritalStatus"
+                  required
+                  [placeholder]="
+                    'payday_loan.additional_information.type_marital_status'
+                      | translate
+                  "
+                >
+                  <div *ngFor="let option of maritalStatus.options">
+                    <mat-option [value]="option">
+                      {{ option }}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                  </div>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{
+                  "payday_loan.additional_information.educational_status"
+                    | translate
+                }}</mat-label>
+                <mat-select
+                  formControlName="educationType"
+                  [placeholder]="
+                    'payday_loan.additional_information.type_educational_status'
+                      | translate
+                  "
+                  required
+                >
+                  <div *ngFor="let option of educationType.options">
+                    <mat-option [value]="option">
+                      {{ option }}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                  </div>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{borrowerDetailTextVariable1?.fieldName}}</mat-label>
+                <input
+                  name="borrowerDetailTextVariable1"
+                  matInput
+                  formControlName="borrowerDetailTextVariable1"
+                  [placeholder]="
+                   borrowerDetailTextVariable1?.fieldName
+                  "
+                  required
+                  type="number"
+                  maxlength="255"
+                  min="0"
+                  [matAutocomplete]="auto"
+                />
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                  <mat-option
+                    *ngFor="let option of borrowerDetailTextVariable1?.options"
+                    [value]="option.value"
+                  >
+                    {{ option.title }}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </div>
+
+            <!-- Thông tin doanh nghiệp -->
+            <div class="col-md-12">
+              <h2>
+                {{
+                  "payday_loan.additional_information.company_info" | translate
+                }}
+              </h2>
+            </div>
+
+            <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{
+                  "payday_loan.additional_information.employee_type" | translate
+                }}</mat-label>
+                <mat-select
+                  formControlName="employeeType"
+                  required
+                  [placeholder]="
+                    'payday_loan.additional_information.choose_employee_type'
+                      | translate
+                  "
+                >
+                  <div *ngFor="let option of employeeType.options">
+                    <mat-option [value]="option.value">
+                      {{ option.viewValue }}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                  </div>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <!-- Vị trí công tác -->
+            <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{
+                  "payday_loan.additional_information.job_position" | translate
+                }}</mat-label>
+                <input
+                  name="job_position"
+                  matInput
+                  formControlName="jobPosition"
+                  [placeholder]="
+                    'payday_loan.additional_information.job_position'
+                      | translate
+                  "
+                  required
+                  maxlength="255"
+                />
+                <show-errors
+                  [control]="additionalInfoForm.controls['jobPosition']"
+                  [controlLabel]="
+                    'payday_loan.additional_information.job_position'
+                      | translate
+                  "
+                  [hasIconPrefix]="false"
+                >
+                </show-errors>
+              </mat-form-field>
+            </div>
+
+            <!-- Loại hình công việc -->
+            <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{
+                  "payday_loan.additional_information.job_type" | translate
+                }}</mat-label>
+                <mat-select
+                  formControlName="jobType"
+                  [placeholder]="
+                    'payday_loan.additional_information.job_type' | translate
+                  "
+                  required
+                >
+                  <div *ngFor="let option of jobType.options">
+                    <mat-option [value]="option">
+                      {{ option }}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                  </div>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <!-- Thời hạn trên hợp đồng lao động -->
+            <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{
+                  "payday_loan.additional_information.contractual_term"
+                    | translate
+                }}</mat-label>
+                <mat-select
+                  formControlName="contractExpiration"
+                  [placeholder]="
+                    'payday_loan.additional_information.contractual_term'
+                      | translate
+                  "
+                  required
+                >
+                  <div *ngFor="let option of contractExpiration.options">
+                    <mat-option [value]="option">
+                      {{ option }}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                  </div>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <!-- Thông tin tài chính -->
+            <div class="col-md-12">
+              <h3>
+                {{
+                  "payday_loan.additional_information.economic_info" | translate
+                }}
+              </h3>
+            </div>
+
+            <!-- Số tài khoản ngân hàng -->
+            <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{
+                  "payday_loan.additional_information.account_number"
+                    | translate
+                }}</mat-label>
+                <input
+                  name="account_number"
+                  matInput
+                  formControlName="accountNumber"
+                  [placeholder]="
+                    'payday_loan.additional_information.account_number'
+                      | translate
+                  "
+                  type="tel"
+                  required
+                />
+                <show-errors
+                  [control]="additionalInfoForm.controls['accountNumber']"
+                  [controlLabel]="
+                    'payday_loan.additional_information.account_number'
+                      | translate
+                  "
+                  [hasIconPrefix]="false"
+                >
+                </show-errors>
+              </mat-form-field>
+            </div>
+
+            <!-- Ngân hàng -->
+            <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{
+                  "payday_loan.additional_information.bank" | translate
+                }}</mat-label>
+                <mat-select
+                  formControlName="bankCode"
+                  [placeholder]="
+                    'payday_loan.additional_information.choose_bank' | translate
+                  "
+                  required
+                >
+                  <mat-option>
+                    <ngx-mat-select-search
+                      [formControl]="banksFilterCtrl"
+                      placeholderLabel="Tìm Ngân Hàng"
+                      noEntriesFoundLabel="Ngân Hàng không tồn tại"
+                    ></ngx-mat-select-search>
+                  </mat-option>
+                  <div *ngFor="let bankOption of filteredBanks">
+                    <mat-option [value]="bankOption?.bankCode">
+                      {{ bankOption?.bankName + " - " + bankOption?.bankCode }}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                  </div>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <!-- Thời gian làm việc ở công ty hiện tại -->
+            <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{
+                  "payday_loan.additional_information.working_time" | translate
+                }}</mat-label>
+                <mat-select
+                  formControlName="borrowerEmploymentHistoryTextVariable1"
+                  [placeholder]="
+                    'payday_loan.additional_information.choose_working_time'
+                      | translate
+                  "
+                  required
+                >
+                  <div
+                    *ngFor="
+                      let option of borrowerEmploymentHistoryTextVariable1.options
+                    "
+                  >
+                    <mat-option [value]="option">
+                      {{ option }}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                  </div>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-12">
+              <h2>
+                {{
+                  "payday_loan.additional_information.salary_info_title"
+                    | translate
+                }}
+              </h2>
+              <p
+                [innerHTML]="
+                  'payday_loan.additional_information.choose_amount_range'
+                    | translate
+                "
+              ></p>
+            </div>
+
+            <!-- <div class="col-md-12">
+              <mat-form-field appearance="outline" floatLabel="never" class="w-100">
+                <mat-label>{{ borrowerEmploymentAverageWage.fieldName }}</mat-label>
+                <mat-select formControlName="borrowerEmploymentAverageWage" required>
+                  <div *ngFor="let option of borrowerEmploymentAverageWage.options">
+                    <mat-option [value]="option">
+                      {{ option }}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                  </div>
+                </mat-select>
+              </mat-form-field>
+            </div> -->
+            <div
+              class="
+                col-md-12
+                d-flex
+                align-items-center
+                justify-content-between
+              "
+            >
+              <label id="salary-amount"
+                >{{
+                  "payday_loan.additional_information.salary_choose" | translate
+                }}
+                <span class="required">*</span>
+              </label>
+              <p id="salary-amount-value">
+                {{
+                  additionalInfoForm.controls["borrowerEmploymentAverageWage"]
+                    .value | formatMillionPrice
+                }}
+              </p>
+            </div>
+            <div class="col-md-12">
+              <mat-slider
+                color="primary"
+                formControlName="borrowerEmploymentAverageWage"
+                class="w-100"
+                [max]="maxAmount"
+                [min]="minAmount"
+                [step]="step"
+                (input)="onValueChange($event)"
+              >
+              </mat-slider>
+            </div>
+            <div
+              class="
+                col-md-12
+                d-flex
+                align-items-center
+                justify-content-between
+              "
+            >
+              <p class="value">{{ minAmount | formatMillionPrice }}</p>
+              <p class="value">{{ maxAmount | formatMillionPrice }}</p>
+            </div>
+
+            <div class="col-md-12">
+              <div class="text-center btn-container">
+                <button
+                  mat-raised-button
+                  type="submit"
+                  class="ui-button w-100"
+                  id="additional-user-info-confirm-btn"
+                  color="primary"
+                  [disabled]="!additionalInfoForm.valid"
+                  (click)="onSubmit()"
+                >
+                  {{ "common.continue" | translate }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="row responsive-form-content">
+            <div *ngFor="let group of questionsGroups">
+              <div class="col-md-12">
+                <h2>
+                  {{ group.groupName | translate }}
+                </h2>
+              </div>
+
+              <div class="col-md-12" *ngFor="let question of questionsList">
+                <mat-form-field
+                  appearance="outline"
+                  floatLabel="never"
+                  class="w-100"
+                  *ngIf="question?.type != 'SLIDER'"
+                >
+                  <mat-label>{{ question?.content | translate }}</mat-label>
+                  <mat-select
+                    *ngIf="question?.type === 'SELECT'"
+                    [formControlName]="question?.variableName"
+                    [required]="question?.isRequired"
+                    [placeholder]="question?.content | translate"
+                  >
+                    <div *ngFor="let answer of question.answers">
+                      <mat-option [value]="aswer.id">
+                        {{ aswer.content }}
+                      </mat-option>
+                      <mat-divider></mat-divider>
+                    </div>
+                  </mat-select>
+
+                  <input
+                    *ngIf="question?.type === 'SELECT'"
+                    name="current_address"
+                    matInput
+                    [formControlName]="question?.variableName"
+                    [required]="question?.isRequired"
+                    [placeholder]="question?.content | translate"
+                  />
+                  <show-errors
+                  [control]="infoForm.controls['currentAddress']"
+                  [controlLabel]="
+                    'payday_loan.confirm_information.current_residence'
+                      | translate
+                  "
+                  [hasIconPrefix]="false"
+                > </show-errors>
+                </mat-form-field>
+
+                <div *ngIf="question?.type === 'SLIDER'">
+                  <div
+                    class="
+                      col-md-12
+                      d-flex
+                      align-items-center
+                      justify-content-between
+                    "
+                  >
+                    <label id="salary-amount"
+                      >{{
+                        "payday_loan.additional_information.salary_choose"
+                          | translate
+                      }}
+                      <span class="required">*</span>
+                    </label>
+                    <p id="salary-amount-value">
+                      {{
+                        additionalInfoForm.controls[
+                          "borrowerEmploymentAverageWage"
+                        ].value | formatMillionPrice
+                      }}
+                    </p>
+                  </div>
+                  <div class="col-md-12">
+                    <mat-slider
+                      color="primary"
+                      formControlName="borrowerEmploymentAverageWage"
+                      class="w-100"
+                      [max]="maxAmount"
+                      [min]="minAmount"
+                      [step]="step"
+                      (input)="onValueChange($event)"
+                    >
+                    </mat-slider>
+                  </div>
+                  <div
+                    class="
+                      col-md-12
+                      d-flex
+                      align-items-center
+                      justify-content-between
+                    "
+                  >
+                    <p class="value">{{ minAmount | formatMillionPrice }}</p>
+                    <p class="value">{{ maxAmount | formatMillionPrice }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </form>
+      </div>
+    </section>
+  </div>
+</div>

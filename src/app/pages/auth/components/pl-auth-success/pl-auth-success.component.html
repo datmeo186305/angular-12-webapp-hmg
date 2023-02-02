@@ -1,0 +1,24 @@
+<div id="pl-auth-success-container">
+  <div class="d-flex">
+    <div class="sprite-group-3-check-mark pl-check-mark-icon"></div>
+  </div>
+
+  <h2 class="pl-auth-success-title pl-space-between-content">
+    {{ title }}
+  </h2>
+  <div class="pl-auth-success-body pl-space-between-content">
+    <p class="pl-auth-success-body-text" [innerHTML]="bodyText"></p>
+  </div>
+  <div class="text-center pl-space-between-content" *ngIf="showBtn">
+    <button
+      id="sign-up-success-btn"
+      type="submit"
+      class="insurance-btn btn-primary btn-sign-up-success"
+      [disabled]="disabledBtn"
+      (click)="btnClickTrigger()"
+    >
+      {{ btnText }}
+    </button>
+  </div>
+  <ng-content select="[action]"></ng-content>
+</div>

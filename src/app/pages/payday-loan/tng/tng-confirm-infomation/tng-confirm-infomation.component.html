@@ -1,0 +1,458 @@
+<div class="container">
+  <div class="insurance-container">
+    <section>
+      <div class="main-content">
+        <form
+          [formGroup]="infoForm"
+          class="form-container"
+          *ngIf="!displayCompanyInfo; else companyInfo"
+        >
+          <div class="row responsive-form-content">
+            <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{
+                  "payday_loan.confirm_information.full_name" | translate
+                }}</mat-label>
+                <input
+                  name="full_name"
+                  matInput
+                  formControlName="name"
+                  [readonly]="disabledInReturnFlow"
+                  [attr.disabled]="disabledInReturnFlow"
+                  [placeholder]="
+                    'payday_loan.confirm_information.type_full_name' | translate
+                  "
+                  required
+                  maxlength="255"
+                />
+                <show-errors
+                  [control]="infoForm.controls['name']"
+                  [controlLabel]="
+                    'payday_loan.confirm_information.full_name' | translate
+                  "
+                  [hasIconPrefix]="false"
+                >
+                </show-errors>
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{
+                  "payday_loan.confirm_information.date_of_birth" | translate
+                }}</mat-label>
+                <input
+                  name="date_of_birth"
+                  matInput
+                  [matDatepicker]="picker"
+                  [disabled]="disabledInReturnFlow"
+                  formControlName="dateOfBirth"
+                  [placeholder]="
+                    'payday_loan.confirm_information.choose_date_of_birth'
+                      | translate
+                  "
+                  [min]="minDateTime"
+                  [max]="maxDateTime"
+                  readonly
+                  required
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [disabled]="disabledInReturnFlow"
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker
+                  [disabled]="disabledInReturnFlow"
+                  #picker
+                ></mat-datepicker>
+                <show-errors
+                  [control]="infoForm.controls['dateOfBirth']"
+                  [controlLabel]="
+                    'payday_loan.confirm_information.date_of_birth' | translate
+                  "
+                  [hasIconPrefix]="false"
+                >
+                </show-errors>
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-12">
+              <div class="d-flex flex-column">
+                <label #genderLabel class="radio-label"
+                  >{{ "payday_loan.confirm_information.sex" | translate }}
+                  <span class="rq-highlight">*</span></label
+                >
+                <mat-radio-group
+                  aria-labelledby="genderLabel"
+                  formControlName="gender"
+                  [disabled]="disabledInReturnFlow"
+                  required
+                >
+                  <mat-radio-button
+                    color="primary"
+                    *ngFor="let genderOption of genderOptions"
+                    [value]="genderOption"
+                  >
+                    {{ genderOption }}
+                  </mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{
+                  "payday_loan.confirm_information.identity_number" | translate
+                }}</mat-label>
+                <input
+                  name="identity_number"
+                  matInput
+                  formControlName="identityNumberOne"
+                  [readonly]="disabledInReturnFlow"
+                  [attr.disabled]="disabledInReturnFlow"
+                  [placeholder]="
+                    'payday_loan.confirm_information.type_identity_number'
+                      | translate
+                  "
+                  required
+                  maxlength="20"
+                />
+                <show-errors
+                  [control]="infoForm.controls['identityNumberOne']"
+                  [controlLabel]="
+                    'payday_loan.confirm_information.identityNumberOne'
+                      | translate
+                  "
+                  [hasIconPrefix]="false"
+                >
+                </show-errors>
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{
+                  "payday_loan.confirm_information.identity_given_place"
+                    | translate
+                }}</mat-label>
+                <input
+                  name="identity_given_place"
+                  matInput
+                  [readonly]="disabledInReturnFlow"
+                  [attr.disabled]="disabledInReturnFlow"
+                  formControlName="idIssuePlace"
+                  [placeholder]="
+                    'payday_loan.confirm_information.identity_given_place'
+                      | translate
+                  "
+                  required
+                  maxlength="256"
+                />
+                <show-errors
+                  [control]="infoForm.controls['idIssuePlace']"
+                  [controlLabel]="
+                    'payday_loan.confirm_information.identity_given_place'
+                      | translate
+                  "
+                  [hasIconPrefix]="false"
+                >
+                </show-errors>
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{
+                  "payday_loan.confirm_information.permanent_address"
+                    | translate
+                }}</mat-label>
+                <input
+                  name="permanent_address"
+                  matInput
+                  formControlName="permanentAddress"
+                  [readonly]="disabledInReturnFlow"
+                  [attr.disabled]="disabledInReturnFlow"
+                  [placeholder]="
+                    'payday_loan.confirm_information.type_permanent_address'
+                      | translate
+                  "
+                  required
+                  maxlength="256"
+                />
+                <show-errors
+                  [control]="infoForm.controls['permanentAddress']"
+                  [controlLabel]="
+                    'payday_loan.confirm_information.permanent_address'
+                      | translate
+                  "
+                  [hasIconPrefix]="false"
+                >
+                </show-errors>
+              </mat-form-field>
+            </div>
+
+           <!-- <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{
+                  "payday_loan.confirm_information.city"
+                    | translate
+                  }}</mat-label>
+
+                <mat-select required formControlName="city" (openedChange)="toggleSelect()" (selectionChange)="changeCity()">
+                  <mat-option>
+                  <ngx-mat-select-search [formControl]="citiesFilterCtrl"
+                                         placeholderLabel="Tìm Tỉnh/Thành Phố..."
+                                         noEntriesFoundLabel="Tỉnh/Thành Phố không tồn tại"
+                  ></ngx-mat-select-search>
+                  </mat-option>
+                  <mat-option *ngFor="let city of filteredCities" [value]="city.id">
+                    {{city.name}}
+                  </mat-option>
+                </mat-select>
+                <show-errors
+                  [control]="infoForm.controls['city']"
+                  [controlLabel]="
+                    'payday_loan.confirm_information.city'
+                      | translate
+                  "
+                  [hasIconPrefix]="false"
+                >
+                </show-errors>
+
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{
+                  "payday_loan.confirm_information.district"
+                    | translate
+                  }}</mat-label>
+
+                <mat-select [disabled]="!infoForm.controls.city.value" required formControlName="district" (selectionChange)="changeCommune()" (openedChange)="toggleSelect()">
+                  <mat-option>
+                  <ngx-mat-select-search [formControl]="districtsFilterCtrl"
+                                         placeholderLabel="Tìm Quận/Huyện..."
+                                         noEntriesFoundLabel="Quận/Huyện không tồn tại"
+                  ></ngx-mat-select-search>
+                    </mat-option>
+                  <mat-option *ngFor="let district of filteredDistricts" [value]="district.id">
+                    {{district.name}}
+                  </mat-option>
+                </mat-select>
+                <show-errors
+                  [control]="infoForm.controls['district']"
+                  [controlLabel]="
+                    'payday_loan.confirm_information.district'
+                      | translate
+                  "
+                  [hasIconPrefix]="false"
+                >
+                </show-errors>
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{
+                  "payday_loan.confirm_information.commune"
+                    | translate
+                  }}</mat-label>
+
+                <mat-select [disabled]="!infoForm.controls.district.value" required formControlName="commune" (openedChange)="toggleSelect()">
+                  <mat-option>
+                  <ngx-mat-select-search [formControl]="communesFilterCtrl"
+                                         placeholderLabel="Tìm Quận/Huyện..."
+                                         noEntriesFoundLabel="Quận/Huyện không tồn tại"
+                  ></ngx-mat-select-search>
+                  </mat-option>
+                  <mat-option *ngFor="let commune of filteredCommunes" [value]="commune.id">
+                    {{commune.name}}
+                  </mat-option>
+                </mat-select>
+                <show-errors
+                  [control]="infoForm.controls['commune']"
+                  [controlLabel]="
+                    'payday_loan.confirm_information.commune'
+                      | translate
+                  "
+                  [hasIconPrefix]="false"
+                >
+                </show-errors>
+              </mat-form-field>
+            </div> -->
+
+            <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{
+                  "payday_loan.confirm_information.current_residence"
+                    | translate
+                }}</mat-label>
+                <input
+                  name="current_address"
+                  matInput
+                  formControlName="currentAddress"
+                  [placeholder]="
+                    'payday_loan.confirm_information.type_current_residence'
+                      | translate
+                  "
+                  required
+                  maxlength="1000"
+                />
+                <show-errors
+                  [control]="infoForm.controls['currentAddress']"
+                  [controlLabel]="
+                    'payday_loan.confirm_information.current_residence'
+                      | translate
+                  "
+                  [hasIconPrefix]="false"
+                >
+                </show-errors>
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{
+                  "payday_loan.confirm_information.email" | translate
+                }}</mat-label>
+                <input
+                  name="email"
+                  matInput
+                  formControlName="email"
+                  [placeholder]="
+                    'payday_loan.confirm_information.type_email' | translate
+                  "
+                  required
+                  maxlength="255"
+                />
+                <show-errors
+                  [control]="infoForm.controls['email']"
+                  [controlLabel]="
+                    'payday_loan.confirm_information.email' | translate
+                  "
+                  [hasIconPrefix]="false"
+                >
+                </show-errors>
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-12">
+              <div class="text-center btn-container">
+                <button
+                  mat-raised-button
+                  type="submit"
+                  class="ui-button"
+                  color="primary"
+                  [disabled]="infoForm.invalid"
+                  (click)="onSubmit()"
+                  id="user-info-form-confirm-btn"
+                >
+                  {{ "common.continue" | translate }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <ng-template #companyInfo>
+          <form [formGroup]="companyInfoForm" class="form-container">
+            <div class="row responsive-form-content">
+              <div class="col-md-12">
+                <h2 class="company-title">
+                  {{
+                    "payday_loan.confirm_information.company_info" | translate
+                  }}
+                </h2>
+                <mat-form-field
+                  appearance="outline"
+                  floatLabel="never"
+                  class="w-100"
+                >
+                  <mat-label>{{
+                    "payday_loan.confirm_information.employee_code" | translate
+                  }}</mat-label>
+                  <input
+                    name="employee_code"
+                    matInput
+                    formControlName="employeeCode"
+                    [placeholder]="
+                      'payday_loan.confirm_information.type_employee_code'
+                        | translate
+                    "
+                    required
+                    maxlength="255"
+                  />
+                  <show-errors
+                    [control]="companyInfoForm.controls['employee_code']"
+                    [controlLabel]="
+                      'payday_loan.confirm_information.employee_code'
+                        | translate
+                    "
+                    [hasIconPrefix]="false"
+                  >
+                  </show-errors>
+                </mat-form-field>
+              </div>
+
+              <div class="col-md-12">
+                <div class="text-center btn-container">
+                  <button
+                    mat-raised-button
+                    type="submit"
+                    class="ui-button fixed-button"
+                    color="primary"
+                    [disabled]="companyInfoForm.invalid"
+                    (click)="onCompanyInfoSubmit()"
+                    id="user-info-form-confirm-btn"
+                  >
+                    {{ "common.continue" | translate }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </ng-template>
+      </div>
+    </section>
+  </div>
+</div>

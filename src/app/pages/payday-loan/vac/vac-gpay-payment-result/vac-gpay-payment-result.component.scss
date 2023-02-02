@@ -1,0 +1,113 @@
+@import "src/styles/payday-loan/pl-layout";
+@import "../../../../../styles/variables";
+
+#payment-result-content {
+  max-width: 294px;
+  margin: 0 auto;
+  padding-top: 76px;
+}
+
+#success-frame {
+  max-width: 120px;
+  margin: 0 auto;
+  max-height: 120px;
+  padding: 20px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #00e4e4 0%, #00b373 100%);
+
+  svg {
+    max-width: 80px;
+    max-height: 80px;
+    width: 100%;
+  }
+}
+
+#fail-frame {
+  max-width: 120px;
+  margin: 0 auto;
+  max-height: 120px;
+  padding: 20px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ffcc00 0%, #fff5cc 100%);
+
+  svg {
+    max-width: 80px;
+    max-height: 80px;
+    width: 100%;
+  }
+}
+
+#callback-payment-actions {
+  margin-top: 64px;
+
+  .pl-btn {
+    max-width: 271px;
+
+    &:last-child {
+      margin-top: 8px;
+    }
+  }
+}
+
+.pl-payment-result-list {
+  padding: 16px 0;
+  border-top: 1px solid $grey-01;
+  border-bottom: 1px solid $grey-01;
+  max-width: 271px;
+  margin: 24px auto 0;
+
+  .pl-payment-result-list-item {
+    display: flex;
+    align-content: space-between;
+    margin-bottom: 4px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .pl-payment-result-list-item-label {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    color: $grey-06;
+    flex: none;
+  }
+
+  .pl-payment-result-list-item-content {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: right;
+    color: $grey-08;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 8px;
+    margin: 0;
+    width: 100%;
+  }
+}
+
+.pl-payment-result-support-contact {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  color: $system-color-orange;
+  text-align: center;
+}
+
+.text-payment-result {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: $grey-08;
+}

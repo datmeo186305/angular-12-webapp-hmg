@@ -1,0 +1,15 @@
+@import "src/styles/payday-loan/pl-layout";
+@import "../../../../../styles/variables";
+
+#current-loan-container {
+  position: relative;
+  min-height: calc(100vh - 64px);
+}
+
+.current-loan-info-container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (max-width: 768px) {
+}

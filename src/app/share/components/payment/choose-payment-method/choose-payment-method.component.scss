@@ -1,0 +1,47 @@
+@import "src/styles/variables";
+h2#choose-payment-method-title {
+  margin-top: 16px;
+  padding: 0;
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.1px;
+  color: $grey-10;
+}
+
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s ease;
+}
+
+.fade-enter,
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.payment-copied-box {
+  position: fixed;
+  left: 50%;
+  bottom: 10px;
+  z-index: 1000;
+
+  .payment-copied-text {
+    position: relative;
+    left: -50%;
+    width: 100px;
+    background: $monex-color-00;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    color: $white;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+}

@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <div class="insurance-container">
+    <section>
+      <div class="maintain-container">
+        <div class="image">
+          <img src="assets/img/payday-loan/maintain.png" alt="maintain">
+        </div>
+        <div class="title" [innerHTML]="'payday_loan.maintain_title' | translate" >
+        </div>
+        <p class="description"  [innerHTML]="'payday_loan.maintain_description' | translate  : {
+                    from_time: startTimeDisplay,
+                    to_time:endTimeDisplay,
+                    from_date: startDateDisplay,
+                    to_date: endDateDisplay
+                  }">
+        </p>
+      </div>
+    </section>
+  </div>
+</div>

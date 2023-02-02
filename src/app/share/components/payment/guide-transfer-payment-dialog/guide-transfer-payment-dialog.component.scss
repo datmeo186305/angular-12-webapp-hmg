@@ -1,0 +1,146 @@
+@import "src/styles/variables";
+
+mat-dialog-content {
+  max-width: 360px;
+}
+
+#guide-transfer-payment-dialog-container {
+  position: relative;
+  height: 100%;
+}
+
+::ng-deep .custom-dialog-container {
+  .mat-dialog-content {
+    max-height: 100%;
+  }
+}
+
+.btn-actions {
+  padding: 16px;
+  margin-top: 0;
+
+  .insurance-btn {
+    max-width: 100%;
+  }
+}
+
+.dismiss-modal-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.pl-copy-box {
+  background: $white;
+  border: 2px solid $grey-01;
+  box-sizing: border-box;
+  border-radius: 8px;
+  display: flex;
+  padding: 6px 12px;
+  margin: 8px 0;
+
+  img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+
+  .pl-copy-box-content {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+    color: $grey-10;
+  }
+
+  .pl-copy-text {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+    color: $system-color-blue;
+    cursor: pointer;
+  }
+
+  .pl-copied {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+    color: $system-color-green;
+    display: inline-flex;
+
+    span {
+      margin-right: 4px;
+    }
+  }
+
+
+
+  .pl-copy-box-btn {
+    flex: none;
+  }
+
+  .pl-copy-box-content {
+    width: 100%;
+  }
+
+
+
+}
+
+#guide-transfer-title {
+  padding: 11px 16px;
+
+  h2 {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.1px;
+    color: $grey-10;
+  }
+}
+
+.guide-transfer-content {
+  padding: 16px;
+}
+
+.pl-modal-guide-step {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14px;
+  text-transform: uppercase;
+  color: $monex-color-00;
+}
+
+.pl-modal-guide-step-desc {
+  margin-top: 6px;
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.1px;
+  color: $grey-10;
+}
+
+@media (max-width: 768px) {
+  .btn-actions {
+    .insurance-btn {
+      max-width: 200px;
+    }
+  }
+}

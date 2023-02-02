@@ -1,0 +1,267 @@
+@import "../../../../../styles/variables";
+@import "../../../../../styles/insurance/insurance";
+@import "../../../../../styles/insurance/insurance-form";
+
+.responsive-form-content {
+  padding: 16px 0;
+}
+h2 {
+  margin: 10px 0 18px;
+  color: $grey-10;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+p {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  color: $grey-08;
+}
+.required {
+  color: #ff3b30 !important;
+}
+
+.value {
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  color: $grey-08;
+  margin-bottom: 24px;
+}
+
+.loan-detail-item {
+  height: 44px;
+  padding: 0 16px;
+}
+
+.loan-detail-note {
+  height: 44px;
+  padding: 0 8px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: #f2f9ff;
+  svg {
+    margin-right: 8px;
+  }
+  p {
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: $grey-10;
+  }
+}
+
+.choose-amount-value {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: $monex-color-00;
+}
+
+.loan-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.loan-detail-container {
+  border: 1px solid #007aff;
+  box-sizing: border-box;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.amount-detail-label {
+  display: flex;
+  flex-direction: column;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  color: $grey-08;
+}
+
+.amount-detail-value {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  color: $grey-10;
+}
+
+.loan-route-container {
+  background: #f7fbff;
+  .loan-route-describe {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: uppercase;
+    padding: 9px 16px;
+    color: $grey-10;
+  }
+  .checkpoint-route {
+    padding: 0 16px;
+  }
+  .detail-route {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    padding-right: 16px;
+    p {
+      font-size: 14px;
+      line-height: 18px;
+      letter-spacing: 0.1px;
+      color: #636366;
+    }
+
+    p.amount-detail-value {
+       color: #3A3A3C;
+    }
+  }
+}
+
+#loan-amount {
+  margin-bottom: 10px;
+}
+
+#choose-amount-number {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: $monex-color-00;
+}
+
+#total-fee {
+  color: #2aac7e;
+}
+
+.collateral-document-upload {
+  margin-bottom: 8px;
+}
+
+.btn-container {
+  padding: 0 64px;
+}
+
+.responsive-form-actions {
+  padding: 0;
+}
+
+::ng-deep .mat-slider-thumb {
+  right: -12px !important;
+  bottom: -12px !important;
+  width: 24px !important;
+  height: 24px !important;
+  transition: none !important;
+  transform: none !important;
+}
+
+::ng-deep .mat-slider {
+  padding: 0 !important;
+}
+
+::ng-deep .mat-slider-horizontal {
+  height: 24px !important;
+}
+
+::ng-deep .mat-slider-horizontal .mat-slider-wrapper {
+  height: 0px !important;
+  top: 12px !important;
+  left: 0px !important;
+  right: 0px !important;
+}
+
+::ng-deep.mat-slider-track-fill,
+::ng-deep.mat-slider-wrapper,
+::ng-deep.mat-slider-track-wrapper,
+::ng-deep.mat-slider-track-background {
+  height: 4px !important;
+}
+
+::ng-deep .mat-slider-track-wrapper {
+  top: -1px !important;
+}
+
+.clear-btn {
+  top: -8px;
+}
+
+.voucher-suffix {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: right;
+  color: #007aff;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: auto;
+  min-width: unset;
+  padding: 0;
+}
+
+#voucher-choose-btn {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  margin-bottom: 24px;
+  color: #007aff;
+}
+
+.img-hint {
+  margin-bottom: 24px;
+  padding: 0 8px;
+}
+
+#illustrating-img-note {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  color: #007aff;
+}
+
+.pl-countdown-time {
+  vertical-align: inherit !important;
+}
+
+.amount-detail-hint {
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #8e8e93;
+}
+
+.loan-collateral-document-note {
+  padding: 8px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: #f2f9ff;
+  margin-top: 8px;
+  margin-bottom: 40px;
+  svg {
+    margin-right: 8px;
+  }
+  p {
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: $grey-10;
+  }
+}
+
+.radio-label {
+  font-family: $sfPro;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.1px;
+  color: $grey-10;
+}

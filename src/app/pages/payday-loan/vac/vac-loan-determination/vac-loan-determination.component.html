@@ -1,0 +1,483 @@
+<div class="container">
+  <div class="insurance-container">
+    <section>
+      <div class="main-content">
+        <form
+          [formGroup]="loanDeterminationForm"
+          class="form-container"
+        >
+          <div class="row responsive-form-content">
+            <div class="col-md-12">
+              <h2>
+                {{
+                  "payday_loan.choose_amount.choose_amount_title" | translate
+                }}
+              </h2>
+            </div>
+
+            <div class="col-md-12 loan-row">
+              <label id="loan-amount"
+                >{{ "payday_loan.choose_amount.expected_amount" | translate }}
+                <span class="required">*</span>
+              </label>
+              <p class="choose-amount-value">
+                {{
+                  loanDeterminationForm.controls["loanAmount"].value
+                    | formatMillionPrice
+                }}
+              </p>
+            </div>
+
+            <div class="col-md-12 slider">
+              <mat-slider
+                color="primary"
+                formControlName="loanAmount"
+                class="w-100"
+                [max]="maxAmount"
+                [min]="minAmount"
+                [step]="step"
+                aria-labelledby="loan-amount"
+                (input)="onValueChange($event)"
+              >
+              </mat-slider>
+            </div>
+
+            <div class="col-md-12 loan-row">
+              <p class="value">{{ minAmount | formatMillionPrice }}</p>
+              <p class="value">{{ maxAmount | formatMillionPrice }}</p>
+            </div>
+
+            <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{
+                  "payday_loan.choose_amount.loan_purpose" | translate
+                }}</mat-label>
+                <mat-select formControlName="loanPurpose">
+                  <div *ngFor="let option of loanPurpose.options">
+                    <mat-option [value]="option">
+                      {{ option }}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                  </div>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-12" *ngIf="applicationType === 'PDL_VAC_OFFICE'">
+              <div class="d-flex flex-column">
+                <label #genderLabel class="radio-label"
+                  >{{
+                    "payday_loan.choose_amount.choose_term_type" | translate
+                  }}
+                </label>
+                <mat-radio-group
+                  aria-labelledby="termType"
+                  formControlName="termType"
+                  [disabled]="isDisableTermChoose"
+                  required
+                >
+                  <mat-radio-button
+                    color="primary"
+                    *ngFor="let termTypeOption of termTypeOptions"
+                    [value]="termTypeOption.value"
+                  >
+                    {{ termTypeOption.viewValue }}
+                  </mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+
+            <!-- Fee detail -->
+            <div class="col-md-12">
+              <div class="loan-detail-container">
+                <div class="loan-detail-item loan-row">
+                  <p class="amount-detail-label">
+                    {{
+                      "payday_loan.choose_amount.expected_amount" | translate
+                    }}
+                  </p>
+                  <p id="choose-amount-number">
+                    {{ loanAmountFormatMillionPrice | formatPrice: null }}
+                  </p>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="loan-detail-item loan-row">
+                  <p class="amount-detail-label">
+                    {{ "payday_loan.choose_amount.service_price" | translate }}
+                    <span
+                      class="amount-detail-hint"
+                      *ngIf="
+                        this.loanDeterminationForm.controls['termType']
+                          .value === 'ONE_MONTH';
+                        else threeMonthsHint
+                      "
+                    >
+                      {{
+                        "payday_loan.choose_amount.service_price_hint"
+                          | translate
+                      }}</span
+                    >
+                    <ng-template #threeMonthsHint>
+                      <span class="amount-detail-hint">
+                        {{
+                          "payday_loan.choose_amount.lower_service_price_hint"
+                            | translate
+                        }}</span
+                      >
+                    </ng-template>
+                  </p>
+                  <p class="amount-detail-value">
+                    {{ originalLoanFee | formatPrice: null }}
+                  </p>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="loan-detail-item loan-row">
+                  <p class="amount-detail-label">
+                    {{
+                      "payday_loan.choose_amount.transaction_process_fee"
+                        | translate
+                    }}
+                  </p>
+                  <p class="amount-detail-value">
+                    {{ transitionProcessFee | formatPrice: null }}
+                  </p>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="loan-detail-item loan-row">
+                  <p class="amount-detail-label">
+                    {{
+                      "payday_loan.choose_amount.discount_number" | translate
+                    }}
+                  </p>
+                  <p
+                    class="amount-detail-value"
+                    [ngStyle]="{ color: discount > 0 ? '#007aff' : '#3A3A3C' }"
+                  >
+                    - {{ discount | formatPrice: null }}
+                  </p>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="loan-detail-item loan-row">
+                  <p class="amount-detail-label">
+                    {{ "payday_loan.choose_amount.vat_fee" | translate }}
+                    <span class="amount-detail-hint">
+                      {{
+                        "payday_loan.choose_amount.vat_fee_hint" | translate
+                      }}</span
+                    >
+                  </p>
+                  <p class="amount-detail-value">
+                    {{ vatFee | formatPrice: null }}
+                  </p>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="loan-detail-item loan-row">
+                  <p class="amount-detail-label">
+                    {{ "payday_loan.choose_amount.total_price" | translate }}
+                  </p>
+                  <p class="amount-detail-value" id="total-fee">
+                    {{ loanFeeTotal | formatPrice: null }}
+                  </p>
+                </div>
+                <mat-divider></mat-divider>
+
+                <div
+                  class="loan-detail-note"
+                  *ngIf="
+                    applicationType !== 'PDL_VAC_OFFICE' ||
+                    loanDeterminationForm.controls['termType'].value ===
+                      'ONE_MONTH'
+                  "
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7 .333a6.668 6.668 0 110 13.335A6.668 6.668 0 017 .333zm-.003 5.5a.667.667 0 00-.662.59l-.004.077.002 3.668.005.078a.667.667 0 001.324 0l.005-.079L7.664 6.5l-.004-.078a.667.667 0 00-.663-.589zM7 3.333a.834.834 0 100 1.67.834.834 0 000-1.67z"
+                      fill="#007AFF"
+                    />
+                  </svg>
+                  <p>
+                    {{ "payday_loan.choose_amount.info" | translate }}
+                  </p>
+                </div>
+
+                <div
+                  class="loan-route-container"
+                  *ngIf="
+                    loanDeterminationForm.controls['termType'].value ===
+                    'THREE_MONTH'
+                  "
+                >
+                  <p class="loan-route-describe">
+                    {{ "payday_loan.choose_amount.payment_route" | translate }}
+                  </p>
+                  <div class="d-flex flex-row">
+                    <div class="d-flex flex-column checkpoint-route">
+                      <img
+                        src="assets/img/icon/group-3/svg/checkpoint.svg"
+                        alt="checkpoint"
+                      />
+                      <img
+                        src="assets/img/icon/group-3/svg/checkpoint.svg"
+                        alt="checkpoint"
+                      />
+                      <img
+                        src="assets/img/icon/group-3/svg/checkpoint.svg"
+                        alt="checkpoint"
+                      />
+                    </div>
+
+                    <div class="d-flex flex-column w-100">
+                      <div class="detail-route">
+                        <p>{{ paymentDayRoute.first }}</p>
+                        <p class="amount-detail-value">
+                          {{ paymentRouteAmount | formatPrice: null }}
+                        </p>
+                      </div>
+                      <mat-divider> </mat-divider>
+                      <div class="detail-route">
+                        <p>{{ paymentDayRoute.second }}</p>
+                        <p class="amount-detail-value">
+                          {{ paymentRouteAmount | formatPrice: null }}
+                        </p>
+                      </div>
+                      <mat-divider> </mat-divider>
+                      <div class="detail-route">
+                        <p>{{ paymentDayRoute.third }}</p>
+                        <p class="amount-detail-value">
+                          {{ lastPaymentRouteAmount | formatPrice: null }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <mat-form-field
+                appearance="outline"
+                floatLabel="never"
+                class="w-100"
+              >
+                <mat-label>{{
+                  "payday_loan.choose_amount.enter_discount_code" | translate
+                }}</mat-label>
+                <input
+                  #inputEle
+                  name="voucher_code"
+                  matInput
+                  formControlName="voucherCode"
+                  autocomplete="false"
+                  [placeholder]="
+                    'payday_loan.choose_amount.enter_discount_code' | translate
+                  "
+                />
+                <!-- Apply Button -->
+                <button
+                  mat-button
+                  class="voucher-suffix"
+                  *ngIf="!isCorrectedVoucherApplied && !voucherShowError"
+                  (click)="checkVoucherApplied()"
+                >
+                  {{ "payday_loan.choose_amount.apply" | translate }}
+                </button>
+
+                <!-- Applied Voucher Span -->
+                <span
+                  mat-button
+                  disabled
+                  class="voucher-suffix"
+                  *ngIf="isCorrectedVoucherApplied"
+                >
+                  <svg
+                    style="margin-bottom: 3px"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5.66667 11.0572L3.13807 8.5286C2.87772 8.26827 2.45561 8.26827 2.19526 8.5286C1.93491 8.78893 1.93491 9.21107 2.19526 9.4714L5.19526 12.4714C5.45561 12.7317 5.87772 12.7317 6.13807 12.4714L13.4714 5.13807C13.7317 4.87772 13.7317 4.45561 13.4714 4.19526C13.2111 3.93491 12.7889 3.93491 12.5286 4.19526L5.66667 11.0572Z"
+                      fill="#2AAC7E"
+                    />
+                  </svg>
+                  {{ "payday_loan.choose_amount.applied" | translate }}
+                </span>
+
+                <!-- Clear Button -->
+                <button
+                  type="button"
+                  class="clear-btn"
+                  tabindex="-1"
+                  *ngIf="voucherShowError"
+                  matSuffix
+                  mat-icon-button
+                  aria-label="Clear"
+                  (click)="clearVoucherInput()"
+                  disableRipple="true"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9.99984 1.66675C14.6022 1.66675 18.3332 5.39771 18.3332 10.0001C18.3332 14.6024 14.6022 18.3334 9.99984 18.3334C5.39746 18.3334 1.6665 14.6024 1.6665 10.0001C1.6665 5.39771 5.39746 1.66675 9.99984 1.66675ZM12.9418 7.05814L12.8717 6.99762C12.6542 6.83625 12.3557 6.83426 12.1362 6.99165L12.0579 7.05814L9.99984 9.11592L7.94178 7.05814L7.87168 6.99762C7.65419 6.83625 7.35568 6.83426 7.13619 6.99165L7.0579 7.05814L6.99738 7.12824C6.836 7.34573 6.83401 7.64424 6.9914 7.86373L7.0579 7.94202L9.11567 10.0001L7.0579 12.0582L6.99738 12.1282C6.836 12.3457 6.83401 12.6442 6.9914 12.8637L7.0579 12.942L7.128 13.0025C7.34549 13.1639 7.644 13.1659 7.86349 13.0085L7.94178 12.942L9.99984 10.8842L12.0579 12.942L12.128 13.0025C12.3455 13.1639 12.644 13.1659 12.8635 13.0085L12.9418 12.942L13.0023 12.8719C13.1637 12.6544 13.1657 12.3559 13.0083 12.1364L12.9418 12.0582L10.884 10.0001L12.9418 7.94202L13.0023 7.87192C13.1637 7.65443 13.1657 7.35592 13.0083 7.13643L12.9418 7.05814L12.8717 6.99762L12.9418 7.05814Z"
+                      fill="#636366"
+                    />
+                  </svg>
+                </button>
+
+                <!-- Error Noti  -->
+                <mat-error
+                  *ngIf="
+                    loanDeterminationForm.controls.voucherCode.errors?.invalid
+                  "
+                >
+                  {{ voucherShowError }}
+                </mat-error>
+              </mat-form-field>
+
+              <!-- Open Dialog Voucher Button -->
+              <div class="text-center">
+                <button
+                  mat-button
+                  type="button"
+                  id="voucher-choose-btn"
+                  (click)="openDialogVoucherList()"
+                >
+                  {{ "payday_loan.choose_amount.choose_voucher" | translate }}
+                </button>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <h2>
+                {{ "payday_loan.choose_amount.guaranteed_assets" | translate }}
+              </h2>
+            </div>
+
+            <div class="col-md-12">
+              <div class="collateral-document-upload">
+                <image-upload-area
+                  id="collateralDocument"
+                  name="collateralDocument"
+                  [imageSrc]="collateralImgSrc"
+                  [placeholderImageSrc]="'sprite-group-3-uploadimage'"
+                  [filledTitle]="'payday_loan.ekyc.collateral_img' | translate"
+                  [uploadTitle]="
+                    'payday_loan.ekyc.upload_collateral_img' | translate
+                  "
+                  [uploadHint]="'payday_loan.ekyc.collateral_hind' | translate"
+                  [required]="true"
+                  [isManualUploadFile]="true"
+                  [rules]="'required|size:20000|mimes:image/*'"
+                  [acceptFileType]="'image/*'"
+                  (receiveResult)="resultCollateral($event)"
+                >
+                </image-upload-area>
+              </div>
+            </div>
+
+            <!-- <div class="col-md-12">
+              <div class="d-flex flex-row align-items-center img-hint">
+                <svg
+                  width="14"
+                  height="14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7 .333a6.668 6.668 0 110 13.335A6.668 6.668 0 017 .333zm-.003 5.5a.667.667 0 00-.662.59l-.004.077.002 3.668.005.078a.667.667 0 001.324 0l.005-.079L7.664 6.5l-.004-.078a.667.667 0 00-.663-.589zM7 3.333a.834.834 0 100 1.67.834.834 0 000-1.67z"
+                    fill="#007AFF"
+                  />
+                </svg>
+                <button
+                  mat-button
+                  class="no-padding"
+                  id="illustrating-img-note"
+                  (click)="openDialogIllustratingImage()"
+                >
+                  {{
+                    "payday_loan.choose_amount.see_illustrations" | translate
+                  }}
+                </button>
+              </div>
+            </div> -->
+
+            <div class="col-md-12">
+              <div class="loan-collateral-document-note">
+                <div style="width: 14px; margin-right: 8px">
+                  <svg
+                    width="14"
+                    height="14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7 .333a6.668 6.668 0 110 13.335A6.668 6.668 0 017 .333zm-.003 5.5a.667.667 0 00-.662.59l-.004.077.002 3.668.005.078a.667.667 0 001.324 0l.005-.079L7.664 6.5l-.004-.078a.667.667 0 00-.663-.589zM7 3.333a.834.834 0 100 1.67.834.834 0 000-1.67z"
+                      fill="#007AFF"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <p
+                    [innerHtml]="
+                      'payday_loan.choose_amount.have_not_collateral_document'
+                        | translate
+                    "
+                  ></p>
+                  <button
+                    mat-button
+                    class="no-padding"
+                    id="illustrating-img-note"
+                    (click)="openDialogIllustratingImage()"
+                  >
+                    {{
+                      "payday_loan.choose_amount.see_illustrations" | translate
+                    }}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="text-center btn-container">
+                <button
+                  mat-raised-button
+                  type="submit"
+                  class="ui-button w-100"
+                  id="loan-detemination-form-confirm-btn"
+                  color="primary"
+                  [disabled]="loanDeterminationForm.invalid || disabledBtn"
+                  (keyup.enter)="onSubmit()"
+                  (click)="onSubmit()"
+                >
+                  {{ "common.confirm" | translate }}
+                  <span
+                    id="loan-determination-countdown-timer"
+                    class="pl-countdown-time"
+                    *ngIf="disabledBtn"
+                    >( {{ countdownTime }} s )</span
+                  >
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+</div>

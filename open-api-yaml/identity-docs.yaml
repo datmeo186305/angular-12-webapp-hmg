@@ -1,0 +1,1613 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8004
+  description: Generated server url
+paths:
+  /v1/permissions/{id}:
+    put:
+      tags:
+      - permission-controller
+      operationId: updatePermission
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePermissionRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponsePermissionEntity'
+    delete:
+      tags:
+      - permission-controller
+      operationId: deletePermission
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/permissionTypes/{id}:
+    put:
+      tags:
+      - permission-type-controller
+      operationId: updatePermissionType
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePermissionTypeRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponsePermissionTypeEntity'
+    delete:
+      tags:
+      - permission-type-controller
+      operationId: deletePermissionType
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/groups/{id}:
+    put:
+      tags:
+      - group-controller
+      operationId: updateGroup
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseGroupEntity'
+    delete:
+      tags:
+      - group-controller
+      operationId: deleteGroup
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/credentials:
+    get:
+      tags:
+      - admin-account-controller
+      operationId: getInFoAdminAccount
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseAdminAccountEntity'
+    put:
+      tags:
+      - admin-account-controller
+      operationId: updateInfoAdminAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateInfoAdminAccountRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseAdminAccountEntity'
+    post:
+      tags:
+      - admin-account-controller
+      operationId: createAdminAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProviderAccountRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseAdminAccountEntity'
+  /v1/credentials/updateFullInfo/{id}:
+    put:
+      tags:
+      - admin-account-controller
+      operationId: updateFullInfoAdminAccount
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateFullInfoAdminAccountRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseUpdateFullInfoAdminAccountResponse'
+  /v2/signOn/signOut:
+    post:
+      tags:
+      - sign-on-mifos-controller
+      operationId: signOutMifos
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v2/signOn/resetPassword:
+    post:
+      tags:
+      - sign-on-mifos-controller
+      operationId: resetPasswordByMobileOtpMifos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseResetPasswordResponse'
+  /v2/signOn/resetPasswordVerifiedOtp:
+    post:
+      tags:
+      - sign-on-mifos-controller
+      operationId: resetPasswordVerifiedOtpMifos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetVerifiedPasswordOtpRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v2/signOn/resetPasswordOtp:
+    post:
+      tags:
+      - sign-on-mifos-controller
+      operationId: resetPasswordByOtpMifos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordVerifiedAccountRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v2/signOn/mobileLogin:
+    post:
+      tags:
+      - sign-on-mifos-controller
+      operationId: mobileLoginMifos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MobileLoginRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseLoginResponse'
+  /v2/signOn/createVerifiedCustomerAccount:
+    post:
+      tags:
+      - sign-on-mifos-controller
+      operationId: createVerifiedCustomerAccountMifos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVerifiedAccountRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v2/signOn/createCustomerAccount:
+    post:
+      tags:
+      - sign-on-mifos-controller
+      operationId: createCustomerAccountMifos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomerAccountRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseCreateCustomerAccountResponse'
+  /v2/customersPassword/changePassword:
+    post:
+      tags:
+      - customer-password-mifos-controller
+      operationId: changePasswordCustomer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerChangePasswordRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/signOn/signOut:
+    post:
+      tags:
+      - sign-on-controller
+      operationId: signOut
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/signOn/resetPassword:
+    post:
+      tags:
+      - sign-on-controller
+      operationId: resetPasswordByMobileOtp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseResetPasswordResponse'
+  /v1/signOn/resetPasswordVerifiedOtp:
+    post:
+      tags:
+      - sign-on-controller
+      operationId: resetPasswordVerifiedOtp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetVerifiedPasswordOtpRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/signOn/resetPasswordOtp:
+    post:
+      tags:
+      - sign-on-controller
+      operationId: resetPasswordByOtp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordVerifiedAccountRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/signOn/mobileLogin:
+    post:
+      tags:
+      - sign-on-controller
+      operationId: mobileLogin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MobileLoginRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseLoginResponse'
+  /v1/signOn/createVerifiedCustomerAccount:
+    post:
+      tags:
+      - sign-on-controller
+      operationId: createVerifiedCustomerAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVerifiedAccountRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/signOn/createCustomerAccount:
+    post:
+      tags:
+      - sign-on-controller
+      operationId: createCustomerAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomerAccountRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseCreateCustomerAccountResponse'
+  /v1/permissions:
+    get:
+      tags:
+      - permission-controller
+      operationId: listPermissions
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseListPermissionEntity'
+    post:
+      tags:
+      - permission-controller
+      operationId: createPermission
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePermissionRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponsePermissionEntity'
+  /v1/permissionTypes:
+    get:
+      tags:
+      - permission-type-controller
+      operationId: listPermissions_1
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseListPermissionTypeEntity'
+    post:
+      tags:
+      - permission-type-controller
+      operationId: createPermissionType
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePermissionTypeRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponsePermissionTypeEntity'
+  /v1/groups:
+    get:
+      tags:
+      - group-controller
+      operationId: listGroups
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseListGroupEntity'
+    post:
+      tags:
+      - group-controller
+      operationId: createGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGroupRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseGroupEntity'
+  /v1/groups/updatePermissions:
+    post:
+      tags:
+      - group-controller
+      operationId: updatePermissions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePermissionsRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/groups/removePermissions:
+    post:
+      tags:
+      - group-controller
+      operationId: removePermissions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RemovePermissionsRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/groups/removeAssign:
+    post:
+      tags:
+      - group-controller
+      operationId: removeAssignGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RemoveAssignGroupRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/groups/assign:
+    post:
+      tags:
+      - group-controller
+      operationId: assignGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssignGroupRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/groups/addPermissions:
+    post:
+      tags:
+      - group-controller
+      operationId: addPermissions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddPermissionsRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/customersPassword/changePassword:
+    post:
+      tags:
+      - customer-password-controller
+      operationId: changePasswordCustomer_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerChangePasswordRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/customers/unLockCustomer/{accountId}:
+    post:
+      tags:
+      - customer-controller
+      operationId: unLockAccountCustomer
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseCustomerAccountEntity'
+  /v1/customers/lockCustomer:
+    post:
+      tags:
+      - customer-controller
+      operationId: lockAccountCustomer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LockAccountRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseCustomerAccountEntity'
+  /v1/credentials/unLockAccount/{accountId}:
+    post:
+      tags:
+      - admin-account-controller
+      operationId: unLockAccountAdmin
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseAdminAccountEntity'
+  /v1/credentials/lockMultiAccount:
+    post:
+      tags:
+      - admin-account-controller
+      operationId: lockMultiAccountAdmin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LockMultiAccountRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/credentials/lockAccount:
+    post:
+      tags:
+      - admin-account-controller
+      operationId: lockAccountAdmin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LockAccountRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseAdminAccountEntity'
+  /v1/credentials/getToken:
+    post:
+      tags:
+      - admin-account-controller
+      operationId: getToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetTokenRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseGetTokenResponse'
+  /v1/credentials/changePassword:
+    post:
+      tags:
+      - admin-account-controller
+      operationId: changePassAdminAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminChangePassProviderRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+  /v1/credentials/accountChangePassword:
+    post:
+      tags:
+      - admin-account-controller
+      operationId: accountAdminChangePassword
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountChangePassRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+  /v1/permissions/account:
+    get:
+      tags:
+      - permission-controller
+      operationId: getPermissionsByAccount
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseListString'
+  /v1/groups/{groupId}:
+    get:
+      tags:
+      - group-controller
+      operationId: getGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseGroupEntity'
+  /v1/credentials/{accountId}:
+    get:
+      tags:
+      - admin-account-controller
+      operationId: getAdminAccountById
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseAdminAccountEntity'
+    delete:
+      tags:
+      - admin-account-controller
+      operationId: deleteAdminAccount
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseAdminAccountEntity'
+components:
+  schemas:
+    UpdatePermissionRequest:
+      required:
+      - code
+      - description
+      - name
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        permissionTypeId:
+          type: string
+    ApiResponsePermissionEntity:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/PermissionEntity'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    PermissionEntity:
+      type: object
+      properties:
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        createdBy:
+          type: string
+        updateBy:
+          type: string
+        id:
+          type: string
+        code:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        permissionTypeId:
+          type: string
+    UpdatePermissionTypeRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        level:
+          type: integer
+          format: int32
+        parentId:
+          type: string
+    ApiResponsePermissionTypeEntity:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/PermissionTypeEntity'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    PermissionTypeEntity:
+      type: object
+      properties:
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        createdBy:
+          type: string
+        updateBy:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        level:
+          type: integer
+          format: int32
+        parentId:
+          type: string
+    UpdateGroupRequest:
+      required:
+      - code
+      - description
+      - name
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+    ApiResponseGroupEntity:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/GroupEntity'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    GroupEntity:
+      type: object
+      properties:
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        createdBy:
+          type: string
+        updateBy:
+          type: string
+        id:
+          type: string
+        code:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+    UpdateInfoAdminAccountRequest:
+      required:
+      - fullName
+      - mobile
+      type: object
+      properties:
+        fullName:
+          type: string
+        mobile:
+          pattern: "^0\\d{9}$"
+          type: string
+        note:
+          type: string
+    AdminAccountEntity:
+      type: object
+      properties:
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        createdBy:
+          type: string
+        updateBy:
+          type: string
+        id:
+          type: string
+        username:
+          type: string
+        secretHash:
+          type: string
+        fullName:
+          type: string
+        email:
+          type: string
+        mobile:
+          type: string
+        note:
+          type: string
+        position:
+          type: string
+        userStatus:
+          type: string
+          enum:
+          - ACTIVE
+          - LOCKED
+        unLockTime:
+          type: string
+          format: date-time
+        isDeleted:
+          type: boolean
+    ApiResponseAdminAccountEntity:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/AdminAccountEntity'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    UpdateFullInfoAdminAccountRequest:
+      required:
+      - email
+      - fullName
+      - mobile
+      type: object
+      properties:
+        groupId:
+          type: string
+        fullName:
+          type: string
+        email:
+          type: string
+        mobile:
+          pattern: "^0\\d{9}$"
+          type: string
+        note:
+          type: string
+        position:
+          type: string
+    ApiResponseUpdateFullInfoAdminAccountResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/UpdateFullInfoAdminAccountResponse'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    UpdateFullInfoAdminAccountResponse:
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/AdminAccountEntity'
+        groupId:
+          type: string
+    ApiResponseString:
+      type: object
+      properties:
+        result:
+          type: string
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    ResetPasswordRequest:
+      required:
+      - mobile
+      type: object
+      properties:
+        mobile:
+          pattern: "^0\\d{9}$"
+          type: string
+        provider:
+          type: string
+          enum:
+          - Zalo
+          - CMC
+    ApiResponseResetPasswordResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/ResetPasswordResponse'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    ResetPasswordResponse:
+      type: object
+      properties:
+        requestId:
+          type: string
+        signature:
+          type: string
+        otpProvider:
+          type: string
+          enum:
+          - Zalo
+          - CMC
+    ResetVerifiedPasswordOtpRequest:
+      required:
+      - mobile
+      - otp
+      - requestId
+      - signature
+      type: object
+      properties:
+        mobile:
+          pattern: "^0\\d{9}$"
+          type: string
+        signature:
+          type: string
+        requestId:
+          type: string
+        otp:
+          type: string
+    ResetPasswordVerifiedAccountRequest:
+      required:
+      - mobile
+      - otp
+      - password
+      - password_again
+      - requestId
+      - signature
+      type: object
+      properties:
+        mobile:
+          pattern: "^0\\d{9}$"
+          type: string
+        password:
+          maxLength: 2147483647
+          minLength: 6
+          type: string
+        password_again:
+          maxLength: 2147483647
+          minLength: 6
+          type: string
+        signature:
+          type: string
+        requestId:
+          type: string
+        otp:
+          type: string
+    MobileLoginRequest:
+      required:
+      - mobile
+      - password
+      type: object
+      properties:
+        mobile:
+          pattern: "^0\\d{9}$"
+          type: string
+        password:
+          type: string
+    ApiResponseLoginResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/LoginResponse'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    LoginResponse:
+      type: object
+      properties:
+        customerId:
+          type: string
+        customerMobile:
+          type: string
+        accessToken:
+          type: string
+        passwordHash:
+          type: string
+    CreateVerifiedAccountRequest:
+      required:
+      - mobile
+      - otp
+      - requestId
+      - signature
+      type: object
+      properties:
+        mobile:
+          pattern: "^0\\d{9}$"
+          type: string
+        signature:
+          type: string
+        requestId:
+          type: string
+        otp:
+          type: string
+    CreateCustomerAccountRequest:
+      required:
+      - confirmPassword
+      - mobile
+      - password
+      type: object
+      properties:
+        mobile:
+          pattern: "^0\\d{9}$"
+          type: string
+        password:
+          maxLength: 2147483647
+          minLength: 6
+          type: string
+        confirmPassword:
+          maxLength: 2147483647
+          minLength: 6
+          type: string
+        provider:
+          type: string
+          enum:
+          - Zalo
+          - CMC
+    ApiResponseCreateCustomerAccountResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/CreateCustomerAccountResponse'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    CreateCustomerAccountResponse:
+      type: object
+      properties:
+        requestId:
+          type: string
+        signature:
+          type: string
+        otpProvider:
+          type: string
+          enum:
+          - Zalo
+          - CMC
+    CustomerChangePasswordRequest:
+      required:
+      - confirmPassword
+      - currentPassword
+      - newPassword
+      type: object
+      properties:
+        newPassword:
+          maxLength: 2147483647
+          minLength: 6
+          type: string
+        confirmPassword:
+          maxLength: 2147483647
+          minLength: 6
+          type: string
+        currentPassword:
+          maxLength: 2147483647
+          minLength: 6
+          type: string
+    CreatePermissionRequest:
+      required:
+      - code
+      - description
+      - name
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        permissionTypeId:
+          type: string
+    CreatePermissionTypeRequest:
+      required:
+      - level
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+        level:
+          type: integer
+          format: int32
+        parentId:
+          type: string
+    CreateGroupRequest:
+      required:
+      - code
+      - description
+      - name
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+    UpdatePermissionsRequest:
+      required:
+      - groupId
+      - permissionIds
+      type: object
+      properties:
+        permissionIds:
+          type: array
+          items:
+            type: string
+        groupId:
+          type: string
+    RemovePermissionsRequest:
+      required:
+      - groupId
+      - permissionIds
+      type: object
+      properties:
+        permissionIds:
+          type: array
+          items:
+            type: string
+        groupId:
+          type: string
+    RemoveAssignGroupRequest:
+      required:
+      - accountId
+      type: object
+      properties:
+        accountId:
+          type: string
+    AssignGroupRequest:
+      required:
+      - accountId
+      - groupId
+      type: object
+      properties:
+        accountId:
+          type: string
+        groupId:
+          type: string
+    AddPermissionsRequest:
+      required:
+      - groupId
+      - permissionIds
+      type: object
+      properties:
+        permissionIds:
+          type: array
+          items:
+            type: string
+        groupId:
+          type: string
+    ApiResponseCustomerAccountEntity:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/CustomerAccountEntity'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    CustomerAccountEntity:
+      type: object
+      properties:
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        createdBy:
+          type: string
+        updateBy:
+          type: string
+        id:
+          type: string
+        mobile:
+          type: string
+        passwordHash:
+          type: string
+        userStatus:
+          type: string
+          enum:
+          - ACTIVE
+          - LOCKED
+        unLockTime:
+          type: string
+          format: date-time
+    LockAccountRequest:
+      required:
+      - accountId
+      type: object
+      properties:
+        accountId:
+          type: string
+        unLockTime:
+          type: string
+    CreateProviderAccountRequest:
+      required:
+      - email
+      - fullName
+      - groupId
+      - mobile
+      - secret
+      - username
+      type: object
+      properties:
+        groupId:
+          type: string
+        username:
+          pattern: "^[A-Za-z0-9]+$"
+          type: string
+        secret:
+          type: string
+        fullName:
+          type: string
+        email:
+          type: string
+        mobile:
+          pattern: "^0\\d{9}$"
+          type: string
+        note:
+          type: string
+        position:
+          type: string
+    LockMultiAccountRequest:
+      required:
+      - accountIds
+      type: object
+      properties:
+        accountIds:
+          type: array
+          items:
+            type: string
+    GetTokenRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        secret:
+          type: string
+    ApiResponseGetTokenResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/GetTokenResponse'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    GetTokenResponse:
+      type: object
+      properties:
+        token:
+          type: string
+    AdminChangePassProviderRequest:
+      required:
+      - confirmSecret
+      - newSecret
+      - username
+      type: object
+      properties:
+        username:
+          pattern: "^[A-Za-z0-9]+$"
+          type: string
+        newSecret:
+          type: string
+        confirmSecret:
+          type: string
+    ApiResponseObject:
+      type: object
+      properties:
+        result:
+          type: object
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    AccountChangePassRequest:
+      required:
+      - confirmSecret
+      - currentSecret
+      - newSecret
+      type: object
+      properties:
+        newSecret:
+          type: string
+        confirmSecret:
+          type: string
+        currentSecret:
+          type: string
+    ApiResponseListPermissionEntity:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/PermissionEntity'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    ApiResponseListString:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            type: string
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    ApiResponseListPermissionTypeEntity:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/PermissionTypeEntity'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    ApiResponseListGroupEntity:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupEntity'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

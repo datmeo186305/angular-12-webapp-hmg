@@ -1,0 +1,918 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8004
+  description: Generated server url
+paths:
+  /v1/hmgPromotions/vouchers/{voucherId}:
+    put:
+      tags:
+      - promotion-controller
+      operationId: updateVoucher
+      parameters:
+      - name: voucherId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateVoucherRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseVoucher'
+  /v1/hmgPromotions/events/{promotionEventId}:
+    put:
+      tags:
+      - promotion-controller
+      operationId: updatePromotionEvent
+      parameters:
+      - name: promotionEventId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePromotionEventRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponsePromotionEvent'
+  /v1/hmgPaydayLoans/{loanId}:
+    get:
+      tags:
+      - payday-loan-controller
+      operationId: findLoanById
+      parameters:
+      - name: loanId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponsePaydayLoan'
+    put:
+      tags:
+      - payday-loan-controller
+      operationId: updateInfo
+      parameters:
+      - name: loanId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateLoanRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/hmgPromotions/vouchers:
+    get:
+      tags:
+      - promotion-controller
+      operationId: getVoucherByScopeEvent
+      parameters:
+      - name: customerId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: eventScope
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: voucherType
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseListVoucherDTO'
+    post:
+      tags:
+      - promotion-controller
+      operationId: createVoucher
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVoucherRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseVoucher'
+  /v1/hmgPromotions/vouchers/voucherTransactions:
+    post:
+      tags:
+      - promotion-controller
+      operationId: createVoucherTransaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckValidVoucherRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseVoucherTransaction'
+  /v1/hmgPromotions/vouchers/validate:
+    post:
+      tags:
+      - promotion-controller
+      operationId: validateVoucher
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckValidVoucherRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseVoucherTransaction'
+  /v1/hmgPromotions/vouchers/validatePromotionVoucher:
+    post:
+      tags:
+      - promotion-controller
+      operationId: validatePromotionVoucher
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckValidVoucherRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseVoucherTransaction'
+  /v1/hmgPromotions/vouchers/transactions:
+    post:
+      tags:
+      - promotion-controller
+      operationId: createTransaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckValidVoucherRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseVoucherTransaction'
+  /v1/hmgPromotions/events:
+    get:
+      tags:
+      - promotion-controller
+      operationId: getAllPromotionEvent
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseListPromotionEvent'
+    post:
+      tags:
+      - promotion-controller
+      operationId: createPromotionEvent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePromotionEventRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponsePromotionEvent'
+  /v1/hmgPaydayLoans:
+    post:
+      tags:
+      - payday-loan-controller
+      operationId: createLoan
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateApplicationRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseApplyResponse'
+  /v1/hmgPaydayLoans/{loanId}/changeStatus:
+    post:
+      tags:
+      - payday-loan-controller
+      operationId: changeLoanStatus
+      parameters:
+      - name: loanId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateLoanStatusRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/hmgPaydayLoans/getServiceToken:
+    post:
+      tags:
+      - payday-loan-controller
+      operationId: getServiceToken
+      responses:
+        "200":
+          description: OK
+  /v1/hmgPaydayLoans/cronjob/withdrawLoan:
+    post:
+      tags:
+      - payday-loan-controller
+      operationId: withdraw
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/hmgPromotions/vouchers/detail:
+    get:
+      tags:
+      - promotion-controller
+      operationId: voucherDetail
+      parameters:
+      - name: voucherCode
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: customerId
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseVoucherDTO'
+  /v1/hmgPaydayLoans/{loanId}/contracts:
+    get:
+      tags:
+      - payday-loan-controller
+      operationId: getLoanContractByLoanId
+      parameters:
+      - name: loanId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseContract'
+  /v1/hmgPaydayLoans/{customerId}/activeLoan:
+    get:
+      tags:
+      - payday-loan-controller
+      operationId: getActivePaydayLoan
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponsePaydayLoan'
+  /v1/hmgPaydayLoans/getByStatus:
+    get:
+      tags:
+      - payday-loan-controller
+      operationId: getLoanByStatus
+      parameters:
+      - name: status
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseListPaydayLoan'
+  /v1/hmgApplications:
+    get:
+      tags:
+      - application-controller
+      operationId: getAllPaydayLoan
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseListPaydayLoan'
+  /v1/hmgApplications/activeLoan:
+    get:
+      tags:
+      - application-controller
+      operationId: getActiveLoan
+      parameters:
+      - name: coreToken
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponsePaydayLoan'
+  /v1/contracts/{loanId}:
+    get:
+      tags:
+      - contract-controller
+      operationId: getContract
+      parameters:
+      - name: loanId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: customerId
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseContract'
+components:
+  schemas:
+    UpdateVoucherRequest:
+      type: object
+      properties:
+        adminId:
+          type: string
+        id:
+          type: string
+        voucherCode:
+          type: string
+        description:
+          type: string
+        expiredAt:
+          type: string
+        type:
+          type: string
+        scope:
+          type: string
+        limitPerDay:
+          type: integer
+          format: int32
+        maxAmount:
+          type: integer
+          format: int32
+        remainAmount:
+          type: integer
+          format: int32
+    ApiResponseVoucher:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/Voucher'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    Voucher:
+      type: object
+      properties:
+        id:
+          type: string
+        promotionEventId:
+          type: string
+        code:
+          type: string
+        maxValue:
+          type: integer
+          format: int32
+        percentage:
+          type: number
+          format: double
+        maxAmount:
+          type: integer
+          format: int32
+        remainAmount:
+          type: integer
+          format: int32
+        activedTime:
+          type: array
+          items:
+            type: string
+        description:
+          type: string
+        type:
+          type: string
+        scope:
+          type: string
+        expiredAt:
+          type: string
+        limitPerDay:
+          type: integer
+          format: int32
+        createdAt:
+          type: string
+    UpdatePromotionEventRequest:
+      type: object
+      properties:
+        adminId:
+          type: string
+        id:
+          type: string
+        purpose:
+          type: string
+        expiredAt:
+          type: string
+        scope:
+          type: string
+    ApiResponsePromotionEvent:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/PromotionEvent'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    PromotionEvent:
+      type: object
+      properties:
+        id:
+          type: string
+        purpose:
+          type: string
+        scope:
+          type: string
+        createdAt:
+          type: string
+        expiredAt:
+          type: string
+    UpdateLoanRequest:
+      type: object
+      properties:
+        customerId:
+          type: string
+        updateInfo:
+          type: object
+          additionalProperties:
+            type: object
+    ApiResponseString:
+      type: object
+      properties:
+        result:
+          type: string
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    CreateVoucherRequest:
+      type: object
+      properties:
+        adminId:
+          type: string
+        promotionEventId:
+          type: string
+        voucherCode:
+          type: string
+        maxDiscount:
+          type: integer
+          format: int32
+        percentageDiscount:
+          type: number
+          format: double
+        description:
+          type: string
+        expiredAt:
+          type: string
+        maxAmount:
+          type: integer
+          format: int32
+        activedTime:
+          type: array
+          items:
+            type: string
+        type:
+          type: string
+        scope:
+          type: string
+        limitPerDay:
+          type: integer
+          format: int32
+    CheckValidVoucherRequest:
+      required:
+      - customerId
+      - voucherCode
+      type: object
+      properties:
+        customerId:
+          type: string
+        voucherCode:
+          type: string
+        isEvent:
+          type: boolean
+        mobileNumber:
+          type: string
+        mobileProvider:
+          type: string
+    ApiResponseVoucherTransaction:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/VoucherTransaction'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    VoucherTransaction:
+      type: object
+      properties:
+        id:
+          type: string
+        voucherId:
+          type: string
+        customerId:
+          type: string
+        applicationId:
+          type: string
+        applicationType:
+          type: string
+        discountValue:
+          type: integer
+          format: int32
+        status:
+          type: string
+        mobileNumber:
+          type: string
+        mobileProvider:
+          type: string
+        createdAt:
+          type: string
+    CreatePromotionEventRequest:
+      type: object
+      properties:
+        adminId:
+          type: string
+        purpose:
+          type: string
+        expiredAt:
+          type: string
+        scope:
+          type: string
+    CreateApplicationRequest:
+      required:
+      - customerId
+      type: object
+      properties:
+        coreToken:
+          type: string
+        customerId:
+          type: string
+        expectedAmount:
+          type: integer
+          format: int32
+        purpose:
+          type: string
+        voucherTransactionId:
+          type: string
+    ApiResponseApplyResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/ApplyResponse'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    ApplyResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        status:
+          type: string
+        message:
+          type: string
+        loanUuid:
+          type: string
+        loanAmount:
+          type: string
+        loanTenure:
+          type: string
+        epayCustomerId:
+          type: string
+        epayLoanId:
+          type: string
+    UpdateLoanStatusRequest:
+      type: object
+      properties:
+        customerId:
+          type: string
+        status:
+          type: string
+    ApiResponseListVoucherDTO:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/VoucherDTO'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    VoucherDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        code:
+          type: string
+        maxValue:
+          type: integer
+          format: int32
+        percentage:
+          type: number
+          format: double
+        maxAmount:
+          type: integer
+          format: int32
+        remainAmount:
+          type: integer
+          format: int32
+        activedTime:
+          type: array
+          items:
+            type: string
+        description:
+          type: string
+        type:
+          type: string
+        scope:
+          type: string
+        expiredAt:
+          type: string
+        limitPerDay:
+          type: integer
+          format: int32
+        createdAt:
+          type: string
+        voucherTransactionList:
+          type: array
+          items:
+            $ref: '#/components/schemas/VoucherTransaction'
+    ApiResponseVoucherDTO:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/VoucherDTO'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    ApiResponseListPromotionEvent:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/PromotionEvent'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    ApiResponsePaydayLoan:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/PaydayLoan'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    PaydayLoan:
+      type: object
+      properties:
+        id:
+          type: string
+        coreLoanUuid:
+          type: string
+        customerId:
+          type: string
+        expectedAmount:
+          type: integer
+          format: int32
+        expectedTenure:
+          type: integer
+          format: int32
+        actualAmount:
+          type: integer
+          format: int32
+        status:
+          type: string
+        oldStatus:
+          type: string
+        appTypeUuid:
+          type: string
+        appType:
+          type: string
+        loanCode:
+          type: string
+        purpose:
+          type: string
+        voucherTransactionId:
+          type: string
+        repaymentStatus:
+          type: string
+        latePenaltyPayment:
+          type: integer
+          format: int32
+        totalServiceFees:
+          type: integer
+          format: int32
+        getSalaryAt:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        note:
+          type: string
+        personInChargeId:
+          type: string
+    ApiResponseContract:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/Contract'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    Contract:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+        type:
+          type: string
+        loanId:
+          type: string
+        idRequest:
+          type: integer
+          format: int32
+        idDocument:
+          type: integer
+          format: int32
+        path:
+          type: string
+        createdAt:
+          type: string
+    ApiResponseListPaydayLoan:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaydayLoan'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

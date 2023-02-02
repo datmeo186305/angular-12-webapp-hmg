@@ -1,0 +1,29 @@
+<div class="single-otp-input">
+  <input
+    name="otp_input"
+    #inputEle
+    [type]="inputType"
+    min="0"
+    max="9"
+    maxlength="1"
+    pattern="[0-9]"
+    [placeholder]="placeholder"
+    [ngClass]="inputClasses"
+    [disabled]="disabled"
+    [(ngModel)]="model"
+    (input)="handleOnChange()"
+    (keydown)="handleOnKeyDown($event)"
+    (paste)="handleOnPaste($event)"
+    (focus)="handleOnFocus()"
+    (blur)="handleOnBlur()"
+  />
+  <span *ngIf="!isLastChild && separator">
+    <span [innerHTML]="separator"></span>
+  </span>
+
+  <div
+    *ngIf="displayStatusLine"
+    class="otp-status-line"
+    [ngClass]="{ active: model }"
+  ></div>
+</div>

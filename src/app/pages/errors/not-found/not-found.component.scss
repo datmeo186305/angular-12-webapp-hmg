@@ -1,0 +1,78 @@
+@import "src/styles/variables";
+@import "../../../../styles/payday-loan/pl-layout";
+
+#notfound-component-content {
+  min-height: 100vh;
+  position: relative;
+}
+
+#pl-bg-notfound {
+  background: linear-gradient(180deg, #f0f7ff 0%, rgba(240, 247, 255, 0) 100%);
+  height: 200px;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#pl-notfound-body {
+  padding-top: 80px;
+
+  #pl-notfound-container {
+    text-align: center;
+  }
+
+  .not-found-title {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: $grey-08;
+    margin-bottom: 8px;
+  }
+
+  .pl-btn-notfound {
+    margin-top: 8px;
+    max-width: 200px;
+  }
+
+  .pl-notfound-content {
+    text-align: center;
+  }
+
+  .pl-notfound-img {
+    max-width: 400px;
+    max-height: 400px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+#pl-provider-info-container {
+  position: absolute;
+  bottom: 16px;
+
+  .pl-provider-info {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: $grey-06;
+    max-width: 315px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  #pl-notfound-body {
+    .pl-notfound-img {
+      max-width: 240px;
+      max-height: 240px;
+    }
+  }
+}

@@ -1,0 +1,134 @@
+<mat-dialog-content>
+  <div id="guide-transfer-payment-dialog-container">
+    <div
+      class="sprite-group-1-dismiss dismiss-modal-btn"
+      (click)="closeModal()"
+    ></div>
+    <div id="guide-transfer-title">
+      <h2>{{ "payment.guide_transfer.title" | translate }}</h2>
+    </div>
+    <div class="guide-transfer-content">
+      <section class="pl-modal-guide-section">
+        <p class="pl-modal-guide-step">
+          {{ "payment.guide_transfer.step" | translate: {step: 1} }}
+        </p>
+        <p class="pl-modal-guide-step-desc">
+          {{ "payment.guide_transfer.step_1" | translate }}
+        </p>
+        <div class="pl-divider"></div>
+      </section>
+
+      <section class="pl-modal-guide-section">
+        <p class="pl-modal-guide-step">
+          {{ "payment.guide_transfer.step" | translate: {step: 2} }}
+        </p>
+        <p
+          class="pl-modal-guide-step-desc"
+          [innerHTML]="
+            'payment.guide_transfer.step_2'
+              | translate
+                : {
+                    account_name: transferPaymentData?.vaInfo?.accountName || '',
+                    account_number:
+                      transferPaymentData?.vaInfo?.accountNumber || ''
+                  }
+          "
+        ></p>
+
+        <div class="pl-copy-box justify-content-between align-items-center">
+          <img
+            src="assets/img/payday-loan/mb-logo.svg"
+            class="mb-logo"
+            alt="mbbank"
+          />
+          <p class="pl-copy-box-content">
+            {{ transferPaymentData?.vaInfo?.accountNumber }}
+          </p>
+          <div class="pl-copy-box-btn">
+            <p *ngIf="!copiedAccountNumber; else alreadyCopyAccountNumber"
+               (click)="copyToClipboardAccountNumber(transferPaymentData?.vaInfo?.accountNumber)"
+               class="pl-copy-text">{{"payment.guide_transfer.copy_account_number" | translate}}</p>
+            <ng-template #alreadyCopyAccountNumber>
+              <p class="pl-copied"><span
+                class="sprite-group-3-success-message-icon"></span> {{ "payment.guide_transfer.copied" | translate }}
+              </p>
+            </ng-template>
+          </div>
+        </div>
+
+        <div class="pl-divider"></div>
+      </section>
+
+      <section class="pl-modal-guide-section">
+        <p class="pl-modal-guide-step">
+          {{ "payment.guide_transfer.step" | translate: {step: 3} }}
+        </p>
+        <p class="pl-modal-guide-step-desc">
+          {{ "payment.guide_transfer.step_3.amount" | translate }}
+        </p>
+
+        <div class="pl-copy-box justify-content-between align-items-center">
+          <p class="pl-copy-box-content">
+            {{ amountToBePaid | formatPrice: null }}
+          </p>
+          <div class="pl-copy-box-btn">
+            <p *ngIf="!copiedAmount; else alreadyCopyAmount"
+               (click)="copyToClipboardAmount(amountToBePaid)"
+               class="pl-copy-text">{{"payment.guide_transfer.copy_amount" | translate}}</p>
+            <ng-template #alreadyCopyAmount>
+
+              <p class="pl-copied">
+                <span
+                  class="sprite-group-3-success-message-icon"></span> {{ "payment.guide_transfer.copied" | translate }}
+              </p>
+            </ng-template>
+          </div>
+        </div>
+
+        <p class="pl-modal-guide-step-desc">
+          {{ "payment.guide_transfer.step_3.content" | translate }}
+        </p>
+
+        <div class="pl-copy-box justify-content-between align-items-center">
+          <p class="pl-copy-box-content">
+            {{ productInfoContent }}
+          </p>
+          <div class="pl-copy-box-btn">
+            <p *ngIf="!copiedContent; else alreadyCopyContent"
+               (click)="copyToClipboardContent(productInfoContent)"
+               class="pl-copy-text">{{"payment.guide_transfer.copy_content" | translate}}</p>
+            <ng-template #alreadyCopyContent>
+
+              <p class="pl-copied">
+                <span
+                  class="sprite-group-3-success-message-icon"></span> {{ "payment.guide_transfer.copied" | translate }}
+              </p>
+            </ng-template>
+          </div>
+        </div>
+
+        <div class="pl-divider"></div>
+      </section>
+
+      <section class="pl-modal-guide-section">
+        <p class="pl-modal-guide-step">
+          {{ "payment.guide_transfer.step" | translate: {step: 4} }}
+        </p>
+        <p class="pl-modal-guide-step-desc">
+          {{ "payment.guide_transfer.step_4" | translate }}
+        </p>
+      </section>
+    </div>
+  </div>
+
+  <div class="btn-actions text-center">
+    <button
+      type="button"
+      id="transfer-btn-submit"
+      class="insurance-btn btn-primary"
+      (click)="closeModal()"
+    >
+      {{ "payment.guide_transfer.understand" | translate }}
+    </button>
+  </div>
+</mat-dialog-content>

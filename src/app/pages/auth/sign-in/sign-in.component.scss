@@ -1,0 +1,47 @@
+@import "src/app/pages/auth/auth.component.scss";
+
+.login-btn {
+  display: block;
+  width: 200px;
+  margin: auto;
+}
+
+.logo {
+  margin-top: 24px;
+  height: 40px;
+  margin-bottom: 8px;
+  img {
+    height: 100%;
+    width: auto;
+  }
+}
+
+#password-field {
+  position: relative;
+  .forgot-password-text {
+    margin-top: 8px;
+    position: absolute;
+    bottom: 0;
+    right: 16px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+  }
+}
+
+.action-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+  button {
+    margin-bottom: 8px;
+    font-family: $sfPro !important;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+  }
+}

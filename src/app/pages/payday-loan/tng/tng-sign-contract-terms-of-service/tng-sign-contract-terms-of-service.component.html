@@ -1,0 +1,160 @@
+<div id="pl-sign-contract-terms-terms-container" class="container-fluid">
+  <div *ngIf="!isGetTngInfoFailed; else getTngInfoFailed">
+    <div *ngIf="!isSentOtpOnsign; else isntSentOtpOnsign">
+      <div class="container-fluid pl-pdf-document-container">
+        <div class="container sign-contract-terms-pdf-document">
+          <mat-drawer-container>
+            <mat-drawer-content>
+              <pdf-viewer
+                [src]="linkPdf"
+                [autoresize]="true"
+                [original-size]="false"
+                [show-all]="true"
+                [render-text]="true"
+                (after-load-complete)="afterload()"
+              ></pdf-viewer>
+            </mat-drawer-content>
+          </mat-drawer-container>
+        </div>
+      </div>
+      <div class="container-fluid pl-btn-sign-contract-terms-mobile-box">
+        <button
+          type="button"
+          id="pl-sign-contract-terms-btn"
+          class="insurance-btn btn-primary pl-btn-sign-contract-terms-mobile"
+          (click)="signContract()"
+          *ngIf="showSignContractTermsBtn"
+        >
+          <div class="d-inline-flex align-items-center">
+            <span
+              class="sprite-group-3-sign-contract-icon sign-contract-terms-icon"
+            ></span>
+            <span>{{
+              "payday_loan.contract_terms_of_service.button_text" | translate
+            }}</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <ng-template #getTngInfoFailed>
+    <div class="container-fluid pl-space-between-content">
+      <div class="container pl-padding-bottom-default">
+        <div class="insurance-container">
+          <div id="get-tng-info-failed">
+            <div class="text-center">
+              <div id="fail-frame">
+                <svg
+                  width="80"
+                  height="80"
+                  viewBox="0 0 80 80"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M36.864 9.27404C40.33 7.35434 44.6567 8.4698 46.7827 11.7415L47.0587 12.2009L72.922 58.8952C73.538 60.0072 73.8613 61.2578 73.8613 62.5292C73.8613 66.4985 70.7773 69.7478 66.8747 70.0118L66.3613 70.0292H14.642C13.371 70.0292 12.1208 69.7062 11.0088 69.0905C7.5427 67.1712 6.19256 62.9115 7.83776 59.3735L8.08073 58.8958L33.9367 12.2017C34.6183 10.9705 35.633 9.95597 36.864 9.27404ZM40.504 53.3395C38.6653 53.3395 37.175 54.8298 37.175 56.6682C37.175 58.5068 38.6653 59.9972 40.504 59.9972C42.3423 59.9972 43.8327 58.5068 43.8327 56.6682C43.8327 54.8298 42.3423 53.3395 40.504 53.3395ZM40.4967 26.6604C38.7873 26.661 37.3787 27.9483 37.187 29.6062L37.1647 29.9949L37.1707 46.6645L37.193 47.0532C37.3863 48.7108 38.7957 49.9972 40.505 49.9965C42.2147 49.9962 43.623 48.7088 43.815 47.0508L43.8373 46.6622L43.8313 29.9925L43.8087 29.6038C43.6157 27.946 42.206 26.6598 40.4967 26.6604Z"
+                    fill="white"
+                  />
+                </svg>
+              </div>
+            </div>
+            <p
+              class="get-tng-info-failed-title"
+              [innerHtml]="
+                'payday_loan.contract_terms_of_service.return_confirm_information_desc'
+                  | translate
+              "
+            ></p>
+
+            <ng-content select="[body]"> </ng-content>
+
+            <div class="text-center get-tng-info-failed-actions">
+              <a
+                class="more-info-link"
+                [href]="zaloURL"
+                target="_blank"
+                rel="noopener"
+              >
+                <button
+                  id="electronic-signing-success-btn"
+                  type="button"
+                  class="insurance-btn btn-primary"
+                >
+                  {{
+                    "payday_loan.contract_terms_of_service.more_info"
+                      | translate
+                  }}
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+
+  <ng-template #isntSentOtpOnsign>
+    <div class="container-fluid pl-space-between-content">
+      <div class="container pl-padding-bottom-default">
+        <div class="payday-loan-container">
+          <app-verify-otp-form
+            (verifyOtp)="verifyOtp($event)"
+            (resendOtp)="resendOtp()"
+            [mobile]="mobile"
+            [otpValue]="otp"
+            [showMethods]="true"
+            (chooseMethodOtp)="chooseMethodOtp($event)"
+            [showSubmitButton]="false"
+            [errorText]="errorText"
+            [disabled]="disabledOTP"
+            [errorSendOtpText]="errorSendOtpText"
+            [currentOtpMethod]="method"
+          >
+            <p
+              *ngIf="method === 'VOICE'"
+              class="pl-space-between-content sent-otp-text"
+              [innerHtml]="
+                'payday_loan.contract_terms_of_service.sent_otp_success'
+                  | translate
+                    : {
+                        key: 'số điện thoại',
+                        value: mobile
+                      }
+              "
+              guide
+            ></p>
+            <p
+              *ngIf="method === 'SMS'"
+              class="pl-space-between-content sent-otp-text"
+              [innerHtml]="
+                'payday_loan.contract_terms_of_service.sent_otp_success'
+                  | translate
+                    : {
+                        key: 'tài khoản ZALO ứng với số điện thoại',
+                        value: mobile
+                      }
+              "
+              guide
+            ></p>
+            <p
+              *ngIf="method === 'EMAIL'"
+              class="pl-space-between-content sent-otp-text"
+              [innerHtml]="
+                'payday_loan.contract_terms_of_service.sent_otp_success'
+                  | translate
+                    : {
+                        key: 'email',
+                        value: userInfo?.personalData?.emailAddress
+                      }
+              "
+              guide
+            ></p>
+          </app-verify-otp-form>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

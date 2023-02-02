@@ -1,0 +1,95 @@
+@import "colors";
+$font-path: "../assets/fonts/";
+$assert-path: "../../assets/";
+$sfUiDisplay: "sfUiDisplay";
+$sfPro: "sfPro";
+
+$monex-gradient-01: linear-gradient($bright-turquoise, $jade);
+$monex-gradient-02: radial-gradient($arapawa, $black-rock);
+$monex-gradient-03: radial-gradient(
+  100% 208.33% at 100% 0%,
+  #180b80 0%,
+  #0c0540 100%
+);
+
+$grey-00: $white-lilac;
+$grey-01: $white-lilac;
+$grey-02: $athens-gray-2;
+$grey-03: $mischka;
+$grey-04: $french-grey;
+$grey-05: $bombay;
+$grey-06: $manatee;
+$grey-07: $jumbo;
+$grey-08: $mid-grey;
+$grey-09: $abbey;
+$grey-10: $tuna;
+$grey-11: $shark;
+$grey-12: $shark-2;
+$grey-13: $whisper;
+
+$monex-color-00: $jungle-green;
+$monex-color-01: $biscay;
+$monex-color-02: $bay-of-many;
+$monex-color-03: $fun-blue;
+$monex-color-04: $pacific-blue;
+$monex-color-05: $robins-egg-blue;
+$monex-color-06: $viking;
+$monex-color-07: $sushi;
+$monex-color-08: $pear;
+
+$system-color-red: $red-orange;
+$system-color-orange: $pizazz;
+$system-color-yellow: $supernova;
+$system-color-green: $emerald;
+$system-color-teal: $malibu;
+$system-color-blue: $azure-radiance;
+$system-color-indigo: $indigo;
+$system-color-purple: $medium-purple;
+$system-color-pink: $radical-red;
+
+$dim-color-red: $titan-white-2;
+$dim-color-orange: $bridal-heath-2;
+$dim-color-yellow: $alice-blue;
+$dim-color-green: $hint-of-green;
+$dim-color-teal: $bridal-heath;
+$dim-color-blue: $alice-blue-2;
+$dim-color-indigo: $rose-white;
+$dim-color-purple: $twilight-blue;
+$dim-color-pink: $quarter-pearl-lusta;
+
+$dim-light-red: $chablis;
+$dim-light-orange: $bridal-health;
+$dim-light-yellow: $quarter-pearl-lusta;
+$dim-light-green: $hint-of-green;
+$dim-light-teal: $twilight-blue;
+$dim-light-blue: $alice-blue;
+$dim-light-indigo: $alice-blue-2;
+$dim-light-purple: $white-pointer;
+$dim-light-pink: $lavender-blush;
+
+$web-bg-color: #0d0c81;
+
+$pl-transition-drop-timing: cubic-bezier(0.55, 0, 0.55, 0.2);
+$pl-transition-drop-duration: 0.4s;
+$pl-transition-drop: $pl-transition-drop-duration $pl-transition-drop-timing;
+$pl-radio-size: 18px;
+$pl-radio-touch-size: 48px;
+$pl-transition-stand-timing: cubic-bezier(0.25, 0.8, 0.25, 1);
+$pl-transition-stand-duration: 0.4s;
+$pl-transition-stand: $pl-transition-stand-duration $pl-transition-stand-timing;
+$pl-checkbox-size: 20px;
+$pl-checkbox-touch-size: 48px;
+
+$tablet-width: 768px;
+$desktop-width: 1024px;
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}

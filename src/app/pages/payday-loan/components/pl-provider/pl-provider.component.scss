@@ -1,0 +1,17 @@
+@import "src/styles/variables";
+#pl-provider-info-container {
+  position: absolute;
+  bottom: 16px;
+
+  .pl-provider-info {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: $grey-06;
+    max-width: 315px;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,208 @@
+@import "src/styles/variables";
+@import "../../../../../styles/payday-loan/pl-layout";
+.ekyc-upload-area {
+  background: $grey-00;
+  /* Monex Color / 00 */
+
+  border: 1px dashed $monex-color-00;
+  box-sizing: border-box;
+  border-radius: 16px;
+  height: 200px;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+  }
+}
+.filled-ekyc-upload-area {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background-size: 100%;
+  cursor: auto;
+  position: relative;
+  overflow: hidden;
+
+  .uploaded-img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .uploaded-file {
+    display: flex;
+
+    .uploaded-file-box {
+      text-align: center;
+      margin: auto 0;
+      width: 100%;
+      place-content: center;
+      display: flex;
+      align-items: center;
+      .pl-upload-icon {
+        width: 24px;
+        height: 24px;
+      }
+      .pl-filename {
+        margin-bottom: 0;
+        margin-left: 4px;
+        font-family: $sfPro;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: $grey-08;
+        max-width: 143px;
+        display: flex;
+
+        .pl-name {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+
+        .pl-extension {
+        }
+      }
+    }
+  }
+
+  .filled-ekyc-action {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    height: 32px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(40px);
+
+    p {
+      margin: 0;
+    }
+
+    .filled-ekyc-title {
+      font-family: $sfPro;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      color: $white;
+      margin-left: 16px;
+
+      .sprite-group-3-mandatory {
+        display: inline-block;
+        margin-left: 4px;
+      }
+    }
+
+    .btn-change-img {
+      font-family: $sfPro;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+      color: $white;
+      margin-right: 16px;
+      display: flex;
+      background: transparent;
+      border: none;
+
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: none;
+        color: $monex-color-00;
+      }
+    }
+
+    .btn-change-img[disabled] {
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: none;
+        color: $white;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .change-img-icon {
+    filter: brightness(0) invert(1);
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-right: 4px;
+  }
+}
+.ekyc-place-content {
+  height: 100%;
+  display: flex;
+  place-content: center;
+}
+.ekyc-body {
+  margin: auto 0;
+}
+.ekyc-upload-img {
+}
+.ekyc-upload-title {
+  padding: 0 24px;
+  margin-top: 9px;
+  p {
+    margin: 0;
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+    text-align: center;
+    color: $grey-10;
+  }
+  img {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-left: 4px;
+  }
+}
+.ekyc-upload-hint {
+  margin-top: 8px;
+  padding: 0 40px;
+
+  p {
+    margin: 0;
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: $grey-06;
+  }
+}
+
+.ekyc-submit-btn {
+  max-width: 271px;
+}
+
+.pl-upload-icon {
+  width: 64px;
+  height: 64px;
+}
+
+.box-ekyc-img {
+  display: inline-block;
+  position: relative;
+  .pl-add-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+.area-upload-container {
+  display: inline-grid;
+  width: 100%;
+}

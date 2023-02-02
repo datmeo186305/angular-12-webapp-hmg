@@ -1,0 +1,72 @@
+@import "src/styles/variables";
+@import "../../../../../styles/insurance/insurance-button";
+.pl-electronic-signing-success-title {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: $grey-10;
+  margin-top: 16px;
+}
+
+.pl-electronic-signing-success-body {
+  margin-top: 32px;
+  min-width: 300px;
+  background: $white;
+  border: 2px solid $grey-01;
+  box-sizing: border-box;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.electronic-signing-actions {
+  margin-top: 32px;
+
+  .pl-btn {
+    max-width: 330px;
+  }
+}
+
+.electronic-sign-success-img-container {
+  background: #f9fdfa;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  place-content: center;
+  margin: 0 auto;
+  position: relative;
+}
+
+.electronic-sign-success-img-content {
+  background: #f3fbf5;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  place-content: center;
+}
+
+.checkmark-circle-img {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+}
+
+#electronic-signing-success-btn {
+  max-width: 240px;
+}
+
+@media (max-width: 768px) {
+  .electronic-signing-actions {
+    .pl-btn {
+      max-width: 240px;
+    }
+  }
+}

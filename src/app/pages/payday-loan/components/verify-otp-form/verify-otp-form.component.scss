@@ -1,0 +1,110 @@
+@import "../../../../../styles/variables";
+@import "../../../../../styles/insurance/insurance-button";
+.pl-signing-otp-container {
+  text-align: center;
+  max-width: 335px;
+  margin: 0 auto;
+}
+.type-otp-text {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  /* Grey / 08 */
+
+  color: $grey-08;
+}
+.sent-otp-text {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+
+  /* Grey / 08 */
+
+  color: $grey-08;
+}
+
+.resend-otp-text {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0;
+  /* identical to box height */
+
+  text-align: center;
+
+  /* Grey / 08 */
+
+  color: $grey-08;
+}
+
+.btn-next-signing-otp {
+  max-width: 270px;
+}
+
+.pl-countdown-time {
+  margin: 0;
+  padding-left: 4px;
+  color: $monex-color-00;
+  font-family: $sfPro;
+  font-weight: 400;
+}
+
+.resend-otp-btn {
+  display: inline-block;
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0;
+  text-align: center;
+  color: $grey-08;
+
+  &:hover {
+    text-decoration: none;
+    color: $monex-color-00;
+  }
+}
+
+.forgot-password-otp-input {
+  max-width: 260px;
+  display: inline-flex;
+}
+
+.pl-error-otp {
+  font-family: $sfPro;
+  margin-top: 8px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  color: $system-color-red;
+}
+
+.otp-method-choice {
+  border: none;
+  margin: 20px auto 0;
+  background: none;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: $grey-10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}

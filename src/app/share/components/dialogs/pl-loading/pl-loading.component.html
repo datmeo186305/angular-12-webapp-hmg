@@ -1,0 +1,15 @@
+<mat-dialog-content>
+  <div class="prompt-content" [ngClass]="{'hidden-prompt-content': !promptContent.showContent}">
+    <div class="text-center">
+      <img src="assets/img/payday-loan/gif/monex_loading.gif" alt="" class="loading-resource">
+    </div>
+
+    <h2 class="pl-prompt-title" *ngIf="promptContent && promptContent.showContent">
+      {{ promptContent?.title }}
+    </h2>
+
+    <div *ngIf="promptContent && promptContent.showContent" class="pl-prompt-body">
+      <p [innerHTML]="promptContent?.content"></p>
+    </div>
+  </div>
+</mat-dialog-content>

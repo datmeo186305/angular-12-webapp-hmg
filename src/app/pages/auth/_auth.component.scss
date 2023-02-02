@@ -1,0 +1,90 @@
+@import "src/styles/variables";
+@import "../../../styles/insurance/insurance";
+@import "../../../styles/insurance/insurance-form";
+
+.form-container {
+  padding-top: 24px;
+}
+
+.description {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.1px;
+  color: $grey-06;
+}
+
+.link-inline-green {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.1px;
+  color: $monex-color-00;
+}
+
+.insurance-checkbox-text {
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: $grey-08;
+}
+
+.confirm-btn {
+    display: block;
+    width: 240px;
+    margin: auto;
+}
+
+.username-icon, .password-pre-icon, .clear-icon, .password-suffix-icon {
+  width: 20px;
+  height: 20px;
+  background-color: $grey-06;
+}
+
+.username-icon {
+  -webkit-mask: url('../../../assets/img/icon/group-1/svg/smart-phone-icon.svg') no-repeat center;
+  mask: url('../../../assets/img/icon/group-1/svg/smart-phone-icon.svg') no-repeat center;
+}
+
+.password-pre-icon {
+  -webkit-mask: url('../../../assets/img/icon/group-1/svg/lock-password-icon.svg') no-repeat center;
+  mask: url('../../../assets/img/icon/group-1/svg/lock-password-icon.svg') no-repeat center;
+}
+
+.clear-icon {
+  -webkit-mask: url('../../../assets/img/icon/group-1/svg/x-clear-icon.svg') no-repeat center;
+  mask: url('../../../assets/img/icon/group-1/svg/x-clear-icon.svg') no-repeat center;
+}
+
+.password-show-icon {
+  -webkit-mask: url('../../../assets/img/icon/group-1/svg/show-password-icon.svg') no-repeat center;
+  mask: url('../../../assets/img/icon/group-1/svg/show-password-icon.svg') no-repeat center;
+}
+
+.password-hide-icon {
+  -webkit-mask: url('../../../assets/img/icon/group-1/svg/hide-password-icon.svg') no-repeat center;
+  mask: url('../../../assets/img/icon/group-1/svg/hide-password-icon.svg') no-repeat center;
+}
+
+.is-focused-icon {
+  background-color: $grey-08;
+}
+
+.is-focused-input {
+  color: $grey-10 !important;
+}
+
+.otp-container {
+  margin-top: 24px;
+}
+
+#get-otp-btn-container {
+  padding: 27px 0;
+}
+
+.insurance-checkbox-container {
+  margin-bottom: 27px;
+}
+
+
+#main-layout-content {
+  font-family: $sfPro;
+}

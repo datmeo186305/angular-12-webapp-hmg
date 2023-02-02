@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="insurance-container">
+    <section>
+      <div class="header">
+        <div class="col-md-12 text-center">
+          <img src="../../../../../assets/img/hmg/company.png" alt="company" />
+          <h2>{{ "payday_loan.choose_your_company" | translate }}</h2>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="col-md-12">
+        <div class="d-flex flex-wrap align-items-stretch card-box">
+          <div
+            class="col-6 col-md-4 card-list"
+            *ngFor="let company of companiesList"
+          >
+            <div class="choose-company" (click)="chooseCompany(company)">
+              <div class="card-container">
+                <div class="card-content">
+                  <img class="card-img" [src]="company.avatar" alt="" />
+                  <div class="card-title">{{ company.name }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

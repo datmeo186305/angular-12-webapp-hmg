@@ -1,0 +1,40 @@
+@import "../../../../../styles/variables";
+@import "../../../../../styles/payday-loan/pl-layout";
+#sign-contract-success-container {
+  //min-height: calc(100vh - 124px);
+  background: #ffffff;
+  padding-top: 48px;
+  position: relative;
+}
+
+.contract-success-body {
+  margin-top: 16px;
+}
+
+.contract-success-text-default {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  color: $grey-08;
+}
+
+.pl-electronic-signing-success-body {
+  margin-top: 32px;
+  min-width: 300px;
+  background: $white;
+  border: 2px solid $grey-01;
+  box-sizing: border-box;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+
+.electronic-signing-logo {
+  width: 100px;
+  height: 24px;
+}
+

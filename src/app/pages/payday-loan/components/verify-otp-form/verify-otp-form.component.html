@@ -1,0 +1,103 @@
+<form
+  id="verify-otp-form"
+  class="form-container"
+  [formGroup]="verifyOtpForm"
+  #verifyOtpFormWrapper
+>
+  <div class="pl-signing-otp-container">
+    <div class="text-center">
+      <div class="sprite-group-3-phone-otp"></div>
+    </div>
+    <p class="pl-space-between-content type-otp-text">
+      {{ "payday_loan.verify_otp.type_otp" | translate }}
+    </p>
+
+    <div class="pl-space-between-content">
+      <div class="form-sm mt-2 forgot-password-otp-input">
+        <div class="d-flex digit-group">
+          <app-otp-input
+            #plSigningOtpInput
+            [inputClasses]="'pl-text-otp'"
+            separator=""
+            placeholder=""
+            [displayStatusLine]="true"
+            [numInputs]="6"
+            [inputType]="'tel'"
+            [shouldAutoFocus]="true"
+            [value]="otpValue"
+            [disabled]="disabled"
+            (onChange)="handleOnChange($event)"
+            (onComplete)="handleOnComplete($event)"
+          >
+          </app-otp-input>
+        </div>
+      </div>
+      <div class="pl-error-otp" *ngIf="errorText || errorSendOtpText">
+        {{ errorText || errorSendOtpText }}
+      </div>
+    </div>
+
+    <ng-content select="[guide]"></ng-content>
+
+    <div class="pl-space-between-content resend-otp">
+      <div *ngIf="!hiddenCountdown; else showResent" class="d-inline-flex">
+        <div class="sprite-group-3-arrow-counterclockwise"></div>
+        <span class="resend-otp-text">
+          {{ "payday_loan.verify_otp.send_otp_after" | translate }}
+        </span>
+        <span id="signing-otp-countdown-timer" class="pl-countdown-time"
+          >{{ countdownTime }}s</span
+        >
+      </div>
+      <ng-template #showResent>
+        <div class="d-inline-flex">
+          <div class="sprite-group-3-arrow-counterclockwise"></div>
+          <span class="resend-otp-text">
+            <a
+              href="javascript:void(0)"
+              (click)="resendOtpClick()"
+              class="resend-otp-btn"
+              >{{ "payday_loan.verify_otp.resent_otp" | translate }}</a
+            >
+          </span>
+        </div>
+      </ng-template>
+
+      <div *ngIf="showMethods">
+        <button
+          [disabled]="!hiddenCountdown"
+          class="otp-method-choice"
+          (click)="openDialogOtpSendMethods()"
+        >
+          {{
+            "payday_loan.choose_otp_method.choose_other_otp_method" | translate
+          }}
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M5.52857 2.86192C5.26823 3.12227 5.26823 3.54438 5.52857 3.80473L9.72385 7.99999L5.52857 12.1953C5.26823 12.4556 5.26823 12.8777 5.52857 13.1381C5.78893 13.3984 6.21103 13.3984 6.47139 13.1381L11.138 8.47139C11.3984 8.21106 11.3984 7.78892 11.138 7.52859L6.47139 2.86192C6.21103 2.60157 5.78893 2.60157 5.52857 2.86192Z"
+              fill="#3A3A3C"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="text-center pl-space-between-content" *ngIf="showSubmitButton">
+      <button
+        id="btn-next-form-signing-otp"
+        type="submit"
+        class="insurance-btn btn-primary btn-next-signing-otp"
+        [disabled]="disableBtnNext || disabled"
+      >
+        {{ "common.confirm" | translate }}
+      </button>
+    </div>
+  </div>
+</form>

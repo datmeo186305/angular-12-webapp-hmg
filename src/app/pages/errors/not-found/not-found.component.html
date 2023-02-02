@@ -1,0 +1,34 @@
+<div id="notfound-component" class="container-fluid">
+  <div id="notfound-component-content">
+    <div id="pl-bg-notfound"></div>
+    <div
+      id="pl-notfound-body"
+      class="container-fluid pl-padding-bottom-with-provider"
+    >
+      <div class="container" id="pl-notfound-container">
+        <div class="payday-loan-container">
+          <div id="pl-notfound-content">
+            <p class="not-found-title">{{ "not_found.have_error" | translate}}</p>
+            <img src="assets/img/payday-loan/404.svg" alt="404" class="pl-notfound-img"/>
+            <button
+              id="pl-not-found-back-to-home-btn"
+              class="insurance-btn btn-primary pl-btn-notfound"
+              (click)="backToHome()"
+            >
+              {{ "not_found.back_to_login" | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="pl-provider-info-container" class="container-fluid">
+      <div class="container">
+        <div class="payday-loan-container">
+          <p
+            class="pl-provider-info"
+            [innerHTML]="'payday_loan.provider_info'| translate"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

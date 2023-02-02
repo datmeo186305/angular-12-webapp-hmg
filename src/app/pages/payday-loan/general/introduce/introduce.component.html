@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <div class="insurance-container">
+    <!-- Intro -->
+    <pl-introduce></pl-introduce>
+
+    <section>
+      <div class="content">
+        <p>{{"payday_loan.five_steps" | translate}}</p>
+        <ol>
+          <li><span class="prefix">1</span>{{"payday_loan.step_1" | translate}}</li>
+          <li><span class="prefix">2</span>{{"payday_loan.step_2" | translate}}</li>
+          <li><span class="prefix">3</span>{{"payday_loan.step_3" | translate}}</li>
+          <li><span class="prefix">4</span>{{"payday_loan.step_4" | translate}}</li>
+          <li><span class="prefix">5</span>{{"payday_loan.step_5" | translate}}</li>
+        </ol>
+      </div>
+    </section>
+
+
+    <section>
+      <a
+        [href]="guideVideoUrl"
+        target="_blank"
+        rel="noopener"
+        id="user-guide-video"
+        class="pl-space-between-content"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 22 15"
+          fill="#007aff"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M22 4.68379C22 2.0751 19.8061 0 17.1856 0H4.8144C2.13296 0 0 2.13438 0 4.68379V10.3162C0 12.9249 2.19391 15 4.8144 15H17.1856C19.867 15 22 12.8656 22 10.3162V4.68379ZM14.7479 7.88537L9.20222 10.5534C8.95845 10.6719 8.22715 10.4941 8.22715 10.2569V4.74309C8.22715 4.50593 8.95845 4.32807 9.20222 4.44664L14.5042 7.23319C14.7479 7.47035 14.9917 7.7668 14.7479 7.88537Z"
+            fill="#007aff"
+          />
+        </svg>
+        <p id="user-guide-video-title">
+          {{ "payday_loan.user_guide_video"| translate }}
+        </p>
+      </a>
+    </section>
+
+    <section>
+      <div class="col-md-12 responsive-form-actions">
+        <div id="start-now-btn-container">
+          <button mat-raised-button type="submit" class="w-100 ui-button" color="primary" (click)="start()">
+            {{"payday_loan.start_now" | translate}}
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

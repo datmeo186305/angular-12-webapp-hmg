@@ -1,0 +1,306 @@
+@import "../variables";
+$spaceBetweenBox: 40px;
+$spaceBetweenContent: 24px;
+$spaceWithFooter: 56px;
+
+.modal-open {
+  overflow-y: hidden;
+}
+
+::ng-deep .custom-dialog-container {
+  .mat-dialog-container {
+    padding: 0;
+    border-radius: 12px;
+    overflow: inherit;
+  }
+  .mat-dialog-content {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.mat-dialog-container {
+  border-radius: 12px !important;
+  box-shadow: none;
+}
+
+.pl-sign-contract-prompt-image {
+  margin: 8px auto 0;
+  width: 56px;
+  height: 56px;
+  background: $dim-color-green;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  place-content: center;
+
+  .pl-prompt-image {
+    width: 32px !important;
+    height: 32px !important;
+  }
+}
+
+.pl-text-inline {
+  margin: 0;
+  color: $monex-color-00;
+  font-family: $sfPro;
+  font-weight: 500;
+}
+
+.pl-inline-salary-hint {
+  font-style: normal;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.1px;
+  color: $grey-10;
+  font-weight: 600;
+}
+
+.pl-inline-collateral-document-hint {
+  font-style: normal;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 0.1px;
+  color: $grey-10;
+  font-weight: 600;
+}
+
+.pl-name-inline {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: $system-color-red;
+}
+
+.pl-text-sent-email-inline {
+  margin: 0;
+  color: $monex-color-00;
+  font-family: $sfPro;
+}
+
+.pl-thank-for-sign {
+  margin: 0;
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  color: $grey-08;
+}
+
+.pl-text-sent-confirm-policy-inline {
+  margin: 0;
+  color: $monex-color-00;
+  font-family: $sfPro;
+  display: initial;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+  }
+}
+
+input.pl-text-otp {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 100%;
+  text-align: center;
+  caret-color: $system-color-blue;
+  color: $grey-08;
+  border: none;
+}
+
+.pl-space-between-box {
+  margin: $spaceBetweenBox 0 0 0;
+}
+
+.pl-space-between-content {
+  margin: $spaceBetweenContent 0 0 0;
+}
+
+.pl-inline-block {
+  display: inline-block;
+}
+
+.pl-padding-bottom-default {
+  padding-bottom: $spaceWithFooter !important;
+}
+
+.pl-padding-bottom-with-provider {
+  padding-bottom: 124px !important;
+}
+
+.payment-result-support-contact {
+  display: inline;
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  color: $system-color-orange;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+    color: $system-color-orange;
+  }
+}
+
+.pl-list {
+  padding: 0;
+  margin: 0;
+
+  .pl-list-item {
+    display: flex;
+    align-content: space-between;
+    padding: 14px 16px 13px;
+    margin: 0;
+    border-bottom: 1px solid $grey-02;
+    align-items: center;
+
+    .pl-list-item-label {
+      margin: 0;
+      font-family: $sfPro;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 18px;
+      color: $grey-08;
+      flex: none;
+      letter-spacing: 0.1px;
+      align-items: center;
+    }
+
+    .pl-list-item-content {
+      margin: 0;
+      width: 100%;
+      font-family: $sfPro;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 17px;
+      text-align: right;
+      color: $grey-10;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-left: 8px;
+    }
+
+    .pl-list-item-content-empty {
+      color: $grey-06;
+    }
+  }
+}
+
+.pl-headline {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  margin: 0;
+  color: $grey-10;
+}
+
+.mat-expansion-panel-content {
+  .mat-expansion-panel-body {
+    padding: 0;
+    ul {
+      list-style: initial;
+      padding: 12px;
+      li {
+        margin-left: 8px;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 18px;
+        color: #636366;
+      }
+    }
+  }
+}
+.pl-divider {
+  width: 100%;
+  height: 0.5px;
+  margin: 16px 0;
+  background: $grey-02;
+}
+
+.mat-slider-min-value:not(.mat-slider-thumb-label-showing) .mat-slider-thumb {
+  border: none;
+  background-color: $monex-color-00;
+}
+
+.pl-countdown-time {
+  margin: 0;
+  padding-left: 4px;
+  font-family: $sfPro;
+  font-weight: 400;
+}
+
+.faq-panel {
+  .mat-expansion-panel:not([class*="mat-elevation-z"]) {
+    box-shadow: none;
+  }
+  .mat-expansion-panel-header {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    padding: 0;
+    color: #1c1c1e;
+    box-shadow: inset 0px -1px 0px #f2f2f7;
+  }
+  .mat-expansion-indicator::after {
+    border-style: none;
+    content: url("/assets/img/payday-loan/chevron-down.svg");
+    transform: rotate(0deg);
+    padding: 0;
+  }
+}
+
+#pl-current-loan-view-contract-btn {
+  width: 200px;
+  max-width: unset !important;
+}
+
+.custom-dialog-container {
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-width: unset !important;
+
+  .mat-dialog-container {
+    padding: 0;
+    border-radius: 12px;
+    overflow: auto;
+
+    .mat-dialog-content {
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+#get-tng-info-failed-btn {
+  max-width: 200px;
+  a {
+    color: $white;
+    &:focus, &:hover, &:active {
+      text-decoration: none;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .cdk-overlay-pane .staff-size {
+    overflow: unset;
+    overflow-y: scroll;
+  }
+}

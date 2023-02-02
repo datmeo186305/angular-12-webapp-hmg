@@ -1,0 +1,196 @@
+<div class="container">
+  <div class="insurance-container">
+    <section>
+      <div class="main-content">
+        <form [formGroup]="additionalDocumentsForm" class="form-container">
+          <div class="row responsive-form-content">
+            <div class="col-md-12">
+              <h2>
+                {{
+                  "payday_loan.additional_information.salary_statement_info_title"
+                    | translate
+                }}
+              </h2>
+              <div class="guide" [innerHTML]="
+                  'payday_loan.additional_document.salary_info_desc'
+                    | translate : { year: currentYear}
+                ">
+              </div>
+              <!-- <ul class="guide">
+                <li [innerHTML]="
+                  'payday_loan.additional_information.salary_info_desc'
+                    | translate
+                "></li>
+                <li [innerHTML]="
+                  'payday_loan.additional_information.first_months_salary_info_'
+                    | translate
+                "></li>
+              </ul> -->
+               <div class="text-center">
+                <button
+                  mat-button
+                  type="button"
+                  id="guide-choose-btn"
+                  (click)="openExample()"
+                >
+                  {{ "payday_loan.additional_document.salary_info_example" | translate }}
+                </button>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="collateral-document-upload">
+                <image-upload-area
+                  id="lastMonthSalaryInfo"
+                  name="lastMonthSalaryInfo"
+                  [imageSrc]="lastMonthSalaryInfoSrc"
+                  [placeholderImageSrc]="'sprite-group-3-uploadimage'"
+                  [filledTitle]="'payday_loan.additional_document.month_salary_info_img' | translate: {
+                    month: requiredMonth?.salaryDocument1
+                  }"
+                  [uploadTitle]="
+                    'payday_loan.additional_document.month_salary_info_upload' | translate: {
+                    month: requiredMonth?.salaryDocument1
+                  }
+                  "
+                  [uploadHint]="'payday_loan.additional_document.last_month_salary_info_guide' | translate"
+                  [required]="true"
+                  [isManualUploadFile]="true"
+                  [rules]="'required|size:20000|mimes:image/*'"
+                  [acceptFileType]="'image/*'"
+                  (receiveResult)="resultLastMonthSalaryInfo($event)"
+                >
+                </image-upload-area>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="collateral-document-upload">
+                <image-upload-area
+                  id="firstMonthSalaryInfo"
+                  name="firstMonthSalaryInfo"
+                  [imageSrc]="firstMonthSalaryInfoSrc"
+                  [placeholderImageSrc]="'sprite-group-3-uploadimage'"
+                  [filledTitle]="'payday_loan.additional_document.first_month_salary_info_img' | translate"
+                  [uploadTitle]="
+                    'payday_loan.additional_document.first_month_salary_info_upload' | translate"
+                  [uploadHint]="'payday_loan.additional_document.first_month_salary_info_guide' | translate: {
+                    year: currentYear
+                  }"
+                  [required]="true"
+                  [isManualUploadFile]="true"
+                  [rules]="'required|size:20000|mimes:image/*'"
+                  [acceptFileType]="'image/*'"
+                  (receiveResult)="resultFirstMonthSalaryInfo($event)"
+                >
+                </image-upload-area>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="collateral-document-upload">
+                <image-upload-area
+                  id="currentMonthSalaryInfo"
+                  name="currentMonthSalaryInfo"
+                  [imageSrc]="currentMonthSalaryInfoSrc"
+                  [placeholderImageSrc]="'sprite-group-3-uploadimage'"
+                  [filledTitle]="'payday_loan.additional_document.current_month_salary_info_img' | translate"
+                  [uploadTitle]="
+                    'payday_loan.additional_document.current_month_salary_info_upload' | translate"
+                  [uploadHint]="'payday_loan.additional_document.current_month_salary_info_guide' | translate"
+                  [required]="true"
+                  [isManualUploadFile]="true"
+                  [rules]="'required|size:20000|mimes:image/*'"
+                  [acceptFileType]="'image/*'"
+                  (receiveResult)="resultCurrentMonthSalaryInfo($event)"
+                >
+                </image-upload-area>
+              </div>
+            </div>
+
+            <!-- Tài sản đảm bảo -->
+            <div class="col-md-12">
+              <h2>
+                {{ "payday_loan.choose_amount.guaranteed_assets" | translate }}
+              </h2>
+            </div>
+
+            <div class="col-md-12">
+              <div class="collateral-document-upload">
+                <image-upload-area
+                  id="collateralInfo"
+                  name="collateralInfo"
+                  [imageSrc]="collateralImgSrc"
+                  [placeholderImageSrc]="'sprite-group-3-uploadimage'"
+                  [filledTitle]="'payday_loan.ekyc.collateral_img' | translate"
+                  [uploadTitle]="
+                    'payday_loan.ekyc.upload_collateral_img' | translate
+                  "
+                  [uploadHint]="'payday_loan.ekyc.collateral_hind' | translate"
+                  [required]="true"
+                  [isManualUploadFile]="true"
+                  [rules]="'required|size:20000|mimes:image/*'"
+                  [acceptFileType]="'image/*'"
+                  (receiveResult)="resultCollateral($event)"
+                >
+                </image-upload-area>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="loan-collateral-document-note">
+                <div style="width: 14px; margin-right: 8px">
+                  <svg
+                    width="14"
+                    height="14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7 .333a6.668 6.668 0 110 13.335A6.668 6.668 0 017 .333zm-.003 5.5a.667.667 0 00-.662.59l-.004.077.002 3.668.005.078a.667.667 0 001.324 0l.005-.079L7.664 6.5l-.004-.078a.667.667 0 00-.663-.589zM7 3.333a.834.834 0 100 1.67.834.834 0 000-1.67z"
+                      fill="#007AFF"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <p
+                    [innerHtml]="
+                      'payday_loan.choose_amount.have_not_collateral_document'
+                        | translate
+                    "
+                  ></p>
+                  <button
+                    mat-button
+                    class="no-padding"
+                    id="illustrating-img-note"
+                    (click)="openDialogIllustratingImage()"
+                  >
+                    {{
+                      "payday_loan.choose_amount.see_illustrations" | translate
+                    }}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="text-center btn-container">
+                <button
+                  mat-raised-button
+                  type="submit"
+                  class="ui-button w-100"
+                  id="additional-user-info-confirm-btn"
+                  color="primary"
+                  [disabled]="!additionalDocumentsForm.valid"
+                  (click)="onSubmit()"
+                >
+                  {{ "common.continue" | translate }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+</div>

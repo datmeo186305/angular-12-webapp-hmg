@@ -1,0 +1,650 @@
+---
+openapi: 3.0.3
+info:
+  title: contract-service API
+  version: 1.0-SNAPSHOT
+paths:
+  /v1/contract/create/{companyName}:
+    post:
+      tags:
+        - Contract Controller
+      parameters:
+        - name: companyName
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/CompanyName'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateContractRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseCreateDocumentResponse'
+  /v1/letter/create/{companyName}:
+    post:
+      tags:
+        - Letter Controller
+      parameters:
+        - name: companyName
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/CompanyName'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLetterRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseCreateDocumentResponse'
+  /v1/sign/admin-sign-contract:
+    post:
+      tags:
+        - Sign Document Controller
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminSignContractAutomationRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/sign/confirm-otp:
+    post:
+      tags:
+        - Sign Document Controller
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmOTPSignRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseConfirmOTPResponse'
+  /v1/sign/get-token-onsign:
+    get:
+      tags:
+        - Sign Document Controller
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseCreateTokenResponse'
+  /v1/sign/send-contract/{companyName}:
+    post:
+      tags:
+        - Sign Document Controller
+      parameters:
+        - name: companyName
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/CompanyName'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendContractOTPRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseSignWithOTPResponse'
+  /v1/sign/send-letter/{companyName}:
+    post:
+      tags:
+        - Sign Document Controller
+      parameters:
+        - name: companyName
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/CompanyName'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendLetterOTPRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseSignWithOTPResponse'
+  /v1/signing-position/create:
+    post:
+      tags:
+        - Signing Position Controller
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSigningPositionRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/signing-position/delete/{id}:
+    post:
+      tags:
+        - Signing Position Controller
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/signing-position/get-all:
+    get:
+      tags:
+        - Signing Position Controller
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseListDocumentSigningLocationEntity'
+components:
+  schemas:
+    AdminSignContractAutomationRequest:
+      required:
+        - customerId
+        - idRequest
+        - idDocument
+      type: object
+      properties:
+        customerId:
+          pattern: \S
+          type: string
+          nullable: false
+        idRequest:
+          format: int32
+          type: integer
+          nullable: false
+        idDocument:
+          format: int32
+          type: integer
+          nullable: false
+    ApiResponseConfirmOTPResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/ConfirmOTPResponse'
+        errorCode:
+          type: string
+        message:
+          type: string
+        responseCode:
+          format: int32
+          type: integer
+    ApiResponseCreateDocumentResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/CreateDocumentResponse'
+        errorCode:
+          type: string
+        message:
+          type: string
+        responseCode:
+          format: int32
+          type: integer
+    ApiResponseCreateTokenResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/CreateTokenResponse'
+        errorCode:
+          type: string
+        message:
+          type: string
+        responseCode:
+          format: int32
+          type: integer
+    ApiResponseListDocumentSigningLocationEntity:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentSigningLocationEntity'
+        errorCode:
+          type: string
+        message:
+          type: string
+        responseCode:
+          format: int32
+          type: integer
+    ApiResponseSignWithOTPResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/SignWithOTPResponse'
+        errorCode:
+          type: string
+        message:
+          type: string
+        responseCode:
+          format: int32
+          type: integer
+    ApiResponseString:
+      type: object
+      properties:
+        result:
+          type: string
+        errorCode:
+          type: string
+        message:
+          type: string
+        responseCode:
+          format: int32
+          type: integer
+    CompanyName:
+      enum:
+        - HMG
+        - TNG
+      type: string
+    ConfirmOTPResponse:
+      type: object
+      properties:
+        customerId:
+          type: string
+        documentPath:
+          type: string
+        remainingRequests:
+          format: int32
+          type: integer
+    ConfirmOTPSignRequest:
+      required:
+        - customerId
+        - idRequest
+        - idDocument
+        - otp
+      type: object
+      properties:
+        customerId:
+          pattern: \S
+          type: string
+          nullable: false
+        idRequest:
+          format: int32
+          type: integer
+          nullable: false
+        idDocument:
+          format: int32
+          type: integer
+          nullable: false
+        otp:
+          maxLength: 6
+          minLength: 6
+          pattern: \S
+          type: string
+          nullable: false
+    CreateContractRequest:
+      required:
+        - customerId
+        - dateOfBirth
+        - name
+        - nationalId
+        - bankAccount
+        - bankName
+        - amount
+        - loanCode
+      type: object
+      properties:
+        customerId:
+          pattern: \S
+          type: string
+          nullable: false
+        dateOfBirth:
+          pattern: \S
+          type: string
+          nullable: false
+        name:
+          pattern: \S
+          type: string
+          nullable: false
+        nationalId:
+          pattern: \S
+          type: string
+          nullable: false
+        bankAccount:
+          pattern: \S
+          type: string
+          nullable: false
+        bankName:
+          pattern: \S
+          type: string
+          nullable: false
+        amount:
+          pattern: \S
+          type: string
+          nullable: false
+        loanCode:
+          pattern: \S
+          type: string
+          nullable: false
+        company:
+          type: string
+        businessRegistrationNumber:
+          type: string
+        companyAddress:
+          type: string
+        companyPhoneNumber:
+          type: string
+        representative:
+          type: string
+    CreateDocumentResponse:
+      type: object
+      properties:
+        customerId:
+          type: string
+        documentPath:
+          type: string
+    CreateLetterRequest:
+      required:
+        - customerId
+        - dateOfBirth
+        - name
+        - nationalId
+        - idIssuePlace
+      type: object
+      properties:
+        customerId:
+          pattern: \S
+          type: string
+          nullable: false
+        dateOfBirth:
+          pattern: \S
+          type: string
+          nullable: false
+        name:
+          pattern: \S
+          type: string
+          nullable: false
+        nationalId:
+          pattern: \S
+          type: string
+          nullable: false
+        idIssuePlace:
+          pattern: \S
+          type: string
+          nullable: false
+        employeeCode:
+          type: string
+        company:
+          type: string
+    CreateSigningPositionRequest:
+      required:
+        - documentType
+        - companyName
+        - page
+        - positionBorrower
+      type: object
+      properties:
+        documentType:
+          allOf:
+            - $ref: '#/components/schemas/DocumentType'
+            - nullable: false
+        companyName:
+          allOf:
+            - $ref: '#/components/schemas/CompanyName'
+            - nullable: false
+        page:
+          format: int32
+          type: integer
+          nullable: false
+        positionBorrower:
+          allOf:
+            - $ref: '#/components/schemas/SigningPositionRequest'
+            - nullable: false
+        positionInvestor:
+          $ref: '#/components/schemas/SigningPositionRequest'
+        positionEpay:
+          $ref: '#/components/schemas/SigningPositionRequest'
+    CreateTokenResponse:
+      type: object
+      properties:
+        error:
+          format: int32
+          type: integer
+        message:
+          type: string
+        data:
+          $ref: '#/components/schemas/DataCreateToken'
+    DataCreateToken:
+      type: object
+      properties:
+        access:
+          type: object
+          additionalProperties: {}
+        additional:
+          type: object
+          additionalProperties: {}
+    DocumentSigningLocationEntity:
+      type: object
+      properties:
+        id:
+          type: string
+        companyName:
+          $ref: '#/components/schemas/CompanyName'
+        documentType:
+          $ref: '#/components/schemas/DocumentType'
+        page:
+          format: int32
+          type: integer
+        positionBorrower:
+          $ref: '#/components/schemas/SigningPosition'
+        positionInvestor:
+          $ref: '#/components/schemas/SigningPosition'
+        positionEpay:
+          $ref: '#/components/schemas/SigningPosition'
+    DocumentType:
+      enum:
+        - BACK_ID_CARD
+        - BACK_ID_CARD_TWO
+        - BANK_BOOK
+        - COMPANY_LOGO
+        - CONTRACT
+        - CONTRACT_CUSTOMER_SIGN_DONE
+        - CONTRACT_SIGN_DONE
+        - FRONT_ID_CARD
+        - FRONT_ID_CARD_TWO
+        - ID_CARD
+        - LETTER
+        - LETTER_SIGN_DONE
+        - PAY_SLIP
+        - SALARY_INFORMATION
+        - SALARY_INFORMATION_ONE
+        - SALARY_INFORMATION_THREE
+        - SALARY_INFORMATION_TWO
+        - SELFIE
+        - UN_KNOWN
+        - VEHICLE_REGISTRATION
+      type: string
+    OtpType:
+      enum:
+        - EMAIL
+        - SMS
+        - VOICE
+      type: string
+    SendContractOTPRequest:
+      required:
+        - email
+        - name
+        - address
+        - mobile
+        - nationalId
+        - customerId
+        - documentPath
+        - loanCode
+        - loanId
+        - otpType
+      type: object
+      properties:
+        email:
+          pattern: \S
+          type: string
+          nullable: false
+        name:
+          pattern: \S
+          type: string
+          nullable: false
+        address:
+          pattern: \S
+          type: string
+          nullable: false
+        mobile:
+          pattern: \S
+          type: string
+          nullable: false
+        nationalId:
+          pattern: \S
+          type: string
+          nullable: false
+        customerId:
+          pattern: \S
+          type: string
+          nullable: false
+        documentPath:
+          pattern: \S
+          type: string
+          nullable: false
+        loanCode:
+          pattern: \S
+          type: string
+          nullable: false
+        loanId:
+          pattern: \S
+          type: string
+          nullable: false
+        otpType:
+          allOf:
+            - $ref: '#/components/schemas/OtpType'
+            - nullable: false
+    SendLetterOTPRequest:
+      required:
+        - email
+        - dateOfBirth
+        - name
+        - address
+        - mobile
+        - nationalId
+        - customerId
+        - idIssuePlace
+        - documentPath
+        - otpType
+        - gender
+      type: object
+      properties:
+        email:
+          pattern: \S
+          type: string
+          nullable: false
+        dateOfBirth:
+          pattern: \S
+          type: string
+          nullable: false
+        name:
+          pattern: \S
+          type: string
+          nullable: false
+        address:
+          pattern: \S
+          type: string
+          nullable: false
+        mobile:
+          pattern: \S
+          type: string
+          nullable: false
+        nationalId:
+          pattern: \S
+          type: string
+          nullable: false
+        customerId:
+          pattern: \S
+          type: string
+          nullable: false
+        employeeCode:
+          type: string
+        idIssuePlace:
+          pattern: \S
+          type: string
+          nullable: false
+        documentPath:
+          pattern: \S
+          type: string
+          nullable: false
+        otpType:
+          allOf:
+            - $ref: '#/components/schemas/OtpType'
+            - nullable: false
+        gender:
+          type: string
+          nullable: false
+    SignWithOTPResponse:
+      type: object
+      properties:
+        idRequest:
+          format: int32
+          type: integer
+        idDocument:
+          format: int32
+          type: integer
+        customerId:
+          type: string
+        unLockTime:
+          type: string
+    SigningPosition:
+      type: object
+      properties:
+        xPosition:
+          format: int32
+          type: integer
+        yPosition:
+          format: int32
+          type: integer
+    SigningPositionRequest:
+      type: object
+      properties:
+        xPosition:
+          format: int32
+          type: integer
+        yPosition:
+          format: int32
+          type: integer

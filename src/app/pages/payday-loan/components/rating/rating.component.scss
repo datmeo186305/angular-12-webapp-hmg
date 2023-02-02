@@ -1,0 +1,182 @@
+@import "../../../../../styles/variables";
+@import "../../../../../styles/insurance/insurance";
+@import "../../../../../styles/insurance/insurance-form";
+
+.rating-dialog {
+  position: relative;
+  padding: 32px 12px;
+  width: 360px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  padding: 0;
+  min-width: unset;
+  min-height: unset;
+  height: auto;
+  line-height: 1;
+}
+
+.emotion-box {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 64px;
+  height: 96px;
+  padding: 8px;
+  margin: 16px 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  .emotion-description {
+    text-align: center;
+    height: 28px;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: $grey-08;
+  }
+}
+
+.choose {
+  background: #f2fff5;
+  border: 1px solid $monex-color-00;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 16px;
+  .emotion-description {
+    color: $monex-color-00;
+  }
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: $monex-color-01;
+  margin: 0 12px;
+}
+
+.description {
+  margin: 8px 12px 0;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  color: $grey-08;
+}
+
+.rating-question {
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  font-weight: 600;
+  color: $grey-08;
+  margin-bottom: 12px;
+}
+
+.rating-tag-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: -4px auto;
+  .rating-tag-item {
+    margin: 4px;
+    height: 30px;
+    border-radius: 40px;
+    padding: 8px 12px;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    background: #f7f7fc;
+    border-radius: 40px;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+  }
+  .rating-tag-item.highlight {
+    background: $monex-color-00;
+    color: white;
+  }
+}
+
+.review-form {
+  margin: 16px 12px 20px;
+}
+
+.text-area {
+  width: 100%;
+  height: 120px;
+  padding: 12px;
+  border: 2px solid $grey-01;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 12px;
+  .mat-form-field {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.rating-btn {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  width: 200px;
+}
+
+@media (max-width: 768px) {
+  .rating-dialog {
+    width: 80vw;
+    max-height: 90vh;
+  }
+
+  .emotion {
+    -webkit-transform: scale(0.75);
+        -ms-transform: scale(0.75);
+            transform: scale(0.75);
+  }
+
+  .emotion-box {
+    height: auto;
+    padding: 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .text-area {
+    height: 70px;
+    padding: 8px;
+  }
+}

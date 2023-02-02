@@ -1,0 +1,23 @@
+@import "../../../../../styles/variables";
+@import "../../../../../styles/payday-loan/pl-layout";
+#sign-contract-term-success-container {
+  //min-height: calc(100vh - 124px);
+  background: #ffffff;
+  padding-top: 48px;
+  position: relative;
+}
+
+.contract-terms-success-body {
+  margin-top: 16px;
+}
+
+.contract-terms-success-text-default {
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  color: $grey-08;
+}

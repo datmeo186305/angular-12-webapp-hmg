@@ -1,0 +1,284 @@
+<div class="container">
+  <div class="insurance-container">
+    <form
+      [formGroup]="signUpForm"
+      *ngIf="!openOtpConfirm"
+      class="form-container"
+      autocomplete="off"
+    >
+      <div class="row">
+        <div class="col-md-12">
+          <mat-form-field
+            autofilled="false"
+            #mobileNumber
+            appearance="outline"
+            floatLabel="never"
+            class="w-100"
+            (focusout)="isUsernameInputFocus = false"
+          >
+            <mat-label>{{
+              "payday_loan.auth.phone_number_login" | translate
+            }}</mat-label>
+            <div
+              class="username-icon"
+              matPrefix
+              [ngClass]="
+                signUpForm.controls.mobileNumber.value != '' ||
+                isUsernameInputFocus
+                  ? 'is-focused-icon'
+                  : ''
+              "
+            ></div>
+            <input
+              name="username" autocomplete='new-password'
+              aria-autocomplete="none"
+              type="text"
+              matInput
+              formControlName="mobileNumber"
+              [placeholder]="'payday_loan.auth.phone_number_login' | translate"
+              required
+              phone-number-validate
+              (focus)="isUsernameInputFocus = true"
+              [ngClass]="isUsernameInputFocus ? 'is-focused-input' : ''"
+            />
+            <button
+              type="button"
+              tabindex="-1"
+              *ngIf="signUpForm.controls.mobileNumber.value"
+              matSuffix
+              mat-icon-button
+              class="support-icon"
+              aria-label="Clear"
+              (click)="signUpForm.controls.mobileNumber.setValue('')"
+              disableRipple="true"
+            >
+              <div class="clear-icon"></div>
+            </button>
+            <show-errors
+              [control]="signUpForm.controls['mobileNumber']"
+              [controlLabel]="'payday_loan.auth.phone_number_login' | translate"
+              [hasIconPrefix]="true"
+            >
+            </show-errors>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-12">
+          <mat-form-field
+            autofilled="false"
+            appearance="outline"
+            floatLabel="never"
+            class="w-100"
+          >
+            <mat-label>{{ "payday_loan.auth.password" | translate }}</mat-label>
+            <div
+              class="password-pre-icon"
+              matPrefix
+              [ngClass]="
+                signUpForm.controls.password.value != '' || isPasswordInputFocus
+                  ? 'is-focused-icon'
+                  : ''
+              "
+            ></div>
+            <input
+              name="new_password" autocomplete='new-password'
+              aria-autocomplete="none"
+              [type]="isPassVisible ? 'text' : 'password'"
+              matInput
+              formControlName="password"
+              [placeholder]="'payday_loan.auth.password' | translate"
+              required
+              strong-password-validate
+              (focus)="isPasswordInputFocus = true"
+              (blur)="isPasswordInputFocus = false"
+              [ngClass]="isPasswordInputFocus ? 'is-focused-input' : ''"
+            />
+            <button
+              type="button"
+              tabindex="-1"
+              *ngIf="signUpForm.controls.password.value"
+              matSuffix
+              mat-icon-button
+              aria-label="Clear"
+              (click)="signUpForm.controls.password.setValue('')"
+              disableRipple="true"
+            >
+              <div class="clear-icon"></div>
+            </button>
+            <button
+              type="button"
+              tabindex="-1"
+              matSuffix
+              mat-icon-button
+              class="support-icon"
+              (click)="isPassVisible = !isPassVisible"
+            >
+              <div
+                class="password-suffix-icon"
+                [ngClass]="[
+                  signUpForm.controls.password.value != '' ||
+                  isPasswordInputFocus
+                    ? 'is-focused-icon'
+                    : '',
+                  isPassVisible ? 'password-show-icon' : 'password-hide-icon'
+                ]"
+              ></div>
+            </button>
+            <show-errors
+              [control]="signUpForm.controls['password']"
+              [controlLabel]="'payday_loan.auth.password' | translate"
+              [hasIconPrefix]="true"
+            >
+            </show-errors>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-12">
+          <mat-form-field
+            autofilled="false"
+            appearance="outline"
+            floatLabel="never"
+            class="w-100"
+          >
+            <mat-label>{{
+              "payday_loan.auth.repeat_password" | translate
+            }}</mat-label>
+            <div
+              class="password-pre-icon"
+              matPrefix
+              [ngClass]="
+                signUpForm.controls.confirmPassword.value != '' ||
+                isConfirmPasswordInputFocus
+                  ? 'is-focused-icon'
+                  : ''
+              "
+            ></div>
+            <input
+              name="repeat_password" autocomplete='new-password'
+              aria-autocomplete="none"
+              [type]="isConfirmPassVisible ? 'text' : 'password'"
+              matInput
+              formControlName="confirmPassword"
+              [placeholder]="'payday_loan.auth.repeat_password' | translate"
+              required
+              confirm-password-validate
+              (focus)="isConfirmPasswordInputFocus = true"
+              (blur)="isConfirmPasswordInputFocus = false"
+              [ngClass]="isConfirmPasswordInputFocus ? 'is-focused-input' : ''"
+            />
+            <button
+              type="button"
+              tabindex="-1"
+              *ngIf="signUpForm.controls.confirmPassword.value"
+              matSuffix
+              mat-icon-button
+              aria-label="Clear"
+              (click)="signUpForm.controls.confirmPassword.setValue('')"
+              disableRipple="true"
+            >
+              <div class="clear-icon"></div>
+            </button>
+            <button
+              type="button"
+              tabindex="-1"
+              matSuffix
+              mat-icon-button
+              class="support-icon"
+              (click)="isConfirmPassVisible = !isConfirmPassVisible"
+            >
+              <div
+                class="password-suffix-icon"
+                [ngClass]="[
+                  signUpForm.controls.confirmPassword.value != '' ||
+                  isConfirmPasswordInputFocus
+                    ? 'is-focused-icon'
+                    : '',
+                  isConfirmPassVisible
+                    ? 'password-show-icon'
+                    : 'password-hide-icon'
+                ]"
+              ></div>
+            </button>
+            <show-errors
+              [control]="signUpForm.controls['confirmPassword']"
+              [controlLabel]="'payday_loan.auth.repeat_password' | translate"
+              [hasIconPrefix]="true"
+            >
+            </show-errors>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-12">
+          <p class="description">
+            {{ "payday_loan.auth.strong_password" | translate }}
+          </p>
+        </div>
+
+        <div class="col-md-12">
+          <div id="get-otp-btn-container">
+            <div class="d-flex insurance-checkbox-container">
+              <mat-checkbox
+                id="insurance-checkbox"
+                [value]="ruleAccepted"
+                (click)="onRuleAccepted()"
+              >
+              </mat-checkbox>
+              <p
+                class="insurance-checkbox-text align-items-center"
+                [innerHTML]="'payday_loan.auth.confirm_policy' | translate"
+              ></p>
+            </div>
+            <button
+              type="submit"
+              (click)="onSubmit()"
+              (keyup.enter)="onSubmit()"
+              [disabled]="!signUpForm.valid || !ruleAccepted"
+              mat-raised-button
+              color="primary"
+              class="ui-button confirm-btn"
+            >
+              {{ "payday_loan.auth.receive_otp" | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div *ngIf="openOtpConfirm" class="otp-container">
+      <app-verify-otp-form
+        (verifyOtp)="verifyOtp($event)"
+        (resendOtp)="resendOtp()"
+        [mobile]="mobile"
+        [otpValue]="otp"
+        [showSubmitButton]="false"
+        [errorText]="errorText"
+        [disabled]="disabledOTP"
+      >
+        <!-- <p *ngIf="!isAutoSwitchMethodToCms"
+          class="pl-space-between-content sent-otp-text"
+          [innerHtml]="
+            'payday_loan.contract_terms_of_service.sent_otp_success'
+              | translate
+                : {
+                    key: 'tài khoản ZALO ứng với số điện thoại',
+                    value: mobile
+                  }
+          "
+          guide
+        ></p> -->
+        <p
+          class="pl-space-between-content sent-otp-text"
+          [innerHtml]="
+            'payday_loan.contract_terms_of_service.sent_otp_success'
+              | translate
+                : {
+                    key: 'số điện thoại',
+                    value: mobile
+                  }
+          "
+          guide
+        ></p>
+      </app-verify-otp-form>
+    </div>
+  </div>
+</div>

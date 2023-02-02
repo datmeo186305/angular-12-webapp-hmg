@@ -1,0 +1,15 @@
+<div class="main-layout">
+  <app-header></app-header>
+
+  <div class="mir-mat-spinner-container" *ngIf="loadingStatus$ | async">
+    <app-monex-loading></app-monex-loading>
+  </div>
+
+  <div id="main-layout-content">
+    <div [@routeAnimations]="outlet.isActivated ? outlet.activatedRoute : ''">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+  </div>
+
+  <app-chat-box></app-chat-box>
+</div>

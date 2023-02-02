@@ -1,0 +1,41 @@
+@import "src/styles/insurance/insurance";
+#charge-insurance-form {
+  margin-top: 20px;
+
+}
+
+#calc-fee-insurance-container {
+
+}
+
+.fee-insurance-box {
+  padding-bottom: 10px;
+  p {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+    color: $grey-08;
+
+    &.fee-insurance-value {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 24px;
+      color: $system-color-blue;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+
+  .insurance-btn {
+    max-width: 100%;
+  }
+
+  #calc-fee-insurance-container {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}

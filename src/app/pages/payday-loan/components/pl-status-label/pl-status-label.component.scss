@@ -1,0 +1,42 @@
+@import "src/styles/variables";
+
+.pl-status-label {
+  display: inline-flex;
+  padding: 4px 8px;
+  border-radius: 55px;
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.pl-status-label-pending {
+  background: #FFFAF2;
+  border: 1px solid $system-color-orange;
+  color: $system-color-orange;
+}
+
+.pl-status-label-success {
+  background: #F2FFF5;
+  border: 1px solid $system-color-green;;
+  color: $system-color-green;
+}
+
+.pl-status-label-disbursement {
+  background: rgba(88, 86, 214, 0.1);
+  color: $system-color-indigo;
+  border: 1px solid $system-color-indigo;
+}
+
+.pl-status-label-rejected {
+  background: $grey-00;
+  border: 1px solid $grey-08;
+  color: $grey-08;
+}
+
+.pl-status-label-cancel {
+  background: #FFF3F2;
+  color: $system-color-red;
+  border: 1px solid $system-color-red;
+}

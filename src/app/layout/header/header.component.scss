@@ -1,0 +1,88 @@
+@import "../../../styles/variables";
+
+$main-font: 14px;
+
+header {
+  z-index: 1;
+}
+
+#insurance-header {
+  background: $monex-gradient-03;
+  font-family: $sfPro;
+  width: 100%;
+}
+
+.header-container {
+  flex-grow: 1;
+  flex-basis: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(200px);
+  font-family: $sfPro;
+
+  .button-login, .avatar {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $main-font;
+    font-family: $sfPro;
+  }
+
+  .avatar {
+    width: 32px;
+    background-color: $monex-color-00;
+    border-radius: 50%;
+    color: $white;
+    font-size: 16px;
+  }
+
+  #profile-btn {
+    min-width: 52px;
+  }
+}
+
+#logo-monex {
+  height: 28px;
+}
+
+#insurance-navigation-bar {
+  padding: 0;
+  background: $monex-gradient-03;
+  font-family: $sfPro;
+
+  #insurance-top-navigation {
+    padding: 0 16px;
+    display: flex;
+    height: 48px;
+  }
+
+  h2 {
+    color: white;
+    margin: auto;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+.insurance-top-nav-btn {
+  width: auto;
+  height: 100%;
+  min-width: 20px;
+  span {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+#insurance-header-content {
+  padding: 8px 0;
+}
+
+@media (max-width: 768px) {
+  #insurance-header-content {
+    padding: 8px 16px;
+  }
+}
+

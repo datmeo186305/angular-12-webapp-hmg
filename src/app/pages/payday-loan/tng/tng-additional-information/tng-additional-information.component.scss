@@ -1,0 +1,105 @@
+@import "../../../../../styles/variables";
+@import "../../../../../styles/insurance/insurance";
+@import "../../../../../styles/insurance/insurance-form";
+
+.responsive-form-content {
+  padding: 16px 0;
+  h2,
+  h3 {
+    margin: 8px 0 16px;
+    color: $grey-10;
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  h3 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  p {
+    margin-bottom: 24px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: $grey-08;
+    b {
+      font-weight: 600;
+    }
+  }
+}
+
+.btn-container {
+  padding: 0 64px;
+}
+
+.responsive-form-actions {
+  padding: 0;
+}
+
+.value {
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  color: $grey-08;
+  margin-bottom: 24px;
+}
+
+#salary-amount-value {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: $monex-color-00;
+  margin-bottom: 0;
+}
+
+#salary-amount {
+  margin-bottom: 10px;
+}
+
+.required {
+  color: #ff3b30 !important;
+}
+
+// .guide {
+//   list-style-type: disc;
+//   margin-left: 32px;
+//   margin-bottom: 24px;
+//   li {
+//     font-family: $sfPro;
+//     font-style: normal;
+//     font-weight: 500;
+//     font-size: 14px;
+//     line-height: 18px;
+//     letter-spacing: 0.1px;
+//   }
+// }
+.guide {
+  list-style-type: disc;
+  margin-bottom: 24px;
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  color: $grey-08;
+}
+
+#guide-choose-btn {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.1px;
+  color: #007aff;
+  margin-bottom: 23px;
+}
+
+.collateral-document-upload {
+  margin-bottom: 16px;
+}

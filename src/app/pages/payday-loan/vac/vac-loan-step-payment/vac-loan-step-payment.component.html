@@ -1,0 +1,16 @@
+<div id="loan-payment-page" class="container-fluid">
+  <div class="container loan-payment-container pl-padding-bottom-default">
+    <div class="payday-loan-container">
+      <!-- Detail -->
+      <pl-detail-loan-payment
+        [currentLoan]="currentLoan"
+        [companyInfo]="companyInfo"
+        [paymentDayRoute]="paymentDayRoute"
+        [paidAmount]="paidAmount"
+        [isFinalization]="false"
+        (finalization)="payment()"
+      >
+      </pl-detail-loan-payment>
+    </div>
+  </div>
+</div>

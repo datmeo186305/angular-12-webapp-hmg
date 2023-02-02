@@ -1,0 +1,63 @@
+@import "../../../../../styles/variables";
+@import "../../../../../styles/insurance/insurance";
+@import "../../../../../styles/insurance/insurance-form";
+:host {
+  color: $monex-color-01;
+}
+.header {
+  padding: 24px 0;
+  h2 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    margin-top: 16px;
+  }
+}
+
+.card-box {
+  margin-right: -12px;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.card-list {
+  padding: 0 12px 12px 0;
+}
+
+.card-container {
+  background: #ffffff;
+  border: 2px solid $grey-01;
+  box-sizing: border-box;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.card-title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+  background: $grey-01;
+  padding: 0 8px;
+}
+
+.card-img {
+  width: 64px;
+  height: 64px;
+}
+
+.choose-company {
+  cursor: pointer;
+}
+
+@media (max-width: 320px) {
+    .card-title {
+        padding: 0 4px;
+      }
+}

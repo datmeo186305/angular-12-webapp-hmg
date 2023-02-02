@@ -1,0 +1,15 @@
+<div class="container-fluid d-flex flex-column landingpage-layout">
+
+  <div class="mir-mat-spinner-container" *ngIf="loadingStatus$ | async">
+    <app-monex-loading></app-monex-loading>
+  </div>
+
+
+  <app-header-landing-page [activeLink]='currentLink' #header>
+    <div class="d-block">
+      <router-outlet class="landing-page"></router-outlet>
+    </div>
+    <app-footer-landing-page #footer></app-footer-landing-page>
+  </app-header-landing-page>
+  <app-chat-box isLandingPage="true"></app-chat-box>
+</div>

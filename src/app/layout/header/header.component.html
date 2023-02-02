@@ -1,0 +1,82 @@
+<header>
+  <div class="container-fluid">
+    <header>
+      <div id="insurance-header">
+        <div class="header-container">
+          <div class="container no-padding justify-content-center">
+            <div
+              id="insurance-header-content"
+              class="d-flex justify-content-between align-items-center"
+            >
+              <a href="/"><img [src]="logoSrc" alt="logo-Ung-lương-0%-lai" id="logo-monex"/></a>
+              <!--              <ng-template #Login>-->
+              <!--                <button mat-flat-button class="ui-button button-login">-->
+              <!--                  {{ "auth.login" | translate }}-->
+              <!--                </button>-->
+              <!--              </ng-template>-->
+              <div *ngIf="showProfileBtn">
+                <button
+                  id="profile-btn"
+                  mat-button
+                  [matMenuTriggerFor]="menu"
+                  class="no-padding"
+                >
+                  <div
+                    class="
+                      d-flex
+                      flex-row
+                      text-center
+                      justify-content-between
+                      align-items-center
+                    "
+                  >
+                    <div class="avatar">{{shortName}}</div>
+                    <div class="sprite-group-1-icon-down"></div>
+                  </div>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="logout()">
+                    {{ "auth.logout" | translate }}
+                  </button>
+                </mat-menu>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="insurance-navigation-bar" *ngIf="showNavigationBar">
+        <div class="container no-padding insurance-navigation-bar-container">
+          <!-- Top navigation -->
+          <div id="insurance-top-navigation" class="justify-content-between">
+            <button
+              mat-icon-button
+              class="no-padding insurance-top-nav-btn"
+              (click)="backToPrevPage()"
+            >
+              <span [ngClass]="leftBtnIcon" *ngIf="displayLeftBtn"></span>
+            </button>
+
+            <!-- Stepper navigation -->
+            <app-step-navigation
+              *ngIf="showStepNavigation; else showTitle"
+              class="w-100"
+            ></app-step-navigation>
+            <ng-template #showTitle
+            ><h2>{{ titleNavigation }}</h2></ng-template
+            >
+
+            <button mat-icon-button class="no-padding insurance-top-nav-btn insurance-top-nav-btn-right">
+              <span [ngClass]="rightBtnIcon" *ngIf="displayRightBtn"></span>
+            </button>
+          </div>
+
+          <!-- Stepper progress bar-->
+          <app-step-progress-bar
+            *ngIf="showStepProgressBar"
+          ></app-step-progress-bar>
+        </div>
+      </div>
+    </header>
+  </div>
+</header>

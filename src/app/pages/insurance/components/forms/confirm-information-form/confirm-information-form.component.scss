@@ -1,0 +1,42 @@
+@import "../../../../../../styles/insurance/insurance";
+
+#insurance-confirm-information-form {
+  margin-top: 12px;
+
+  .insurance-info-title {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: $grey-10;
+    margin-bottom: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .insurance-checkbox-text {
+    font-family: $sfPro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+    color: $grey-10;
+  }
+
+  #insurance-checkbox {
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .insurance-btn {
+    max-width: 100%;
+  }
+
+  #confirm-info-btn-container {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}

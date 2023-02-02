@@ -1,0 +1,8 @@
+<app-choose-payment-method
+  [companyInfo]="companyInfo"
+  [productInfo]="currentLoan"
+  [userInfo]="userInfo"
+  [vaInfo]="vaInfo"
+  applicationType="PDL_TNG"
+  (submitFinalization)="finalization()"
+></app-choose-payment-method>

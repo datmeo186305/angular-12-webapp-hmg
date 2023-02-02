@@ -1,0 +1,1445 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8004
+  description: Generated server url
+paths:
+  /v1/templateNotifications:
+    get:
+      tags:
+      - template-notification-controller
+      operationId: getTemplate
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseListTemplateNotificationEntity'
+    post:
+      tags:
+      - template-notification-controller
+      operationId: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTemplateNotificationRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/templateNotifications/updateStatus:
+    post:
+      tags:
+      - template-notification-controller
+      operationId: updateStatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTemplateStatusRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/templateNotifications/sendTemplate:
+    post:
+      tags:
+      - template-notification-controller
+      operationId: sendTemplate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendTemplateRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/templateNotifications/addContent:
+    post:
+      tags:
+      - template-notification-controller
+      operationId: addTContent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddContentRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/sms/sendSms:
+    post:
+      tags:
+      - sms-controller
+      operationId: sendSMS
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendSMSRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+  /v1/signingPositions:
+    get:
+      tags:
+      - signing-position-controller
+      operationId: getAll
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseListDocumentSigningLocationEntity'
+    post:
+      tags:
+      - signing-position-controller
+      operationId: create_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSigningPositionRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/otps/sendOtp:
+    post:
+      tags:
+      - otp-controller
+      operationId: sendOtp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendOtpRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/notifications/updateFcmToken:
+    post:
+      tags:
+      - push-notification-controller
+      operationId: updateFcmToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateFcmTokenRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/notifications/seenNotification:
+    post:
+      tags:
+      - push-notification-controller
+      operationId: seenNotification
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SeenNotificationRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/notifications/pushNotification:
+    post:
+      tags:
+      - push-notification-controller
+      operationId: pushNotification
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendSampleNotificationRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/files/uploadSingleFile:
+    post:
+      tags:
+      - file-controller
+      operationId: uploadSingleFile
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UploadFileRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+  /v1/files/uploadPublicFile:
+    post:
+      tags:
+      - file-controller
+      operationId: uploadSinglePublicFile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UploadFileRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+  /v1/files/uploadPublicCkeditorFile:
+    post:
+      tags:
+      - file-controller
+      operationId: uploadPublicCkeditorFile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                upload:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /v1/files/uploadOverwriteFile:
+    post:
+      tags:
+      - file-controller
+      operationId: uploadOverwriteFile
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UploadOverwriteFileRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+  /v1/files/uploadCoreDocument:
+    post:
+      tags:
+      - file-controller
+      operationId: uploadCoreDocument
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+  /v1/files/downloadFile:
+    post:
+      tags:
+      - file-controller
+      operationId: downloadFile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DownloadFileRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+  /v1/emails/sendEmail:
+    post:
+      tags:
+      - mail-controller
+      operationId: sendMail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendMailRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+  /v1/contracts/{companyName}/sendLetter:
+    post:
+      tags:
+      - contract-controller
+      operationId: sendLetter
+      parameters:
+      - name: companyName
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - HMG
+          - TNG
+          - VACOFFICE
+          - VACFACTORY
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendLetterOTPRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseSignWithOTPResponse'
+  /v1/contracts/{companyName}/sendContract:
+    post:
+      tags:
+      - contract-controller
+      operationId: sendContract
+      parameters:
+      - name: companyName
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - HMG
+          - TNG
+          - VACOFFICE
+          - VACFACTORY
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendContractOTPRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseSignWithOTPResponse'
+  /v1/contracts/{companyName}/createLetter:
+    post:
+      tags:
+      - contract-controller
+      operationId: createLetter
+      parameters:
+      - name: companyName
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - HMG
+          - TNG
+          - VACOFFICE
+          - VACFACTORY
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLetterRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseCreateDocumentResponse'
+  /v1/contracts/preview-contract:
+    post:
+      tags:
+      - contract-controller
+      summary: Xem trước hợp đồng
+      operationId: previewContract
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PreviewContractRequest'
+        required: true
+      responses:
+        "200":
+          description: Trả về hợp đồng dưới dạng byte array
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        "400":
+          description: Error preview contract
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+  /v1/contracts/getTokenOnSign:
+    post:
+      tags:
+      - contract-controller
+      operationId: getTokenOnSign
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseCreateTokenResponse'
+  /v1/contracts/confirmOtp:
+    post:
+      tags:
+      - contract-controller
+      operationId: confirmOtp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmOTPSignRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseConfirmOTPResponse'
+  /v1/contracts/bnpl/{loanId}:
+    post:
+      tags:
+      - contract-controller
+      summary: Tạo hợp đồng bnpl
+      operationId: createContractBnpl
+      parameters:
+      - name: loanId
+        in: path
+        description: Mã khoản vay
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseCreateDocumentResponse'
+  /v1/contracts/bnpl/{loanId}/download:
+    post:
+      tags:
+      - contract-controller
+      summary: Tải về hợp đồng
+      operationId: getContractFile
+      parameters:
+      - name: loanId
+        in: path
+        description: Mã khoản vay
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Trả về hợp đồng dưới dạng byte array
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        "400":
+          description: Mã khoản vay không đúng
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /v1/contracts/bnpl/{loanId}/accept:
+    post:
+      tags:
+      - contract-controller
+      summary: Chập nhận hợp đồng bnpl
+      operationId: acceptContractBnpl
+      parameters:
+      - name: loanId
+        in: path
+        description: Mã khoản vay
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseCreateDocumentResponse'
+  /v1/contracts/adminSignContract:
+    post:
+      tags:
+      - contract-controller
+      operationId: adminSignContract
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminSignContractAutomationRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/notifications/{customerId}:
+    get:
+      tags:
+      - push-notification-controller
+      operationId: getNotification
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseListTransactionNotificationEntity'
+  /v1/contracts/bnpl/{loanId}/session:
+    get:
+      tags:
+      - contract-controller
+      summary: Nhận về phiên ký hợp đồng
+      operationId: getLoanContract
+      parameters:
+      - name: loanId
+        in: path
+        description: Mã khoản vay
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseContractBnplEntity'
+  /v1/templateNotifications/{idTemplate}:
+    delete:
+      tags:
+      - template-notification-controller
+      operationId: deleteTemplate
+      parameters:
+      - name: idTemplate
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /v1/signingPositions/{id}:
+    delete:
+      tags:
+      - signing-position-controller
+      operationId: delete
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+components:
+  schemas:
+    ApiResponseString:
+      type: object
+      properties:
+        result:
+          type: string
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    ContentNotificationRequest:
+      required:
+      - content
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - EMAIL
+          - SMS
+          - NOTIFICATION
+        content:
+          type: string
+        title:
+          type: string
+        isActive:
+          type: boolean
+    CreateTemplateNotificationRequest:
+      required:
+      - description
+      - listContent
+      - nameTemplate
+      type: object
+      properties:
+        nameTemplate:
+          type: string
+        listContent:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentNotificationRequest'
+        description:
+          type: string
+    UpdateTemplateStatusRequest:
+      required:
+      - nameTemplate
+      - type
+      type: object
+      properties:
+        nameTemplate:
+          type: string
+        type:
+          type: string
+          enum:
+          - EMAIL
+          - SMS
+          - NOTIFICATION
+    SendTemplateRequest:
+      required:
+      - customerId
+      - email
+      - fullName
+      - mobile
+      - templateName
+      type: object
+      properties:
+        templateName:
+          type: string
+        customerId:
+          type: string
+        email:
+          type: string
+        mobile:
+          type: string
+        fullName:
+          type: string
+        amount:
+          type: string
+        loanCode:
+          type: string
+        voucherType:
+          type: string
+        voucherValue:
+          type: string
+        promotionalCode:
+          type: string
+        giftName:
+          type: string
+        pathImage:
+          type: string
+        addressCompany:
+          type: string
+        giftGivingTime:
+          type: string
+        giftGivingDay:
+          type: string
+    AddContentRequest:
+      required:
+      - content
+      - isActive
+      - nameTemplate
+      - type
+      type: object
+      properties:
+        nameTemplate:
+          type: string
+        type:
+          type: string
+          enum:
+          - EMAIL
+          - SMS
+          - NOTIFICATION
+        content:
+          type: string
+        title:
+          type: string
+        isActive:
+          type: boolean
+    SendSMSRequest:
+      required:
+      - customerId
+      - message
+      - to
+      type: object
+      properties:
+        to:
+          type: string
+        message:
+          type: string
+        customerId:
+          type: string
+    ApiResponseObject:
+      type: object
+      properties:
+        result:
+          type: object
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    CreateSigningPositionRequest:
+      required:
+      - companyName
+      - documentType
+      - page
+      - positionBorrower
+      type: object
+      properties:
+        documentType:
+          type: string
+        companyName:
+          type: string
+          enum:
+          - HMG
+          - TNG
+          - VACOFFICE
+          - VACFACTORY
+        page:
+          type: integer
+          format: int32
+        positionBorrower:
+          $ref: '#/components/schemas/SigningPositionRequest'
+        positionInvestor:
+          $ref: '#/components/schemas/SigningPositionRequest'
+        positionEpay:
+          $ref: '#/components/schemas/SigningPositionRequest'
+    SigningPositionRequest:
+      type: object
+      properties:
+        getxPosition:
+          type: integer
+          format: int32
+        getyPosition:
+          type: integer
+          format: int32
+      description: Vị trí chữ ký
+    SendOtpRequest:
+      required:
+      - mobile
+      - otp
+      - provider
+      type: object
+      properties:
+        mobile:
+          type: string
+        provider:
+          type: string
+        otp:
+          type: string
+    UpdateFcmTokenRequest:
+      required:
+      - customerId
+      - fcmToken
+      type: object
+      properties:
+        customerId:
+          type: string
+        fcmToken:
+          type: string
+    SeenNotificationRequest:
+      required:
+      - customerId
+      - notificationId
+      type: object
+      properties:
+        customerId:
+          type: string
+        notificationId:
+          type: string
+    SendSampleNotificationRequest:
+      required:
+      - content
+      - customerId
+      - title
+      type: object
+      properties:
+        customerId:
+          type: string
+        content:
+          type: string
+        title:
+          type: string
+    UploadFileRequest:
+      required:
+      - customerId
+      - document_type
+      - file
+      type: object
+      properties:
+        document_type:
+          type: string
+        file:
+          type: string
+          format: binary
+        customerId:
+          type: string
+    UploadOverwriteFileRequest:
+      required:
+      - document_type
+      - file
+      - fileName
+      type: object
+      properties:
+        document_type:
+          type: string
+        file:
+          type: string
+          format: binary
+        fileName:
+          type: string
+    DownloadFileRequest:
+      required:
+      - customerId
+      - documentPath
+      type: object
+      properties:
+        documentPath:
+          type: string
+        customerId:
+          type: string
+    SendMailRequest:
+      required:
+      - content
+      - customerId
+      - subject
+      - to
+      type: object
+      properties:
+        customerId:
+          type: string
+        to:
+          type: array
+          items:
+            type: string
+        subject:
+          type: string
+        content:
+          type: string
+        documentPath:
+          type: string
+        fileName:
+          type: string
+        withFooter:
+          type: boolean
+    SendLetterOTPRequest:
+      required:
+      - address
+      - customerId
+      - dateOfBirth
+      - documentPath
+      - email
+      - gender
+      - idIssuePlace
+      - mobile
+      - name
+      - nationalId
+      - otpType
+      type: object
+      properties:
+        email:
+          type: string
+        dateOfBirth:
+          type: string
+        name:
+          type: string
+        address:
+          type: string
+        mobile:
+          type: string
+        nationalId:
+          type: string
+        customerId:
+          type: string
+        employeeCode:
+          type: string
+        idIssuePlace:
+          type: string
+        documentPath:
+          type: string
+        otpType:
+          type: string
+          enum:
+          - EMAIL
+          - SMS
+          - VOICE
+        gender:
+          type: string
+    ApiResponseSignWithOTPResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/SignWithOTPResponse'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    SignWithOTPResponse:
+      type: object
+      properties:
+        idRequest:
+          type: integer
+          format: int32
+        idDocument:
+          type: integer
+          format: int32
+        customerId:
+          type: string
+        unLockTime:
+          type: string
+    SendContractOTPRequest:
+      required:
+      - address
+      - customerId
+      - documentPath
+      - email
+      - loanCode
+      - loanId
+      - mobile
+      - name
+      - nationalId
+      - otpType
+      type: object
+      properties:
+        email:
+          type: string
+        name:
+          type: string
+        address:
+          type: string
+        mobile:
+          type: string
+        nationalId:
+          type: string
+        customerId:
+          type: string
+        documentPath:
+          type: string
+        loanCode:
+          type: string
+        loanId:
+          type: string
+        otpType:
+          type: string
+          enum:
+          - EMAIL
+          - SMS
+          - VOICE
+    CreateLetterRequest:
+      required:
+      - customerId
+      - dateOfBirth
+      - idIssuePlace
+      - name
+      - nationalId
+      type: object
+      properties:
+        dateOfBirth:
+          type: string
+        name:
+          type: string
+        nationalId:
+          type: string
+        customerId:
+          type: string
+        employeeCode:
+          type: string
+        idIssuePlace:
+          type: string
+        company:
+          type: string
+        loanAmount:
+          type: integer
+          format: int32
+        vaAccountOwner:
+          type: string
+        vaAccountNumber:
+          type: string
+        accountOwner:
+          type: string
+        accountNumber:
+          type: string
+        isThreeMonths:
+          type: boolean
+    ApiResponseCreateDocumentResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/CreateDocumentResponse'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    CreateDocumentResponse:
+      type: object
+      properties:
+        customerId:
+          type: string
+          description: Mã khách hàng
+        documentPath:
+          type: string
+          description: Đường dẫn đến tài liệu hợp đồng
+      description: Thông tin khi hoàn thành tạo hợp đồng
+    ContractSigningPosition:
+      required:
+      - height
+      - pageIndex
+      - positionX
+      - positionY
+      - width
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        positionX:
+          type: number
+          format: float
+        positionY:
+          type: number
+          format: float
+        width:
+          type: number
+          format: float
+        height:
+          type: number
+          format: float
+    PreviewContractRequest:
+      required:
+      - content
+      - customerSigningPosition
+      - monexSigningPosition
+      type: object
+      properties:
+        content:
+          type: string
+        customerSigningPosition:
+          $ref: '#/components/schemas/ContractSigningPosition'
+        monexSigningPosition:
+          $ref: '#/components/schemas/ContractSigningPosition'
+    ApiResponseCreateTokenResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/CreateTokenResponse'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    CreateTokenResponse:
+      type: object
+      properties:
+        error:
+          type: integer
+          format: int32
+        message:
+          type: string
+        data:
+          $ref: '#/components/schemas/DataCreateToken'
+    DataCreateToken:
+      type: object
+      properties:
+        access:
+          type: object
+          additionalProperties:
+            type: object
+        additional:
+          type: object
+          additionalProperties:
+            type: object
+    ConfirmOTPSignRequest:
+      required:
+      - customerId
+      - idDocument
+      - idRequest
+      - otp
+      type: object
+      properties:
+        customerId:
+          type: string
+        idRequest:
+          type: integer
+          format: int32
+        idDocument:
+          type: integer
+          format: int32
+        otp:
+          maxLength: 6
+          minLength: 6
+          type: string
+    ApiResponseConfirmOTPResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/ConfirmOTPResponse'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    ConfirmOTPResponse:
+      type: object
+      properties:
+        customerId:
+          type: string
+        documentPath:
+          type: string
+        remainingRequests:
+          type: integer
+          format: int32
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: object
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    AdminSignContractAutomationRequest:
+      required:
+      - customerId
+      - idDocument
+      - idRequest
+      type: object
+      properties:
+        customerId:
+          type: string
+        idRequest:
+          type: integer
+          format: int32
+        idDocument:
+          type: integer
+          format: int32
+    ApiResponseListTemplateNotificationEntity:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateNotificationEntity'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    ContentNotification:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - EMAIL
+          - SMS
+          - NOTIFICATION
+        content:
+          type: string
+        title:
+          type: string
+        isActive:
+          type: boolean
+        sendUnderwriter:
+          type: boolean
+    TemplateNotificationEntity:
+      type: object
+      properties:
+        id:
+          type: string
+        nameTemplate:
+          type: string
+        listContent:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentNotification'
+        description:
+          type: string
+    ApiResponseListDocumentSigningLocationEntity:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentSigningLocationEntity'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    DocumentSigningLocationEntity:
+      type: object
+      properties:
+        id:
+          type: string
+        companyName:
+          type: string
+          enum:
+          - HMG
+          - TNG
+          - VACOFFICE
+          - VACFACTORY
+        documentType:
+          type: string
+        page:
+          type: integer
+          format: int32
+        positionBorrower:
+          $ref: '#/components/schemas/SigningPosition'
+        positionInvestor:
+          $ref: '#/components/schemas/SigningPosition'
+        positionEpay:
+          $ref: '#/components/schemas/SigningPosition'
+    SigningPosition:
+      type: object
+      properties:
+        xposition:
+          type: integer
+          format: int32
+        yposition:
+          type: integer
+          format: int32
+    ApiResponseListTransactionNotificationEntity:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionNotificationEntity'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    TransactionNotificationEntity:
+      type: object
+      properties:
+        id:
+          type: string
+        customerId:
+          type: string
+        content:
+          type: string
+        title:
+          type: string
+        type:
+          type: string
+          enum:
+          - EMAIL
+          - SMS
+          - NOTIFICATION
+        isSeen:
+          type: string
+        date:
+          type: string
+    ApiResponseContractBnplEntity:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/ContractBnplEntity'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    ContractBnplEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Mã hợp đồng
+        customerAdditionalInfos:
+          type: object
+          additionalProperties:
+            type: string
+            description: Thông tin chi tiết khách hàng
+          description: Thông tin chi tiết khách hàng
+        customerId:
+          type: string
+          description: Mã khách hàng
+        email:
+          type: string
+          description: Email khách hàng
+        documentType:
+          type: string
+          description: Loại tài liệu
+          enum:
+          - ID_CARD
+          - FRONT_ID_CARD
+          - FRONT_ID_CARD_TWO
+          - BACK_ID_CARD_TWO
+          - BACK_ID_CARD
+          - SELFIE
+          - BANK_BOOK
+          - PAY_SLIP
+          - UN_KNOWN
+          - CONTRACT
+          - LETTER
+          - SALARY_INFORMATION
+          - SALARY_INFORMATION_ONE
+          - SALARY_INFORMATION_TWO
+          - SALARY_INFORMATION_THREE
+          - VEHICLE_REGISTRATION
+          - LETTER_SIGN_DONE
+          - CONTRACT_SIGN_DONE
+          - CONTRACT_CUSTOMER_SIGN_DONE
+          - COMPANY_LOGO
+          - BANK_LOGO
+          - CKEDITOR_IMAGE
+          - CONTRACT_BNPL_ACCEPTED
+          - CONTRACT_BNPL
+        name:
+          type: string
+          description: Tên khách hàng
+        loanId:
+          type: string
+          description: Mã khoản vay
+        loanAmount:
+          type: integer
+          description: Tổng khoản vay
+          format: int32
+        createAt:
+          type: string
+          description: Thời gian tạo
+          format: date-time
+        documentPath:
+          type: string
+          description: Đường dẫn đến tài liệu hợp đồng
+        documentPathSigned:
+          type: string
+          description: Đường dẫn đến tài liệu hợp đồng đã ký
+      description: Hợp đồng bnpl
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header

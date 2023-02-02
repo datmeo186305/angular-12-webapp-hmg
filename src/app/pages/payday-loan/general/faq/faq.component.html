@@ -1,0 +1,254 @@
+<div class="container-fluid allButFooter">
+  <!-- Title -->
+  <div class="custom-row title">
+    <div class="container">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="banner">
+          <!-- <img style="width: 100%; height: auto;" src="assets/img/payday-loan/faq-banner.svg" alt="faq-banner" /> -->
+          <h1>Chúng tôi có thể giúp gì cho bạn?</h1>
+          <ul>
+            <li>
+              <button id="move-content-01" (click)="scroll(aboutMonex)">
+                Về Monex
+              </button>
+            </li>
+            <li>|</li>
+            <li>
+              <button id="move-content-02" (click)="scroll(signIn)">
+                Đăng ký ứng lương
+              </button>
+            </li>
+            <li>|</li>
+            <li>
+              <button id="move-content-03" (click)="scroll(payment)">
+                Thanh toán
+              </button>
+            </li>
+            <!--                        <li>|</li>-->
+            <!--                        <li>-->
+            <!--                            <button id="move-content-04">Vấn đề khác</button>-->
+            <!--                        </li>-->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <!-- Carousel -->
+    <div class="custom-row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 faq-carousel">
+        <div class="owl-carousel owl-theme owl-faq d-flex">
+          <div class="item">
+            <div class="cover">
+              <img
+                src="assets/img/payday-loan/faq-monex-logo.svg"
+                alt="monex-logo"
+              />
+              <h3>Monex là ai?</h3>
+              <h6>
+                Monex là nền tảng công nghệ cung cấp và kết nối các giải pháp
+                tài chính cá nhân thông minh.
+              </h6>
+            </div>
+          </div>
+          <div class="item">
+            <div class="cover">
+              <img
+                src="assets/img/payday-loan/faq-monex-card.svg"
+                alt="monex-card"
+              />
+              <h3>Monex có những dịch vụ nào?</h3>
+              <h6>
+                Dịch vụ của MONEX bao gồm : Dịch vụ ứng lương 24h và các dịch vụ
+                sắp ra mắt trong thời gian tới như: ứng tiền siêu tốc 1h, mua
+                trước thanh toán sau… Các dịch vụ này có giá trị khoản vay và
+                thời hạn cho vay khác nhau, phù hợp với nhu cầu đa dạng của
+                khách hàng.
+              </h6>
+            </div>
+          </div>
+          <div class="item">
+            <div class="cover">
+              <img
+                src="assets/img/payday-loan/faq-monex-24h.svg"
+                alt="monex-24h"
+              />
+              <h3>Dịch vụ ứng lương 24h là gì?</h3>
+              <h6>
+                Dịch vụ ứng lương 24h của Monex là dịch vụ ứng lương an toàn và
+                nhanh chóng, dựa trên các thông tin do khách hàng cung cấp.
+                Monex cam kết giải ngân cho khách hàng trong vòng 24 giờ tính từ
+                thời điểm ký hợp đồng thành công.
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="custom-row content" id="content-01">
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+        <h3 #aboutMonex>Về Monex</h3>
+      </div>
+      <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+        <section>
+          <div class="question" *ngFor="let question of faqAboutMonexQuestions">
+            <mat-accordion class="faq-panel">
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title
+                    ><h4>{{ question.ask }}</h4>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div id="section1" class="acc-body">
+                  <h6 [innerHtml]="question.aswer"></h6>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="custom-row content" id="content-02">
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+        <h3 #signIn>Đăng ký ứng lương</h3>
+      </div>
+      <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+        <section>
+          <div *ngFor="let question of faqSignInQuestions">
+            <mat-accordion class="faq-panel">
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title
+                    ><h4>{{ question.ask }}</h4>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div id="section1" class="acc-body">
+                  <h6 [innerHtml]="question.aswer"></h6>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="custom-row content" id="content-03">
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+        <h3 #payment>Thanh toán</h3>
+      </div>
+      <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+        <section>
+          <div *ngFor="let question of faqPaymentQuestions">
+            <mat-accordion class="faq-panel">
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title
+                    ><h4>{{ question.ask }}</h4>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div id="section1" class="acc-body">
+                  <h6 [innerHtml]="question.aswer"></h6>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!--            <div class="custom-row content" id="content-04">-->
+    <!--                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">-->
+    <!--                    <h3>Vấn đề khác</h3>-->
+    <!--                </div>-->
+    <!--                <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">-->
+    <!--                    <section>-->
+    <!--                        <div class="acc-head" data-section="section20">-->
+    <!--                            <h4>-->
+    <!--                                Tôi muốn được trợ giúp trong quá trình đăng ký khoản vay?-->
+    <!--                            </h4>-->
+    <!--                            <i-->
+    <!--                                    class="fas fa-chevron-down crc-chevron"-->
+    <!--                                    data-section="section20"-->
+    <!--                            ></i>-->
+    <!--                        </div>-->
+    <!--                        <div id="section20" data-section="section20" class="acc-body">-->
+    <!--                            <h6>-->
+    <!--                                Trong quá trình đăng ký khoản vay, nếu quý khách gặp bất kỳ-->
+    <!--                                khó khăn nào, vui lòng liên hệ đến hotline 1900 234583 để-->
+    <!--                                được hỗ trợ kịp thời.-->
+    <!--                            </h6>-->
+    <!--                        </div>-->
+
+    <!--                        <div class="acc-head" data-section="section21">-->
+    <!--                            <h4>Làm thế nào để người vay biết là đã được giải ngân?</h4>-->
+    <!--                            <i-->
+    <!--                                    class="fas fa-chevron-down crc-chevron"-->
+    <!--                                    data-section="section21"-->
+    <!--                            ></i>-->
+    <!--                        </div>-->
+    <!--                        <div id="section21" data-section="section21" class="acc-body">-->
+    <!--                            <h6>-->
+    <!--                                Sau khi giải ngân, MONEX sẽ gửi tin nhắn và email xác nhận-->
+    <!--                                đến cho quý khách. Quý khách có thể kiểm tra biến động số dư-->
+    <!--                                trong tài khoản ngân hàng mà Quý khách đăng ký nhận giải-->
+    <!--                                ngân. Trong trường hợp không nhận được tin nhắn và email-->
+    <!--                                hoặc không thấy biến động số dư trong tài khoản ngân hàng,-->
+    <!--                                quý khách vui lòng liên hệ đến hotline 1900 234583 để được-->
+    <!--                                hỗ trợ kịp thời.-->
+    <!--                            </h6>-->
+    <!--                        </div>-->
+
+    <!--                        <div class="acc-head" data-section="section22">-->
+    <!--                            <h4>Tôi có phải đến văn phòng Monex để ký hợp đồng không?</h4>-->
+    <!--                            <i-->
+    <!--                                    class="fas fa-chevron-down crc-chevron"-->
+    <!--                                    data-section="section22"-->
+    <!--                            ></i>-->
+    <!--                        </div>-->
+    <!--                        <div id="section22" data-section="section22" class="acc-body">-->
+    <!--                            <h6>-->
+    <!--                                Tất cả các thủ tục đăng ký khoản vay với Monex đều được thực-->
+    <!--                                hiện trực tuyến thông qua ứng dụng điện thoại. Vì vậy quý-->
+    <!--                                khách không phải đến văn phòng Monex để ký hợp đồng.<br/>-->
+    <!--                                Sau khi hợp đồng đã sẵn sàng để ký, Monex sẽ gửi thông báo-->
+    <!--                                tới quý khách qua email. Quý khách vui lòng thực hiện theo-->
+    <!--                                hướng dẫn trong email để thực hiện ký hợp đồng vay bằng chữ-->
+    <!--                                ký điện tử.-->
+    <!--                            </h6>-->
+    <!--                        </div>-->
+
+    <!--                        <div class="acc-head" data-section="section23">-->
+    <!--                            <h4>Giải ngân bằng hình thức nào?</h4>-->
+    <!--                            <i-->
+    <!--                                    class="fas fa-chevron-down crc-chevron"-->
+    <!--                                    data-section="section23"-->
+    <!--                            ></i>-->
+    <!--                        </div>-->
+    <!--                        <div id="section23" data-section="section23" class="acc-body">-->
+    <!--                            <h6>-->
+    <!--                                MONEX sẽ giải ngân qua hình thức chuyển khoản vào tài khoản-->
+    <!--                                chính chủ của KH.-->
+    <!--                            </h6>-->
+    <!--                        </div>-->
+    <!--                        <div class="acc-head" data-section="section24">-->
+    <!--                            <h4>Người vay có thể xem thông tin khoản vay ở đâu?</h4>-->
+    <!--                            <i-->
+    <!--                                    class="fas fa-chevron-down crc-chevron"-->
+    <!--                                    data-section="section24"-->
+    <!--                            ></i>-->
+    <!--                        </div>-->
+    <!--                        <div id="section24" data-section="section24" class="acc-body">-->
+    <!--                            <h6>-->
+    <!--                                Quý khách vui lòng đăng nhập khoản vay, sau đó vào mục "Quản-->
+    <!--                                lí khoản vay" để xem thông tin.-->
+    <!--                            </h6>-->
+    <!--                        </div>-->
+    <!--                    </section>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!-- End content -->
+  </div>
+</div>

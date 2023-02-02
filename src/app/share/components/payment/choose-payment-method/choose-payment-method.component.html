@@ -1,0 +1,40 @@
+<div id="choose-payment-method" class="container-fluid">
+  <div class="container loan-payment-container">
+    <div class="insurance-container">
+      <h2 id="choose-payment-method-title">
+        {{ 'payment.choose_payment_method.choose_method' | translate }}
+      </h2>
+
+      <!-- Switch tab -->
+      <app-switch-tab-payment-method
+        [activeTab]="activeTab"
+        (switchTabEvent)="switchTab($event)"></app-switch-tab-payment-method>
+
+      <!-- Card payment method -->
+      <app-card-payment
+        [productInfo]="productInfo"
+        [userInfo]="userInfo"
+        [disabledCardPayment]="disabledCardPayment"
+        (displayConfirmModalEvent)="displayConfirmModalEvent($event)"
+        [hidden]="activeTab !== activeTabs.CARD"></app-card-payment>
+
+      <!--  Transfer payment method -->
+      <app-transfer-payment
+        [companyInfo]="companyInfo"
+        [productInfo]="productInfo"
+        [userInfo]="userInfo"
+        [vaInfo]="vaInfo"
+        [hidden]="activeTab !== activeTabs.TRANSFER"
+        [applicationType]="applicationType"
+        (copiedEvent)="displayCopied($event)"></app-transfer-payment>
+    </div>
+  </div>
+
+  <div class="payment-copied-box" [hidden]="!showCopied">
+    <div class="payment-copied-text">
+      {{ 'payment.choose_payment_method.copied' | translate }}
+    </div>
+  </div>
+
+  <!--  <pl-confirm-finalization-modal @confirm="confirmFinalization"/>-->
+</div>

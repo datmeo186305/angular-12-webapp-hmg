@@ -1,0 +1,26 @@
+@import "../variables";
+.validation-errors {
+  position: absolute;
+  top: 43px;
+  left: -12px;
+
+  &.has-icon-prefix {
+    left: -38px;
+  }
+
+  .error-msg-box {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  .error-msg-box-active {
+    opacity: 1;
+    transform: translateY(0%);
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  }
+
+  mat-hint.error-msg {
+    color: $system-color-red;
+    font-size: 0.7em;
+  }
+}

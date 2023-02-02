@@ -1,0 +1,177 @@
+@import "src/styles/variables";
+@import "src/styles/payday-loan/pl-layout";
+
+.current-loan-info-title {
+  width: 100%;
+}
+
+.current-loan-headline {
+  display: flex;
+  align-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.insurance-btn.insurance-btn-sign-contract {
+  max-width: 104px;
+  height: 28px;
+  font-family: $sfPro;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: $white;
+  flex: none;
+}
+
+.insurance-btn.insurance-btn-finalization {
+  background-color: $system-color-indigo;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: #8f8dfa;
+  }
+}
+
+#current-loan-amount-container {
+  .pl-list-item:last-child {
+    border-bottom: 0;
+  }
+}
+
+.current-loan-contract-email {
+  margin-top: 16px;
+  padding: 0 16px;
+}
+
+#current-loan-sign-btn-container {
+  margin-bottom: 20px;
+}
+
+.pl-service-fee-label {
+  display: flex;
+
+  span {
+    margin-left: 8px;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+#sign-contract-btn-submit {
+  place-content: center;
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  .insurance-btn {
+    max-width: 143.5px;
+  }
+}
+
+#awaiting-document-btn {
+  place-content: center;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+
+  #pl-current-loan-additional-document-btn {
+    max-width: 200px;
+  }
+}
+
+#finalization-btn {
+  place-content: center;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+
+  #pl-current-loan-finalization-btn {
+    max-width: 200px;
+  }
+  #pl-current-loan-finalization-btn-3-terms {
+    width: 134px;
+  }
+  #pl-current-loan-current-term-payment-btn {
+    width: 186px;
+    margin-right: 8px;
+  }
+}
+
+.pl-btn-finalization {
+  background-color: $system-color-indigo;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: #8f8dfa;
+  }
+}
+
+.pl-list-item-route {
+  padding: 8px 16px;
+  .loan-route-container {
+    border: 1px solid #007aff;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background: #f7fbff;
+    .loan-route-describe {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 14px;
+      text-transform: uppercase;
+      padding: 9px 16px;
+      color: $grey-10;
+    }
+    .checkpoint-route {
+      padding: 0 16px;
+      img {
+        height: 40px;
+      }
+    }
+    .detail-route {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 40px;
+      padding-right: 16px;
+      position: relative;
+      .repayment-status {
+        .done::after {
+          content: "Đã thanh toán";
+          position: relative;
+          margin-left: 8px;
+          font-size: 14px;
+          line-height: 18px;
+          letter-spacing: 0.1px;
+          color: #5856d6;
+        }
+        .pending::after {
+          content: "Kỳ này";
+          position: relative;
+          margin-left: 8px;
+          font-size: 14px;
+          line-height: 18px;
+          letter-spacing: 0.1px;
+          color: #2aac7e;
+        }
+      }
+      p {
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: 0.1px;
+        color: #636366;
+      }
+
+      p.amount-detail-value {
+        color: #3a3a3c;
+      }
+    }
+    .detail-route.not-yet {
+      color: #636366;
+      opacity: 0.5;
+    }
+  }
+}

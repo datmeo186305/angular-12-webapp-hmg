@@ -1,0 +1,6 @@
+<div class="pl-inline-message" [ngClass]="statusClasses">
+  <div *ngIf="statusIconSrc" class="pl-inline-message-icon-box">
+    <div class="pl-inline-message-icon"  [ngClass]="statusIconSrc"></div>
+  </div>
+  <ng-content></ng-content>
+</div>

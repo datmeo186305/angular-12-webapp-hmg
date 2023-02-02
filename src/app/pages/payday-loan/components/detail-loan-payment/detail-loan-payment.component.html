@@ -1,0 +1,135 @@
+<div>
+  <div id="amount-to-be-paid-box" [ngClass]="{ 'is-step-payment-box': !isFinalization }">
+    <p class="amount-to-be-paid-title">
+      {{ "payday_loan.loan_payment.amount_to_be_paid" | translate }}
+    </p>
+    <p
+      class="text-right amount-to-be-paid"
+      [ngClass]="{ 'is-step-payment': !isFinalization }"
+    >
+      {{ amountToBePaid | formatPrice: null }}
+    </p>
+  </div>
+  <div class="loan-payment-headline">
+    <h2 class="pl-headline loan-payment-title">
+      {{ "payday_loan.loan_payment.detail" | translate }}
+    </h2>
+  </div>
+  <div id="loan-payment-info-container">
+    <ul class="pl-list">
+      <li class="pl-list-item">
+        <p class="pl-list-item-label">
+          {{ "payday_loan.loan_payment.total_amount" | translate }}
+        </p>
+        <p class="pl-list-item-content">
+          {{ currentLoan.expectedAmount | formatPrice: null }}
+        </p>
+      </li>
+
+      <li class="pl-list-item">
+        <p class="pl-list-item-label">
+          {{ "payday_loan.loan_payment.amount_paid" | translate }}
+        </p>
+        <p class="pl-list-item-content">
+          {{ paidAmount | formatPrice: null }}
+        </p>
+      </li>
+
+      <li class="pl-list-item">
+        <p class="pl-list-item-label">
+          {{ "payday_loan.loan_payment.remaining_amount" | translate }}
+        </p>
+        <p class="pl-list-item-content">
+          {{ remainingAmountToBePaid | formatPrice: null }}
+        </p>
+      </li>
+
+      <li class="pl-list-item" *ngIf="currentLoan?.latePenaltyPayment > 0">
+        <p class="pl-list-item-label">
+          {{ "payday_loan.loan_payment.late_penalty_payment" | translate }}
+        </p>
+        <p class="pl-list-item-content">
+          {{ currentLoan.latePenaltyPayment | formatPrice: null }}
+        </p>
+      </li>
+      <li class="pl-list-item">
+        <p class="pl-list-item-label">
+          {{ "payday_loan.loan_payment.service_price" | translate }}
+        </p>
+        <p class="pl-list-item-content">
+          {{ currentLoan.totalServiceFees | formatPrice: null }}
+        </p>
+      </li>
+      <li class="pl-list-item">
+        <p class="pl-list-item-label">
+          {{ "payday_loan.loan_payment.loan_code" | translate }}
+        </p>
+        <p class="pl-list-item-content">
+          {{ currentLoan.loanCode }}
+        </p>
+      </li>
+      <li class="pl-list-item">
+        <p class="pl-list-item-label">
+          {{ "payday_loan.current_loan.settlement_date" | translate }}
+        </p>
+        <p class="pl-list-item-content">
+          {{
+            settlementDate
+          }}
+        </p>
+      </li>
+
+      <li class="pl-list-item">
+        <p class="pl-list-item-label">
+          {{ "payday_loan.current_loan.punish_start_time" | translate }}
+        </p>
+        <p class="pl-list-item-content">
+          {{
+            getPunishStartDay(currentLoan.createdAt, currentLoan.expectedTenure)
+          }}
+        </p>
+      </li>
+
+      <li class="pl-list-item">
+        <p class="pl-list-item-label">
+          {{ "payday_loan.loan_payment.loan_status" | translate }}
+        </p>
+        <div
+          class="pl-list-item-content"
+          *ngIf="loanStatusContent; else noStatus"
+        >
+          <pl-status-label [statusType]="loanStatusContent.labelStatus">
+            {{ loanStatusContent.label }}
+          </pl-status-label>
+        </div>
+        <ng-template #noStatus>
+          <p class="pl-list-item-content pl-list-item-content-empty">
+            {{ "payday_loan.loan_payment.no_description" | translate }}
+          </p>
+        </ng-template>
+      </li>
+    </ul>
+  </div>
+
+  <div class="text-center loan-payment-btn pl-space-between-content">
+    <button
+      *ngIf="isFinalization; else paymentByStep"
+      type="submit"
+      id="finalization-btn-submit"
+      class="insurance-btn btn-primary"
+      (click)="finalizationClick()"
+    >
+      {{ "payday_loan.loan_payment.finalization" | translate }}
+    </button>
+    <ng-template #paymentByStep>
+      <button
+        type="submit"
+        id="payment-btn-submit"
+        class="insurance-btn btn-primary"
+        (click)="finalizationClick()"
+      >
+        {{ "payday_loan.loan_payment.payment" | translate }}
+      </button>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+@import "../../../../../../styles/variables";
+
+.dialog-img-container {
+  padding: 13px 16px 16px;
+  position: relative;
+  display: flex;
+  gap: 16px;
+  .dialog-img-element {
+    width: 300px;
+  }
+  h3 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    color: #1c1c1e;
+    margin-bottom: 29px;
+  }
+
+  .img-box {
+    height: 400px;
+    width: 100%;
+    max-width: 300px;
+    overflow: hidden;
+    border-radius: 8px;
+    background-image: url("../../../../../../assets/img/payday-loan/salary-example.png");
+    background-position: top;
+    background-size: cover;
+  }
+
+  .img-box-2 {
+    border: 2px solid #e0e0eb;
+    height: 400px;
+    width: 100%;
+    max-width: 300px;
+    overflow: hidden;
+    border-radius: 8px;
+    background-image: url("../../../../../../assets/img/payday-loan/sample-timesheet.png");
+    background-position: top;
+    background-size: cover;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    padding: 0;
+    min-width: unset;
+    min-height: unset;
+    height: auto;
+    line-height: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .dialog-img-container {
+    flex-direction: column;
+    max-height: 85vh;
+    height: auto;
+    .dialog-img-element {
+      width: 260px;
+    }
+  }
+}

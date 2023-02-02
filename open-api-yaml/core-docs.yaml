@@ -1,0 +1,1675 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8004
+  description: Generated server url
+paths:
+  /webhook-perfios:
+    post:
+      tags:
+      - webhook-controller
+      operationId: perfiosWebhook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /epay/v1/restApi/resetPasswordToken:
+    post:
+      tags:
+      - login-controller
+      operationId: resetPasswordToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordTokenRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /epay/v1/restApi/resetPassword-Old:
+    post:
+      tags:
+      - login-controller
+      operationId: resetPassword
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPassRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /epay/v1/restApi/login:
+    post:
+      tags:
+      - login-controller
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginInput'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /epay/v1/restApi/generateResetPasswordToken:
+    post:
+      tags:
+      - login-controller
+      operationId: generateResetPasswordToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateResetPasswordTokenRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /epay/v1/core/api/v1/loanApplication/loanDetailsWithoutBorrowerDetails:
+    post:
+      tags:
+      - loan-application-controller
+      operationId: loanDetailsWithoutBorrowerDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoanDetailsWithoutBorrowerDetailsRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /epay/v1/core/api/v1/loanApplication/changeLoanApplicationStatus:
+    post:
+      tags:
+      - loan-application-controller
+      operationId: changeLoanApplicationStatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeLoanApplicationStatusRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /epay/v1/core/api/v1/loanApplication/apply:
+    post:
+      tags:
+      - loan-application-controller
+      operationId: applyLoanApplication
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplyRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /epay/v1/core/api/v1/borrower/uploadDocument:
+    post:
+      tags:
+      - borrower-controller
+      operationId: uploadDocument
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                document:
+                  type: string
+                  format: binary
+                epayCustomerId:
+                  type: string
+                loanUuid:
+                  type: string
+                access_token:
+                  type: string
+                documentCategoryUuid:
+                  type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /epay/v1/core/api/v1/borrower/testMapObjectResponse:
+    post:
+      tags:
+      - borrower-controller
+      operationId: testMapObjectResponse
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /epay/v1/core/api/v1/borrower/stepTwoIndividual:
+    post:
+      tags:
+      - borrower-controller
+      operationId: stepTwoIndividual
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StepTwoIndividualRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /epay/v1/core/api/v1/borrower/stepTwoCompany:
+    post:
+      tags:
+      - borrower-controller
+      operationId: stepTwoCompany
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StepTwoCompanyRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /epay/v1/core/api/v1/borrower/stepThreeEmployment:
+    post:
+      tags:
+      - borrower-controller
+      operationId: stepThreeEmployment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StepThreeEmploymentRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /epay/v1/core/api/v1/borrower/stepOne:
+    post:
+      tags:
+      - borrower-controller
+      operationId: borrowerStepOne
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BorrowerStepOneInput'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseBorrowerStepOneResponse'
+  /epay/v1/core/api/v1/borrower/restSignUp:
+    post:
+      tags:
+      - borrower-controller
+      operationId: borrowerRestSignUp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestSignUpRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /epay/v1/core/api/v1/borrower/profileUpdate:
+    post:
+      tags:
+      - borrower-controller
+      operationId: profileUpdate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProfileUpdateRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /epay/v1/core/api/v1/borrower/personalProfileUpdate:
+    post:
+      tags:
+      - borrower-controller
+      operationId: personalProfileUpdate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonalProfileUpdateRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /epay/v1/core/api/v1/borrower/loanRepayments:
+    post:
+      tags:
+      - borrower-controller
+      operationId: loanRepayments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoanRepaymentsRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /epay/v1/core/api/v1/borrower/loanDetails:
+    post:
+      tags:
+      - borrower-controller
+      operationId: loanDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoanDetailsRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /epay/v1/core/api/v1/borrower/loanBids:
+    post:
+      tags:
+      - borrower-controller
+      operationId: loanBids
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoanBidsRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /epay/v1/core/api/v1/borrower/fetchLoanContractAcceptedOrRejectedList:
+    post:
+      tags:
+      - borrower-controller
+      operationId: fetchLoanContractAcceptedOrRejectedList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FetchLoanContractAcceptedOrRejectedListRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /epay/v1/core/api/v1/borrower/fetchContractDetails:
+    post:
+      tags:
+      - borrower-controller
+      operationId: fetchContractDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FetchContractDetailsRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /epay/v1/core/api/v1/borrower/companyProfileUpdate:
+    post:
+      tags:
+      - borrower-controller
+      operationId: companyProfileUpdate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompanyProfileUpdateRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /epay/v1/core/api/v1/borrower/borrowerLoanContractDownload:
+    post:
+      tags:
+      - borrower-controller
+      operationId: borrowerLoanContractDownload
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BorrowerLoanContractDownloadRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+  /epay/v1/core/api/v1/borrower/borrowerDetail:
+    post:
+      tags:
+      - borrower-controller
+      operationId: borrowerDetail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BorrowerDetailRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /epay/v1/core/api/v1/borrower/acceptRejectBid:
+    post:
+      tags:
+      - borrower-controller
+      operationId: acceptRejectBid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AcceptRejectBidRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /epay/v1/core/api/v1/borrower/acceptContract:
+    post:
+      tags:
+      - borrower-controller
+      operationId: acceptContract
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AcceptContractRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseAcceptContractResponse'
+  /epay/v1/core/api/v1/bankDetails/add:
+    post:
+      tags:
+      - common-controller
+      operationId: bankDetailsAdd
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BankDetailsAddRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /disburse/create-disburse-event:
+    post:
+      tags:
+      - disburse-controller
+      operationId: createAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CoreDisburseRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiResponseString'
+components:
+  schemas:
+    ApplicationStatus:
+      type: object
+      properties:
+        previousStatus:
+          type: string
+        currentStatus:
+          type: string
+    WebhookRequest:
+      type: object
+      properties:
+        applicationStatus:
+          $ref: '#/components/schemas/ApplicationStatus'
+        purpose:
+          type: string
+        tenure:
+          type: integer
+          format: int32
+        loanApplicationUID:
+          type: string
+        borrowerUID:
+          type: string
+        domain:
+          type: string
+        loanApplicationId:
+          type: string
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: object
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    ResetPasswordTokenRequest:
+      required:
+      - confirmPassword
+      - password
+      - resetPasswordToken
+      type: object
+      properties:
+        resetPasswordToken:
+          type: string
+        password:
+          type: string
+        confirmPassword:
+          type: string
+    ResetPassRequest:
+      required:
+      - access_token
+      - newPassword
+      - oldPassword
+      - renenterNewPassowrd
+      type: object
+      properties:
+        access_token:
+          type: string
+        oldPassword:
+          type: string
+        newPassword:
+          type: string
+        renenterNewPassowrd:
+          type: string
+    LoginInput:
+      required:
+      - password
+      - username
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    GenerateResetPasswordTokenRequest:
+      required:
+      - access_token
+      - email
+      type: object
+      properties:
+        access_token:
+          type: string
+        email:
+          type: string
+    LoanDetailsWithoutBorrowerDetailsRequest:
+      required:
+      - access_token
+      - loanUuid
+      type: object
+      properties:
+        access_token:
+          type: string
+        loanUuid:
+          type: string
+    ChangeLoanApplicationStatusRequest:
+      required:
+      - access_token
+      - epayCustomerId
+      - epayLoanId
+      - loanUuid
+      - statusChangeDescription
+      - statusToBeChanged
+      type: object
+      properties:
+        access_token:
+          type: string
+        epayCustomerId:
+          type: string
+        epayLoanId:
+          type: string
+        loanUuid:
+          type: string
+        statusToBeChanged:
+          type: string
+        statusChangeDescription:
+          type: string
+        loanDisbursedDate:
+          type: string
+    ApplyRequest:
+      required:
+      - access_token
+      - epayCustomerId
+      - epayLoanId
+      - interestRate
+      - loanAmount
+      - loanPurposeUuid
+      - loanTenure
+      type: object
+      properties:
+        access_token:
+          type: string
+        loanPurposeUuid:
+          type: string
+        loanAmount:
+          minimum: 2000000
+          type: integer
+          format: int32
+        loanTenure:
+          type: integer
+          format: int32
+        interestRate:
+          type: integer
+          format: int32
+        epayCustomerId:
+          type: string
+        epayLoanId:
+          type: string
+    StepTwoIndividualRequest:
+      required:
+      - access_token
+      - addressOneLine1
+      - addressTwoLine1
+      - borrowerDetailNumberVariable2
+      - borrowerDetailTextVariable1
+      - borrowerDetailTextVariable5
+      - dateOfBirth
+      - educationType
+      - epayCustomerId
+      - firstName
+      - gender
+      - grossIncome
+      - identityNumberSix
+      - loanUuid
+      - maritalStatus
+      - residentOwnershipType
+      type: object
+      properties:
+        access_token:
+          type: string
+        loanUuid:
+          type: string
+        borrowerDetailNumberVariable2:
+          type: string
+        identityNumberSix:
+          type: string
+        firstName:
+          type: string
+        epayCustomerId:
+          type: string
+        grossIncome:
+          type: integer
+          format: int32
+        educationType:
+          type: string
+        residentOwnershipType:
+          type: string
+        addressOneLine1:
+          type: string
+        addressTwoLine1:
+          type: string
+        gender:
+          type: string
+        maritalStatus:
+          type: string
+        dateOfBirth:
+          type: string
+        borrowerDetailTextVariable1:
+          type: string
+        borrowerDetailTextVariable5:
+          type: string
+    StepTwoCompanyRequest:
+      required:
+      - access_token
+      - companyName
+      - companyRegistrationCode
+      type: object
+      properties:
+        access_token:
+          type: string
+        companyName:
+          type: string
+        companyRegistrationCode:
+          type: string
+        companyTurnover:
+          type: number
+          format: double
+        companyBalance:
+          type: number
+          format: double
+        shareholdingPercentage:
+          type: string
+        dateOfArticle:
+          type: string
+        companyIndustry:
+          type: string
+        companyDescription:
+          type: string
+        employeesCount:
+          type: number
+          format: double
+        positionInCompany:
+          type: string
+        faxNumber:
+          type: string
+        faxNumberCountryCode:
+          type: string
+        businessType:
+          type: string
+        companyIdentityNumberOne:
+          type: string
+        companyIdentityNumberTwo:
+          type: string
+        companyIdentityNumberThree:
+          type: string
+        companyIdentityNumberFour:
+          type: string
+        businessVintage:
+          type: number
+          format: double
+        maxLoanAmount:
+          type: number
+          format: double
+        line1:
+          type: string
+        line2:
+          type: string
+        line3:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zipCode:
+          type: string
+        livingSince:
+          type: string
+        ownershipType:
+          type: string
+        companyAddressOneLine1:
+          type: string
+        companyAddressOneLine2:
+          type: string
+        companyAddressOneLine3:
+          type: string
+        companyAddressOneCity:
+          type: string
+        companyAddressOneState:
+          type: string
+        companyAddressOneZipCode:
+          type: string
+        companyAddressOneLivingSince:
+          type: string
+        companyAddressOneOwnershipType:
+          type: string
+        companyAddressTwoLine1:
+          type: string
+        companyAddressTwoLine2:
+          type: string
+        companyAddressTwoLine3:
+          type: string
+        companyAddressTwoCity:
+          type: string
+        companyAddressTwoState:
+          type: string
+        companyAddressTwoZipCode:
+          type: string
+        companyAddressTwoLivingSince:
+          type: string
+        companyAddressTwoOwnershipType:
+          type: string
+        companyAddressThreeLine1:
+          type: string
+        companyAddressThreeLine2:
+          type: string
+        companyAddressThreeLine3:
+          type: string
+        companyAddressThreeCity:
+          type: string
+        companyAddressThreeState:
+          type: string
+        companyAddressThreeZipCode:
+          type: string
+        companyAddressThreeLivingSince:
+          type: string
+        companyAddressThreeOwnershipType:
+          type: string
+        companyAddressFourLine1:
+          type: string
+        companyAddressFourLine2:
+          type: string
+        companyAddressFourLine3:
+          type: string
+        companyAddressFourCity:
+          type: string
+        companyAddressFourState:
+          type: string
+        companyAddressFourZipCode:
+          type: string
+        companyAddressFourLivingSince:
+          type: string
+        companyAddressFourOwnershipType:
+          type: string
+        landLineNumber:
+          type: string
+        companyRegistrationExpiryDate:
+          type: string
+        companyCategory:
+          type: string
+        companyWebsite:
+          type: string
+        companyDesignation:
+          type: string
+        companyIdentityNumberFive:
+          type: string
+        companyIdentityNumberSix:
+          type: string
+        borrowerCompanyTextVariable1:
+          type: string
+        borrowerCompanyTextVariable2:
+          type: string
+        borrowerCompanyTextVariable3:
+          type: string
+        borrowerCompanyTextVariable4:
+          type: string
+        borrowerCompanyTextVariable5:
+          type: string
+        borrowerCompanyTextVariable6:
+          type: string
+        borrowerCompanyTextVariable7:
+          type: string
+        borrowerCompanyTextVariable8:
+          type: string
+        borrowerCompanyTextVariable9:
+          type: string
+        borrowerCompanyTextVariable10:
+          type: string
+    StepThreeEmploymentRequest:
+      required:
+      - access_token
+      - annualIncome
+      - borrowerEmploymentHistoryTextVariable1
+      - borrowerEmploymentHistoryTextVariable10
+      - borrowerEmploymentHistoryTextVariable9
+      - employmentType
+      - epayCustomerId
+      - loanUuid
+      - organizationName
+      type: object
+      properties:
+        access_token:
+          type: string
+        epayCustomerId:
+          type: string
+        loanUuid:
+          type: string
+        annualIncome:
+          type: number
+          format: double
+        organizationName:
+          type: string
+        borrowerEmploymentHistoryTextVariable1:
+          type: string
+        borrowerEmploymentHistoryTextVariable9:
+          type: string
+        borrowerEmploymentHistoryTextVariable10:
+          type: string
+        employmentType:
+          type: string
+    BorrowerStepOneInput:
+      required:
+      - addressOneLine1
+      - addressTwoLine1
+      - borrowerProfileTextVariable2
+      - borrowerProfileTextVariable3
+      - borrowerProfileTextVariable4
+      - borrowerProfileTextVariable5
+      - borrowerProfileTextVariable6
+      - confirmPassword
+      - customerId
+      - dateOfBirth
+      - emailAddress
+      - firstName
+      - gender
+      - identityNumberOne
+      - mobileNumber
+      - password
+      type: object
+      properties:
+        customerId:
+          type: string
+        emailAddress:
+          type: string
+        password:
+          type: string
+        confirmPassword:
+          type: string
+        mobileNumber:
+          type: string
+        firstName:
+          type: string
+        dateOfBirth:
+          type: string
+        gender:
+          type: string
+        identityNumberOne:
+          type: string
+        identityNumberSix:
+          type: string
+        borrowerProfileTextVariable2:
+          type: string
+        borrowerProfileTextVariable3:
+          type: string
+        borrowerProfileTextVariable4:
+          type: string
+        borrowerProfileTextVariable5:
+          type: string
+        borrowerProfileTextVariable6:
+          type: string
+        addressOneLine1:
+          type: string
+        addressTwoLine1:
+          type: string
+    ApiResponseBorrowerStepOneResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/BorrowerStepOneResponse'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    BorrowerStepOneResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        code:
+          type: string
+        message:
+          type: string
+        emailAddress:
+          type: string
+        mobileNumber:
+          type: string
+        userId:
+          type: string
+        borrowerUuid:
+          type: string
+        access_token:
+          type: string
+    RestSignUpRequest:
+      required:
+      - access_token
+      - bankDetailsData
+      - borrowerEmploymentData
+      - individualData
+      - individualOrCompany
+      - loanApplicationData
+      type: object
+      properties:
+        access_token:
+          type: string
+        loanApplicationData:
+          type: object
+        individualOrCompany:
+          type: string
+        individualData:
+          type: object
+        borrowerEmploymentData:
+          type: object
+        bankDetailsData:
+          type: object
+    ProfileUpdateRequest:
+      required:
+      - access_token
+      - epayCustomerId
+      type: object
+      properties:
+        access_token:
+          type: string
+        epayCustomerId:
+          type: string
+        firstName:
+          type: string
+        emailAddress:
+          type: string
+        identityNumberSix:
+          type: string
+        dateOfBirth:
+          type: string
+        gender:
+          type: string
+        identityNumberOne:
+          type: string
+        borrowerProfileTextVariable2:
+          type: string
+        borrowerProfileTextVariable3:
+          type: string
+        borrowerProfileTextVariable4:
+          type: string
+        borrowerProfileTextVariable5:
+          type: string
+        borrowerProfileTextVariable6:
+          type: string
+        addressOneLine1:
+          type: string
+        addressTwoLine1:
+          type: string
+    PersonalProfileUpdateRequest:
+      required:
+      - access_token
+      - epayCustomerId
+      - loanUuid
+      type: object
+      properties:
+        epayCustomerId:
+          type: string
+        access_token:
+          type: string
+        loanUuid:
+          type: string
+        grossIncome:
+          type: number
+          format: double
+        monthlyEmiOnOutstandingLoans:
+          type: number
+          format: double
+        purposeOfOutStandingEmi:
+          type: string
+        jobType:
+          type: string
+        workExperience:
+          type: string
+        employerType:
+          type: string
+        educationType:
+          type: string
+        residenceType:
+          type: string
+        residentOwnershipType:
+          type: string
+        homeExpenses:
+          type: number
+          format: double
+        transportationExpenses:
+          type: number
+          format: double
+        utilitiesExpenses:
+          type: number
+          format: double
+        entertainmentExpenses:
+          type: number
+          format: double
+        insuranceExpenses:
+          type: number
+          format: double
+        otherExpenses:
+          type: number
+          format: double
+        creditCardExpenses:
+          type: number
+          format: double
+        houseLoanExpenses:
+          type: number
+          format: double
+        monthlyRentPayable:
+          type: number
+          format: double
+        monthlyRentIncome:
+          type: number
+          format: double
+        line1:
+          type: string
+        line2:
+          type: string
+        line3:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zipCode:
+          type: string
+        livingSince:
+          type: string
+        ownershipType:
+          type: string
+        addressOneLine1:
+          type: string
+        addressOneLine2:
+          type: string
+        addressOneLine3:
+          type: string
+        addressOneCity:
+          type: string
+        addressOneState:
+          type: string
+        addressOneZipCode:
+          type: string
+        personalAddressOneLivingSince:
+          type: string
+        addressOneOwnershipType:
+          type: string
+        addressTwoLine1:
+          type: string
+        addressTwoLine2:
+          type: string
+        addressTwoLine3:
+          type: string
+        addressTwoCity:
+          type: string
+        addressTwoState:
+          type: string
+        addressTwoZipCode:
+          type: string
+        personalAddressTwoLivingSince:
+          type: string
+        addressTwoOwnershipType:
+          type: string
+        firstName:
+          type: string
+        middleName:
+          type: string
+        lastName:
+          type: string
+        gender:
+          type: string
+        maritalStatus:
+          type: string
+        mobileNumber:
+          type: string
+        mobileNumberCountryCode:
+          type: string
+        dateOfBirth:
+          type: string
+        referralSource:
+          type: string
+        citizenship:
+          type: string
+        promotionCode:
+          type: string
+        identityNumberOne:
+          type: string
+        identityNumberTwo:
+          type: string
+        identityNumberThree:
+          type: string
+        identityNumberFour:
+          type: string
+        identityNumberOneIssueDate:
+          type: string
+        identityNumberTwoIssueDate:
+          type: string
+        identityNumberThreeIssueDate:
+          type: string
+        identityNumberFourIssueDate:
+          type: string
+        borrowerDetailTextVariable1:
+          type: string
+        borrowerDetailTextVariable2:
+          type: string
+        borrowerDetailTextVariable3:
+          type: string
+        borrowerDetailTextVariable4:
+          type: string
+        borrowerDetailTextVariable5:
+          type: string
+        borrowerDetailTextVariable6:
+          type: string
+        borrowerDetailTextVariable7:
+          type: string
+        borrowerDetailTextVariable8:
+          type: string
+        borrowerDetailTextVariable9:
+          type: string
+        borrowerDetailTextVariable10:
+          type: string
+        borrowerDetailDateVariable1:
+          type: string
+        borrowerDetailDateVariable2:
+          type: string
+        borrowerDetailDateVariable3:
+          type: string
+        borrowerDetailDateVariable4:
+          type: string
+        fatherFullName:
+          type: string
+        fatherFirstName:
+          type: string
+        fatherMiddleName:
+          type: string
+        fatherLastName:
+          type: string
+        motherFullName:
+          type: string
+        motherFirstName:
+          type: string
+        motherMiddleName:
+          type: string
+        motherLastName:
+          type: string
+        husbandFullName:
+          type: string
+        husbandFirstName:
+          type: string
+        husbandLastName:
+          type: string
+        husbandMiddleName:
+          type: string
+        spouseFullName:
+          type: string
+        spouseFirstName:
+          type: string
+        spouseMiddleName:
+          type: string
+        spouseLastName:
+          type: string
+    LoanRepaymentsRequest:
+      required:
+      - access_token
+      type: object
+      properties:
+        access_token:
+          type: string
+        loanUuid:
+          type: string
+        offset:
+          type: number
+          format: double
+    LoanDetailsRequest:
+      required:
+      - access_token
+      - offset
+      type: object
+      properties:
+        access_token:
+          type: string
+        offset:
+          type: string
+    LoanBidsRequest:
+      type: object
+      properties:
+        access_token:
+          type: string
+        loanUuid:
+          type: string
+        offset:
+          type: string
+    FetchLoanContractAcceptedOrRejectedListRequest:
+      required:
+      - access_token
+      - loanUuid
+      type: object
+      properties:
+        access_token:
+          type: string
+        loanUuid:
+          type: string
+    FetchContractDetailsRequest:
+      type: object
+      properties:
+        access_token:
+          type: string
+        loanUuid:
+          type: string
+        contractUuid:
+          type: string
+        customerId:
+          type: string
+    CompanyProfileUpdateRequest:
+      type: object
+      properties:
+        epayCustomerId:
+          type: string
+        access_token:
+          type: string
+        companyName:
+          type: string
+        companyRegistrationCode:
+          type: string
+        companyTurnover:
+          type: number
+          format: double
+        companyBalance:
+          type: number
+          format: double
+        shareholdingPercentage:
+          type: string
+        dateOfArticle:
+          type: string
+        companyIndustry:
+          type: string
+        companyDescription:
+          type: string
+        employeesCount:
+          type: number
+          format: double
+        positionInCompany:
+          type: string
+        faxNumber:
+          type: string
+        faxNumberCountryCode:
+          type: string
+        businessType:
+          type: string
+        companyIdentityNumberOne:
+          type: string
+        companyIdentityNumberTwo:
+          type: string
+        companyIdentityNumberThree:
+          type: string
+        companyIdentityNumberFour:
+          type: string
+        businessVintage:
+          type: number
+          format: double
+        maxLoanAmount:
+          type: number
+          format: double
+        line1:
+          type: string
+        line2:
+          type: string
+        line3:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zipCode:
+          type: string
+        livingSince:
+          type: string
+        ownershipType:
+          type: string
+        companyAddressOneLine1:
+          type: string
+        companyAddressOneLine2:
+          type: string
+        companyAddressOneLine3:
+          type: string
+        companyAddressOneCity:
+          type: string
+        companyAddressOneState:
+          type: string
+        companyAddressOneZipCode:
+          type: string
+        companyAddressOneLivingSince:
+          type: string
+        companyAddressOneOwnershipType:
+          type: string
+        companyAddressTwoLine1:
+          type: string
+        companyAddressTwoLine2:
+          type: string
+        companyAddressTwoLine3:
+          type: string
+        companyAddressTwoCity:
+          type: string
+        companyAddressTwoState:
+          type: string
+        companyAddressTwoZipCode:
+          type: string
+        companyAddressTwoLivingSince:
+          type: string
+        companyAddressTwoOwnershipType:
+          type: string
+        companyAddressThreeLine1:
+          type: string
+        companyAddressThreeLine2:
+          type: string
+        companyAddressThreeLine3:
+          type: string
+        companyAddressThreeCity:
+          type: string
+        companyAddressThreeState:
+          type: string
+        companyAddressThreeZipCode:
+          type: string
+        companyAddressThreeLivingSince:
+          type: string
+        companyAddressThreeOwnershipType:
+          type: string
+        companyAddressFourLine1:
+          type: string
+        companyAddressFourLine2:
+          type: string
+        companyAddressFourLine3:
+          type: string
+        companyAddressFourCity:
+          type: string
+        companyAddressFourState:
+          type: string
+        companyAddressFourZipCode:
+          type: string
+        companyAddressFourLivingSince:
+          type: string
+        companyAddressFourOwnershipType:
+          type: string
+        landLineNumber:
+          type: string
+        companyRegistrationExpiryDate:
+          type: string
+        companyCategory:
+          type: string
+        companyWebsite:
+          type: string
+        companyDesignation:
+          type: string
+        companyIdentityNumberFive:
+          type: string
+        companyIdentityNumberSix:
+          type: string
+        borrowerCompanyTextVariable1:
+          type: string
+        borrowerCompanyTextVariable2:
+          type: string
+        borrowerCompanyTextVariable3:
+          type: string
+        borrowerCompanyTextVariable4:
+          type: string
+        borrowerCompanyTextVariable5:
+          type: string
+        borrowerCompanyTextVariable6:
+          type: string
+        borrowerCompanyTextVariable7:
+          type: string
+        borrowerCompanyTextVariable8:
+          type: string
+        borrowerCompanyTextVariable9:
+          type: string
+        borrowerCompanyTextVariable10:
+          type: string
+    BorrowerLoanContractDownloadRequest:
+      required:
+      - access_token
+      - contractUuid
+      - epayCustomerId
+      - loanUuid
+      type: object
+      properties:
+        epayCustomerId:
+          type: string
+        access_token:
+          type: string
+        loanUuid:
+          type: string
+        contractUuid:
+          type: string
+    ApiResponseString:
+      type: object
+      properties:
+        result:
+          type: string
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    BorrowerDetailRequest:
+      required:
+      - access_token
+      type: object
+      properties:
+        access_token:
+          type: string
+        formattedAmount:
+          type: boolean
+          writeOnly: true
+    AcceptRejectBidRequest:
+      required:
+      - acceptRejectToken
+      - access_token
+      - bidUuid
+      type: object
+      properties:
+        access_token:
+          type: string
+        bidUuid:
+          type: string
+        acceptRejectToken:
+          type: string
+    AcceptContractRequest:
+      required:
+      - access_token
+      - activityStatus
+      - contractId
+      - epayCustomerId
+      - loanId
+      type: object
+      properties:
+        access_token:
+          type: string
+        epayCustomerId:
+          type: string
+        loanId:
+          type: string
+        contractId:
+          type: string
+        activityStatus:
+          type: string
+    AcceptContractResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        status:
+          type: string
+        contractAccepted:
+          type: string
+        contractMessage:
+          type: string
+    ApiResponseAcceptContractResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/AcceptContractResponse'
+        errorCode:
+          type: string
+        message:
+          type: object
+        responseCode:
+          type: integer
+          format: int32
+    BankDetailsAddRequest:
+      required:
+      - access_token
+      - accountNumber
+      - bankAccountType
+      - bankName
+      - epayCustomerId
+      - ifsc
+      type: object
+      properties:
+        epayCustomerId:
+          type: string
+        access_token:
+          type: string
+        accountNumber:
+          type: string
+        bankName:
+          type: string
+        ifsc:
+          type: string
+        bankAccountType:
+          type: string
+    CoreDisburseRequest:
+      type: object
+      properties:
+        core_loan_uuid:
+          type: string
+        benefit_account_no:
+          type: string
+        benefit_bank_code:
+          type: string
+        benefit_account_name:
+          type: string
+        amount:
+          type: integer
+          format: int64
+        transaction_note:
+          type: string
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

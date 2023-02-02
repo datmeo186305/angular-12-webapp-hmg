@@ -1,0 +1,45 @@
+@import "../../../../../styles/variables";
+@import "../../../../../styles/insurance/insurance";
+@import "../../../../../styles/insurance/insurance-form";
+
+.dialog-container {
+  padding: 13px 16px 16px;
+  position: relative;
+  h3 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    color: #1c1c1e;
+    margin-bottom: 29px;
+  }
+
+  .img-box {
+    height: 200px;
+    width: 300px;
+    overflow: hidden;
+    border-radius: 8px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .hmg {
+    background-image: url("../../../../../assets/img/payday-loan/illustrating-img-vehicle.png");
+  }
+
+  .tng {
+     background-image: url("../../../../../assets/img/payday-loan/collateral-document.png");
+  }
+
+  .close-btn {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      padding: 0;
+      min-width: unset;
+      min-height: unset;
+      height: auto;
+      line-height: 1;
+  }
+}

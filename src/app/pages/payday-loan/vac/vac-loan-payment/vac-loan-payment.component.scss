@@ -1,0 +1,12 @@
+@import "src/styles/variables";
+@import "../../../../../styles/payday-loan/pl-layout";
+
+#loan-payment-info-container {
+  margin-top: 16px;
+}
+
+@media (max-width: 768px) {
+  #payday-loan-layout-container #loan-payment-page .payday-loan-container {
+    padding: 0;
+  }
+}

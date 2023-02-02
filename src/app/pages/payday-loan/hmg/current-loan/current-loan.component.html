@@ -1,0 +1,28 @@
+<div id="current-loan-container" class="container-fluid">
+  <div
+    class="container current-loan-info-container pl-padding-bottom-with-provider"
+  >
+    <div class="payday-loan-container">
+
+      <!-- Intro -->
+      <pl-introduce></pl-introduce>
+
+      <!-- Loan info -->
+      <pl-current-loan-detail-info
+        [currentLoan]="currentLoan"
+        [userInfo]="userInfo"
+        [companyInfo]="companyInfo"
+        (viewContract)="viewContract()"
+        (finalization)="finalization()">
+      </pl-current-loan-detail-info>
+
+      <!-- User info -->
+      <pl-current-loan-user-info
+        [userInfo]="userInfo">
+      </pl-current-loan-user-info>
+
+    </div>
+  </div>
+
+  <pl-provider></pl-provider>
+</div>

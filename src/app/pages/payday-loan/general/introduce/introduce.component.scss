@@ -1,0 +1,123 @@
+@import "../../../../../styles/variables";
+@import "../../../../../styles/insurance/insurance";
+@import "../../../../../styles/insurance/insurance-form";
+
+.header {
+  position: relative;
+  color: $monex-color-01;
+  img {
+    width: 100%;
+    height: auto;
+  }
+  .header-content {
+    position: absolute;
+    height: 100%;
+    max-width: 50%;
+    top: 0;
+    left: 24px;
+    padding: 16px 0 0;
+    h3 {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 14px;
+      text-transform: uppercase;
+      color: #007aff;
+      margin-bottom: 6px;
+    }
+    h1 {
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 40px;
+    }
+    p {
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 14px;
+      position: absolute;
+      left: 0;
+      bottom: 18px;
+    }
+  }
+}
+
+.content {
+  padding: 24px;
+  color: $monex-color-01;
+  font-size: 14px;
+  line-height: 18px;
+  p {
+    margin-bottom: 16px;
+    font-weight: normal;
+  }
+  li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-weight: 500;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .prefix {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 4px 9px;
+      width: 24px;
+      height: 24px;
+      background: $indigo;
+      border-radius: 21px;
+      font-family: $sfPro;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 14px;
+      color: #ffffff;
+      margin-right: 8px;
+    }
+  }
+}
+
+.responsive-form-actions {
+  padding: 28px 0 16px;
+  box-shadow: none;
+}
+
+#user-guide-video {
+  display: flex;
+  align-items: center;
+  place-content: center;
+  height: 24px;
+  background: $dim-color-blue;
+  border-radius: 4px;
+  gap: 8px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none;
+  }
+
+  #user-guide-video-title {
+    font-family: $sfUiDisplay;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: $system-color-blue;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    margin-bottom: 92px;
+  }
+  .responsive-form-actions {
+    padding: 16px;
+    button {
+      display: block;
+      max-width: 480px;
+      margin: auto;
+    }
+  }
+}

@@ -1,0 +1,97 @@
+@import "../../../../../styles/variables";
+
+.voucher-dialog {
+  padding: 6px;
+  max-height: 70vh;
+  overflow-y: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.voucher-dialog::-webkit-scrollbar {
+  display: none;
+}
+
+#voucher-dialog-title {
+  margin-bottom: 13px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  color: #1c1c1e;
+}
+
+.voucher-detail-container {
+  border: 1px solid #e5e5ea;
+  box-sizing: border-box;
+  border-radius: 8px !important;
+  box-shadow: none;
+  margin-top: 16px;
+}
+
+.voucher-header {
+  height: auto;
+  padding: 12px;
+}
+
+::ng-deep .voucher-header {
+  .mat-expansion-panel-header-title,
+  .mat-expansion-panel-header-description {
+    margin-right: 0;
+  }
+  .mat-expansion-indicator {
+    position: absolute !important;
+    right: 12px;
+    bottom: 12px;
+  }
+}
+
+.voucher-title {
+  margin-bottom: 12px;
+  .voucher-code {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #1c1c1e;
+    margin-left: 8px;
+  }
+
+  .voucher-apply {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: right;
+    color: #007aff;
+    padding: 0;
+  }
+}
+
+.voucher-discount {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.1px;
+  color: #636366;
+}
+
+.voucher-condition {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: #3a3a3c;
+}
+
+.voucher-divider {
+  border: 1px dashed #f7f7fc;
+  margin: 12px -12px;
+  width: calc(100% + 24px);
+}
+
+.voucher-description {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  color: #636366;
+  padding: 12px;
+}

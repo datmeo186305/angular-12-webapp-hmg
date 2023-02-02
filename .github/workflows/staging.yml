@@ -1,0 +1,150 @@
+name: Build & Deploy Staging
+
+on:
+  push:
+    branches: [ release ]
+
+jobs:
+  build-container:
+    name: Build and Publish to Azure Container Registry
+    runs-on: ubuntu-latest
+    outputs:
+      version:  ${{ steps.setVersion.outputs.version }}
+    env:
+      SVC_NAME: webapp-hmg-svc
+      ACR_NAME: epayprodregistry.azurecr.io
+      ENV_TYPE: staging
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: Azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - uses: Azure/get-keyvault-secrets@v1.2
+        with:
+          keyvault: "monex-kv"
+          secrets: 'ACR-USERNAME, ACR-PASSWORD'
+        id: getAzSecret
+
+      - name: Azure Container Registry Login
+        uses: Azure/docker-login@v1
+        with:
+          login-server: epayprodregistry.azurecr.io
+          username: ${{ steps.getAzSecret.outputs.ACR-USERNAME }}
+          password: ${{ steps.getAzSecret.outputs.ACR-PASSWORD }}
+
+      - name: Bump version
+        uses: anothrNick/github-tag-action@1.26.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+          DEFAULT_BUMP: patch
+          RELEASE_BRANCHES: release
+
+      - shell: bash
+        run: echo "TAG=$(git describe --tags `git rev-list --tags --max-count=1`)" >> $GITHUB_ENV
+
+      - name: Build Container image
+        run: docker build --build-arg ENV_TYPE=${ENV_TYPE} -t ${ACR_NAME}/${SVC_NAME}:${{ env.TAG }} .
+
+      - name: Publish Docker image
+        run: docker push ${ACR_NAME}/${SVC_NAME}:${{ env.TAG }}
+
+      - name: Set version staging
+        id: setVersion
+        run : echo "::set-output name=version::${{ env.TAG }}"
+
+  deploy:
+    name: Deploy to AWS K8s cluster
+    needs: build-container
+    runs-on: ubuntu-latest
+    env:
+      NAMESPACE: staging
+      SVC_NAME: webapp-hmg-svc
+
+    steps:
+      - uses: Azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - uses: Azure/get-keyvault-secrets@v1.2
+        with:
+          keyvault: "monex-kv"
+          secrets: 'DEPLOYPAT, AWS-ACCESS-KEY-ID, AWS-SECRET-ACCESS-KEY, AWS-CLUSTER-NAME, ACR-USERNAME, ACR-PASSWORD'
+        id: getAzSecret
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ steps.getAzSecret.outputs.AWS-ACCESS-KEY-ID }}
+          aws-secret-access-key: ${{ steps.getAzSecret.outputs.AWS-SECRET-ACCESS-KEY }}
+          aws-region: 'ap-southeast-1'
+
+      - name: Save AWS kubeconfig
+        #        run: aws eks --region ap-southeast-1 update-kubeconfig --name ${{ steps.getAzSecret.outputs.AWS-CLUSTER-NAME }}
+        run: aws eks --region ap-southeast-1 update-kubeconfig --name pdl-staging
+
+      #       Checkout multiple repos (nested)
+#      - name: Checkout deployment repo
+#        uses: actions/checkout@v2
+#        with:
+#          repository: EpayVNTech/cqrs-deployment
+#          token: ${{ steps.getAzSecret.outputs.DEPLOYPAT }}
+      - name: Checkout com-svc repo
+        uses: actions/checkout@v2
+        with:
+          path: main
+
+      - shell: bash
+        working-directory: ./main
+        run: |
+          git fetch --prune --unshallow --tags
+          echo "TAG=$(git describe --tags `git rev-list --tags --max-count=1`)" >> $GITHUB_ENV
+
+      - name: Install helm
+        uses: azure/setup-helm@v1
+        with:
+          version: v3.5.3 # default is latest stable
+        id: install
+      - name: get envTAG
+        run: echo ${{ needs.build-container.outputs.version }}
+
+      - name: Checkout helm-charts repo
+        uses: actions/checkout@v2
+        with:
+          repository: EpayVNTech/helm-charts
+          token: ${{ steps.getAzSecret.outputs.DEPLOYPAT }}
+
+      - name: Sops Binary Installer
+        uses: mdgreenwald/mozilla-sops-action@v1
+        with:
+          version: v3.7.1 # default is latest stable
+
+      - name: Azure Container Registry Login
+        uses: Azure/docker-login@v1
+        with:
+          login-server: epayprodregistry.azurecr.io
+          username: ${{ steps.getAzSecret.outputs.ACR-USERNAME }}
+          password: ${{ steps.getAzSecret.outputs.ACR-PASSWORD }}
+
+      - name: Decrypt config
+        run: |
+          sops -d ./configuration/${SVC_NAME}/${NAMESPACE}/app.enc.yaml > ./configuration/${SVC_NAME}/${NAMESPACE}/app.dec.yaml
+
+      - name: Deploy to DigitalOcean Kubernetes
+        run: |
+          helm upgrade ${SVC_NAME} ./charts/${SVC_NAME} --timeout 5m --install --wait --atomic -n ${NAMESPACE} \
+            --set app.name=${SVC_NAME} \
+            --set app.env=${NAMESPACE} \
+            --set app.namespace=${NAMESPACE} \
+            --set image.tag=${{ needs.build-container.outputs.version }} \
+            --set autoscaling.maxReplicas=1 \
+            --set ingress.host=webapp-hmg-staging.epay.vn \
+            --set-file configMap=./configuration/${SVC_NAME}/${NAMESPACE}/app.dec.yaml
+        timeout-minutes: 5
+
+      - name: Verify deployment
+        run: kubectl rollout status deployment/${SVC_NAME}-${NAMESPACE} -n ${NAMESPACE}
+        timeout-minutes: 5
+
+
